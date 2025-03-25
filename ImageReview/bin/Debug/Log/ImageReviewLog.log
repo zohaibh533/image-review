@@ -1,0 +1,14 @@
+2025-03-25 12:03:45,769 [11] INFO  Priority : 12338, User Count : 1, Queue : 352
+2025-03-25 12:03:45,841 [11] INFO  Current Folder : 4501742886538285_450_82_0_1
+2025-03-25 12:05:51,687 [21] INFO  MoveFolderToModification Error : Thread was being aborted.
+2025-03-25 12:05:51,705 [21] INFO  Error ReadReviewPlates : Thread was being aborted.
+2025-03-25 12:06:44,934 [14] INFO  MoveFolderToModification Error : Thread was being aborted.
+2025-03-25 12:06:44,957 [14] INFO  Error ReadReviewPlates : Thread was being aborted.
+2025-03-25 12:07:23,922 [11] INFO  Priority : 12339, User Count : 1, Queue : 355
+2025-03-25 12:07:24,008 [11] INFO  Current Folder : 1311742889801488_131_24_0_1
+2025-03-25 12:07:25,260 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-03-25 12:08:50,761 [18] INFO  False Triggering Data Saved : 20
+2025-03-25 12:09:39,461 [12] INFO  False Triggering Data Saved : 20
+2025-03-25 12:14:52,486 [11] INFO  Priority : 12343, User Count : 1, Queue : 360
+2025-03-25 12:14:52,554 [11] INFO  Current Folder : 1271742890158601_127_23_0_1
+2025-03-25 12:16:05,524 [7] INFO  False Triggering Data Saved : 15

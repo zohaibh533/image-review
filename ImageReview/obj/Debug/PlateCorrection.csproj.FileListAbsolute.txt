@@ -1,0 +1,628 @@
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\PlateCorrection.exe.config
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\PlateCorrection.exe
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\PlateCorrection.pdb
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.Data.v15.2.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.Printing.v15.2.Core.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.Sparkline.v15.2.Core.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.Utils.v15.2.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.XtraBars.v15.2.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.XtraEditors.v15.2.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.XtraGrid.v15.2.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.XtraLayout.v15.2.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.XtraPrinting.v15.2.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DotNetZip.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\Newtonsoft.Json.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\RestSharp.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.RichEdit.v15.2.Core.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.XtraTreeList.v15.2.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.Office.v15.2.Core.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.Pdf.v15.2.Core.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.Pdf.v15.2.Drawing.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.Data.v15.2.xml
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.Printing.v15.2.Core.xml
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.Sparkline.v15.2.Core.xml
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.Utils.v15.2.xml
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.XtraBars.v15.2.xml
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.XtraEditors.v15.2.xml
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.XtraGrid.v15.2.xml
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.XtraLayout.v15.2.xml
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.XtraPrinting.v15.2.xml
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DotNetZip.pdb
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DotNetZip.xml
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\Newtonsoft.Json.xml
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\RestSharp.xml
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.RichEdit.v15.2.Core.xml
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.XtraTreeList.v15.2.xml
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.Office.v15.2.Core.xml
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.Pdf.v15.2.Core.xml
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\DevExpress.Pdf.v15.2.Drawing.xml
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\de\DevExpress.Data.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\es\DevExpress.Data.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ja\DevExpress.Data.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ru\DevExpress.Data.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\de\DevExpress.Printing.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\es\DevExpress.Printing.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ja\DevExpress.Printing.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ru\DevExpress.Printing.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\de\DevExpress.Sparkline.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\es\DevExpress.Sparkline.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ja\DevExpress.Sparkline.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ru\DevExpress.Sparkline.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\de\DevExpress.Utils.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\es\DevExpress.Utils.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ja\DevExpress.Utils.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ru\DevExpress.Utils.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\de\DevExpress.XtraBars.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\es\DevExpress.XtraBars.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ja\DevExpress.XtraBars.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ru\DevExpress.XtraBars.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\de\DevExpress.XtraEditors.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\es\DevExpress.XtraEditors.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ja\DevExpress.XtraEditors.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ru\DevExpress.XtraEditors.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\de\DevExpress.XtraGrid.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\es\DevExpress.XtraGrid.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ja\DevExpress.XtraGrid.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ru\DevExpress.XtraGrid.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\de\DevExpress.XtraLayout.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\es\DevExpress.XtraLayout.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ja\DevExpress.XtraLayout.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ru\DevExpress.XtraLayout.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\de\DevExpress.XtraPrinting.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\es\DevExpress.XtraPrinting.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ja\DevExpress.XtraPrinting.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ru\DevExpress.XtraPrinting.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\de\DevExpress.RichEdit.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\es\DevExpress.RichEdit.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ja\DevExpress.RichEdit.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ru\DevExpress.RichEdit.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\de\DevExpress.XtraTreeList.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\es\DevExpress.XtraTreeList.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ja\DevExpress.XtraTreeList.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ru\DevExpress.XtraTreeList.v15.2.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\de\DevExpress.Office.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\es\DevExpress.Office.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ja\DevExpress.Office.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ru\DevExpress.Office.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\de\DevExpress.Pdf.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\es\DevExpress.Pdf.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ja\DevExpress.Pdf.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\ru\DevExpress.Pdf.v15.2.Core.resources.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\obj\Debug\PlateCorrection.Properties.Resources.resources
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\obj\Debug\PlateCorrection.UI.frmChangePassword.resources
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\obj\Debug\PlateCorrection.UI.frmDashboard.resources
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\obj\Debug\PlateCorrection.UI.frmZoomInImage.resources
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\obj\Debug\PlateCorrection.UI.frmLogin.resources
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\obj\Debug\PlateCorrection.UI.frmSystemUsersList.resources
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\obj\Debug\PlateCorrection.csproj.GenerateResource.Cache
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\obj\Debug\PlateCorrection.exe.licenses
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\obj\Debug\PlateCorrection.exe
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\obj\Debug\PlateCorrection.pdb
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\obj\Debug\PlateCorrection.csproj.ResolveComReference.cache
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\obj\Debug\PlateCorrection.UI.frmPlayVideo.resources
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\Interop.WMPLib.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\bin\Debug\AxInterop.WMPLib.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\obj\Debug\Interop.WMPLib.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\obj\Debug\AxInterop.WMPLib.dll
+D:\Development\ParkonicPlateCorrection\PlateCorrection\PlateCorrection\obj\Debug\PlateCorrection.csprojResolveAssemblyReference.cache
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\PlateCorrection.exe.config
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\Interop.WMPLib.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\AxInterop.WMPLib.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.csproj.ResolveComReference.cache
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.exe
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.pdb
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\PlateCorrection.exe
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\PlateCorrection.pdb
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Data.v15.2.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Printing.v15.2.Core.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Sparkline.v15.2.Core.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Utils.v15.2.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraBars.v15.2.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraEditors.v15.2.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraGrid.v15.2.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraLayout.v15.2.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraPrinting.v15.2.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DotNetZip.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\Newtonsoft.Json.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\RestSharp.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.RichEdit.v15.2.Core.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraTreeList.v15.2.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Office.v15.2.Core.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Pdf.v15.2.Core.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Pdf.v15.2.Drawing.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Data.v15.2.xml
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Printing.v15.2.Core.xml
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Sparkline.v15.2.Core.xml
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Utils.v15.2.xml
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraBars.v15.2.xml
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraEditors.v15.2.xml
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraGrid.v15.2.xml
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraLayout.v15.2.xml
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraPrinting.v15.2.xml
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DotNetZip.pdb
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DotNetZip.xml
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\Newtonsoft.Json.xml
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\RestSharp.xml
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.RichEdit.v15.2.Core.xml
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraTreeList.v15.2.xml
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Office.v15.2.Core.xml
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Pdf.v15.2.Core.xml
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Pdf.v15.2.Drawing.xml
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.Data.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.Data.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.Data.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.Data.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.Printing.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.Printing.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.Printing.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.Printing.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.Sparkline.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.Sparkline.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.Sparkline.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.Sparkline.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.Utils.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.Utils.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.Utils.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.Utils.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraBars.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraBars.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraBars.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraBars.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraEditors.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraEditors.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraEditors.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraEditors.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraGrid.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraGrid.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraGrid.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraGrid.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraLayout.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraLayout.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraLayout.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraLayout.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraPrinting.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraPrinting.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraPrinting.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraPrinting.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.RichEdit.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.RichEdit.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.RichEdit.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.RichEdit.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraTreeList.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraTreeList.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraTreeList.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraTreeList.v15.2.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.Office.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.Office.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.Office.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.Office.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.Pdf.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.Pdf.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.Pdf.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.Pdf.v15.2.Core.resources.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\Interop.WMPLib.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\AxInterop.WMPLib.dll
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.Properties.Resources.resources
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.UI.frmChangePassword.resources
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.UI.frmDashboard.resources
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.UI.frmPlayVideo.resources
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.UI.frmZoomInImage.resources
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.UI.frmLogin.resources
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.UI.frmSystemUsersList.resources
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.csproj.GenerateResource.Cache
+D:\Development\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.exe.licenses
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\PlateCorrection.exe.config
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\Interop.WMPLib.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\AxInterop.WMPLib.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.csproj.ResolveComReference.cache
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.exe
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.pdb
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\PlateCorrection.exe
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\PlateCorrection.pdb
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Data.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Printing.v15.2.Core.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Sparkline.v15.2.Core.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Utils.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraBars.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraEditors.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraGrid.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraLayout.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraPrinting.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DotNetZip.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\Newtonsoft.Json.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\RestSharp.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.RichEdit.v15.2.Core.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraTreeList.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Office.v15.2.Core.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Pdf.v15.2.Core.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Pdf.v15.2.Drawing.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Data.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Printing.v15.2.Core.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Sparkline.v15.2.Core.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Utils.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraBars.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraEditors.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraGrid.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraLayout.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraPrinting.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DotNetZip.pdb
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DotNetZip.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\Newtonsoft.Json.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\RestSharp.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.RichEdit.v15.2.Core.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraTreeList.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Office.v15.2.Core.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Pdf.v15.2.Core.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Pdf.v15.2.Drawing.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.Data.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.Data.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.Data.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.Data.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.Printing.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.Printing.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.Printing.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.Printing.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.Sparkline.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.Sparkline.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.Sparkline.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.Sparkline.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.Utils.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.Utils.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.Utils.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.Utils.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraBars.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraBars.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraBars.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraBars.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraEditors.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraEditors.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraEditors.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraEditors.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraGrid.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraGrid.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraGrid.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraGrid.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraLayout.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraLayout.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraLayout.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraLayout.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraPrinting.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraPrinting.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraPrinting.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraPrinting.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.RichEdit.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.RichEdit.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.RichEdit.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.RichEdit.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraTreeList.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraTreeList.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraTreeList.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraTreeList.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.Office.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.Office.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.Office.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.Office.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.Pdf.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.Pdf.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.Pdf.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.Pdf.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\Interop.WMPLib.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\AxInterop.WMPLib.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.Properties.Resources.resources
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.UI.frmChangePassword.resources
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.UI.frmDashboard.resources
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.UI.frmPlayVideo.resources
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.UI.frmZoomInImage.resources
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.UI.frmLogin.resources
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.UI.frmSystemUsersList.resources
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.csproj.GenerateResource.Cache
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.exe.licenses
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.UI.frmAddEditGroup.resources
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.UI.frmLocationGroups.resources
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.UI.frmReports.resources
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\ParkonicCashier.Reports.rptUserWiseSummaryReport.resources
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.DataAccess.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Xpo.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraReports.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.CodeParser.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraCharts.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Charts.v15.2.Core.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraGauges.v15.2.Core.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.PivotGrid.v15.2.Core.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.DataAccess.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Xpo.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraReports.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraCharts.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraGauges.v15.2.Core.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.PivotGrid.v15.2.Core.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.DataAccess.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.DataAccess.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.DataAccess.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.DataAccess.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.Xpo.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.Xpo.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.Xpo.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.Xpo.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraReports.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraReports.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraReports.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraReports.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraCharts.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraCharts.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraCharts.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraCharts.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraGauges.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraGauges.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraGauges.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraGauges.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.PivotGrid.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.PivotGrid.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.PivotGrid.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.PivotGrid.v15.2.Core.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.ExpressApp.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Persistent.Base.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraReports.v15.2.Extensions.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Utils.v15.2.UI.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.DataAccess.v15.2.UI.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraRichEdit.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraCharts.v15.2.Extensions.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraPivotGrid.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraNavBar.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraVerticalGrid.v15.2.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraCharts.v15.2.Wizard.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.ExpressApp.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Persistent.Base.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraReports.v15.2.Extensions.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.Utils.v15.2.UI.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.DataAccess.v15.2.UI.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraRichEdit.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraPivotGrid.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraNavBar.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraVerticalGrid.v15.2.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\DevExpress.XtraCharts.v15.2.Wizard.xml
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.ExpressApp.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.ExpressApp.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.ExpressApp.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.ExpressApp.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraReports.v15.2.Extensions.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraReports.v15.2.Extensions.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraReports.v15.2.Extensions.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraReports.v15.2.Extensions.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.Utils.v15.2.UI.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.Utils.v15.2.UI.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.Utils.v15.2.UI.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.Utils.v15.2.UI.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.DataAccess.v15.2.UI.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.DataAccess.v15.2.UI.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.DataAccess.v15.2.UI.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.DataAccess.v15.2.UI.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraRichEdit.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraRichEdit.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraRichEdit.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraRichEdit.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraPivotGrid.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraPivotGrid.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraPivotGrid.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraPivotGrid.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraNavBar.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraNavBar.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraNavBar.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraNavBar.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraVerticalGrid.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraVerticalGrid.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraVerticalGrid.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraVerticalGrid.v15.2.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\de\DevExpress.XtraCharts.v15.2.Wizard.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\es\DevExpress.XtraCharts.v15.2.Wizard.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ja\DevExpress.XtraCharts.v15.2.Wizard.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\bin\Debug\ru\DevExpress.XtraCharts.v15.2.Wizard.resources.dll
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.csprojResolveAssemblyReference.cache
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\ParkonicCashier.Reports.rptLocationWiseSummaryReport.resources
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\ParkonicCashier.Reports.rptHourlyCorrectionSummary.resources
+D:\Git-Projects\Parkonic\Parkonic-Plate-Correction\PlateCorrection\obj\Debug\PlateCorrection.UI.frmExcludeAP.resources
+D:\Image Review\PlateCorrection\bin\Debug\PlateCorrection.exe.config
+D:\Image Review\PlateCorrection\obj\Debug\Interop.WMPLib.dll
+D:\Image Review\PlateCorrection\obj\Debug\AxInterop.WMPLib.dll
+D:\Image Review\PlateCorrection\obj\Debug\PlateCorrection.csproj.ResolveComReference.cache
+D:\Image Review\PlateCorrection\obj\Debug\PlateCorrection.exe
+D:\Image Review\PlateCorrection\obj\Debug\PlateCorrection.pdb
+D:\Image Review\PlateCorrection\obj\Debug\PlateCorrection.csprojResolveAssemblyReference.cache
+D:\Image Review\PlateCorrection\obj\Debug\PlateCorrection.Properties.Resources.resources
+D:\Image Review\PlateCorrection\obj\Debug\PlateCorrection.UI.frmChangePassword.resources
+D:\Image Review\PlateCorrection\obj\Debug\PlateCorrection.UI.frmDashboard.resources
+D:\Image Review\PlateCorrection\obj\Debug\PlateCorrection.UI.frmPlayVideo.resources
+D:\Image Review\PlateCorrection\obj\Debug\PlateCorrection.UI.frmReports.resources
+D:\Image Review\PlateCorrection\obj\Debug\PlateCorrection.UI.frmZoomInImage.resources
+D:\Image Review\PlateCorrection\obj\Debug\PlateCorrection.UI.frmLogin.resources
+D:\Image Review\PlateCorrection\obj\Debug\PlateCorrection.UI.frmSystemUsersList.resources
+D:\Image Review\PlateCorrection\obj\Debug\ParkonicCashier.Reports.rptHourlyCorrectionSummary.resources
+D:\Image Review\PlateCorrection\obj\Debug\ParkonicCashier.Reports.rptLocationWiseSummaryReport.resources
+D:\Image Review\PlateCorrection\obj\Debug\ParkonicCashier.Reports.rptUserWiseSummaryReport.resources
+D:\Image Review\PlateCorrection\obj\Debug\PlateCorrection.csproj.GenerateResource.Cache
+D:\Image Review\PlateCorrection\obj\Debug\PlateCorrection.exe.licenses
+D:\Image Review\PlateCorrection\bin\Debug\PlateCorrection.exe
+D:\Image Review\PlateCorrection\bin\Debug\PlateCorrection.pdb
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Data.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.DataAccess.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.ExpressApp.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Persistent.Base.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Printing.v15.2.Core.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Sparkline.v15.2.Core.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Utils.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Xpo.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraBars.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraEditors.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraGrid.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraLayout.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraPrinting.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraReports.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraReports.v15.2.Extensions.dll
+D:\Image Review\PlateCorrection\bin\Debug\DotNetZip.dll
+D:\Image Review\PlateCorrection\bin\Debug\Newtonsoft.Json.dll
+D:\Image Review\PlateCorrection\bin\Debug\RestSharp.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.CodeParser.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.RichEdit.v15.2.Core.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraTreeList.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Office.v15.2.Core.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraCharts.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Charts.v15.2.Core.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraGauges.v15.2.Core.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.PivotGrid.v15.2.Core.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Utils.v15.2.UI.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.DataAccess.v15.2.UI.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraRichEdit.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraCharts.v15.2.Extensions.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraPivotGrid.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraNavBar.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraVerticalGrid.v15.2.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraCharts.v15.2.Wizard.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Pdf.v15.2.Core.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Pdf.v15.2.Drawing.dll
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Data.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.DataAccess.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.ExpressApp.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Persistent.Base.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Printing.v15.2.Core.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Sparkline.v15.2.Core.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Utils.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Xpo.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraBars.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraEditors.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraGrid.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraLayout.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraPrinting.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraReports.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraReports.v15.2.Extensions.xml
+D:\Image Review\PlateCorrection\bin\Debug\DotNetZip.pdb
+D:\Image Review\PlateCorrection\bin\Debug\DotNetZip.xml
+D:\Image Review\PlateCorrection\bin\Debug\Newtonsoft.Json.xml
+D:\Image Review\PlateCorrection\bin\Debug\RestSharp.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.RichEdit.v15.2.Core.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraTreeList.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Office.v15.2.Core.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraCharts.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraGauges.v15.2.Core.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.PivotGrid.v15.2.Core.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Utils.v15.2.UI.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.DataAccess.v15.2.UI.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraRichEdit.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraPivotGrid.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraNavBar.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraVerticalGrid.v15.2.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.XtraCharts.v15.2.Wizard.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Pdf.v15.2.Core.xml
+D:\Image Review\PlateCorrection\bin\Debug\DevExpress.Pdf.v15.2.Drawing.xml
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.Data.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.Data.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.Data.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.Data.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.DataAccess.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.DataAccess.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.DataAccess.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.DataAccess.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.ExpressApp.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.ExpressApp.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.ExpressApp.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.ExpressApp.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.Printing.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.Printing.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.Printing.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.Printing.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.Sparkline.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.Sparkline.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.Sparkline.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.Sparkline.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.Utils.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.Utils.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.Utils.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.Utils.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.Xpo.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.Xpo.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.Xpo.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.Xpo.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.XtraBars.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.XtraBars.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.XtraBars.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.XtraBars.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.XtraEditors.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.XtraEditors.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.XtraEditors.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.XtraEditors.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.XtraGrid.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.XtraGrid.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.XtraGrid.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.XtraGrid.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.XtraLayout.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.XtraLayout.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.XtraLayout.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.XtraLayout.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.XtraPrinting.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.XtraPrinting.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.XtraPrinting.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.XtraPrinting.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.XtraReports.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.XtraReports.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.XtraReports.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.XtraReports.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.XtraReports.v15.2.Extensions.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.XtraReports.v15.2.Extensions.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.XtraReports.v15.2.Extensions.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.XtraReports.v15.2.Extensions.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.RichEdit.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.RichEdit.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.RichEdit.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.RichEdit.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.XtraTreeList.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.XtraTreeList.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.XtraTreeList.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.XtraTreeList.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.Office.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.Office.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.Office.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.Office.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.XtraCharts.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.XtraCharts.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.XtraCharts.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.XtraCharts.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.XtraGauges.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.XtraGauges.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.XtraGauges.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.XtraGauges.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.PivotGrid.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.PivotGrid.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.PivotGrid.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.PivotGrid.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.Utils.v15.2.UI.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.Utils.v15.2.UI.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.Utils.v15.2.UI.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.Utils.v15.2.UI.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.DataAccess.v15.2.UI.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.DataAccess.v15.2.UI.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.DataAccess.v15.2.UI.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.DataAccess.v15.2.UI.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.XtraRichEdit.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.XtraRichEdit.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.XtraRichEdit.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.XtraRichEdit.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.XtraPivotGrid.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.XtraPivotGrid.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.XtraPivotGrid.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.XtraPivotGrid.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.XtraNavBar.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.XtraNavBar.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.XtraNavBar.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.XtraNavBar.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.XtraVerticalGrid.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.XtraVerticalGrid.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.XtraVerticalGrid.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.XtraVerticalGrid.v15.2.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.XtraCharts.v15.2.Wizard.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.XtraCharts.v15.2.Wizard.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.XtraCharts.v15.2.Wizard.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.XtraCharts.v15.2.Wizard.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\de\DevExpress.Pdf.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\es\DevExpress.Pdf.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ja\DevExpress.Pdf.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\ru\DevExpress.Pdf.v15.2.Core.resources.dll
+D:\Image Review\PlateCorrection\bin\Debug\Interop.WMPLib.dll
+D:\Image Review\PlateCorrection\bin\Debug\AxInterop.WMPLib.dll

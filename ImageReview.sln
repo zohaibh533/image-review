@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.34112.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageReview", "ImageReview\ImageReview.csproj", "{09B10A07-A8FB-496E-ACD2-68A3B775507A}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "ImageReview.Setup", "ImageReview.Setup\ImageReview.Setup.vdproj", "{C273627F-BAAD-429F-995B-B0C9E209E471}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CD_ROM|Any CPU = CD_ROM|Any CPU
+		Debug|Any CPU = Debug|Any CPU
+		DVD-5|Any CPU = DVD-5|Any CPU
+		Release|Any CPU = Release|Any CPU
+		SingleImage|Any CPU = SingleImage|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09B10A07-A8FB-496E-ACD2-68A3B775507A}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{09B10A07-A8FB-496E-ACD2-68A3B775507A}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
+		{09B10A07-A8FB-496E-ACD2-68A3B775507A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09B10A07-A8FB-496E-ACD2-68A3B775507A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09B10A07-A8FB-496E-ACD2-68A3B775507A}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{09B10A07-A8FB-496E-ACD2-68A3B775507A}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
+		{09B10A07-A8FB-496E-ACD2-68A3B775507A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09B10A07-A8FB-496E-ACD2-68A3B775507A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{09B10A07-A8FB-496E-ACD2-68A3B775507A}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{09B10A07-A8FB-496E-ACD2-68A3B775507A}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{C273627F-BAAD-429F-995B-B0C9E209E471}.CD_ROM|Any CPU.ActiveCfg = Release
+		{C273627F-BAAD-429F-995B-B0C9E209E471}.Debug|Any CPU.ActiveCfg = Debug
+		{C273627F-BAAD-429F-995B-B0C9E209E471}.DVD-5|Any CPU.ActiveCfg = Debug
+		{C273627F-BAAD-429F-995B-B0C9E209E471}.Release|Any CPU.ActiveCfg = Release
+		{C273627F-BAAD-429F-995B-B0C9E209E471}.SingleImage|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D5363133-75AF-4854-AE61-BB8129366EE8}
+	EndGlobalSection
+EndGlobal
