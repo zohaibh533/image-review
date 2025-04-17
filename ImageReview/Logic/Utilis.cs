@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using System.Net.Sockets;
 using System.Security.Cryptography;
@@ -58,5 +59,59 @@ namespace ImageReview.Logic
             return "";
         }
 
+        private static Dictionary<char, string> ArEngLetters = new Dictionary<char, string>()
+        {
+            {'ا', "A"},  {'ب', "B"}, {'ح', "J"},
+            {'د', "D"}, {'ر', "R"}, {'س', "S"},
+            {'ص', "X"}, {'ط', "T"}, {'ع', "E"},
+            {'ق', "G"}, {'ك', "K"}, {'ل', "L"},
+             {'م', "Z"}, {'ن', "N"},  {'ه', "H"},
+             {'و', "U"}, {'ى', "V"},
+
+             {'ت', ""}, {'ث', ""}, {'ج', ""},
+              {'خ', ""}, {'ذ', ""}, {'ز', ""},
+              {'ش', ""}, {'ض', ""},  {'ظ', ""},
+              {'غ', ""}, {'ف', ""},
+
+            {'٠', "0"}, {'١', "1"}, {'٢', "2"}, {'٣', "3"},
+            {'٤', "4"}, {'٥', "5"}, {'٦', "6"}, {'٧', "7"},
+            {'٨', "8"}, {'٩', "9"}
+        };
+
+
+
+        // {'ت', "t"}, {'ث', "'t"}, {'ج', "j"},
+        //{'خ', "h"}, {'ذ', "d"}, {'ز', "z"},
+        //{'ش', "s"}, {'ض', "d"},  {'ظ', "'z"},
+        //{'غ', "'g"}, {'ف', "f"},
+
+        public static string GetEnglishCharacter(string arabicLetter)
+        {
+            return ArEngLetters.ContainsKey(arabicLetter[0]) ? ArEngLetters[arabicLetter[0]] : " "; // Return '?' if not found
+        }
+
+        private static Dictionary<string, char> EngArLetters = new Dictionary<string, char>();
+
+        public static string ConvertEnglishToArabic(string input)
+        {
+            foreach (var pair in ArEngLetters)
+            {
+                if (!string.IsNullOrEmpty(pair.Value))
+                    EngArLetters[pair.Value] = pair.Key;
+            }
+
+            StringBuilder result = new StringBuilder();
+            char arabicChar;
+            foreach (char c in input.ToUpper())
+            {
+                if (EngArLetters.TryGetValue(c.ToString(), out arabicChar))
+                    result.Append(arabicChar);
+                //else
+                //{
+                //    result.Append(c); // Keep unknown characters as is
+                //}
+            }
+            return result.ToString();
+        }
     }
 }

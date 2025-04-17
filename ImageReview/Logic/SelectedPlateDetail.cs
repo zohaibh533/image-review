@@ -29,14 +29,33 @@ namespace ImageReview.Logic
         public string folder_name { get; set; }
         public string location { get; set; }
         public string access_point_id { get; set; }
+        public int access_point_id_new { get; set; }
         public string entrance_Name { get; set; }
         public string transactionid { get; set; }
         public string event_datetime { get; set; }
         public string Server_ip { get; set; }
+
+        public int? trigger_type { get; set; }
+        public int? is_lpr_focus_backward { get; set; }
+        public int? is_anpr_foucs_backward { get; set; }
+        public string direction { get; set; }
+        public int correction { get; set; }
+
+        public int TriggerTypeLocal { get; set; }
+        public int IsBackwardFocusLocal { get; set; }
+        public string DirectionLocal { get; set; }
+
         public int is_exit { get; set; }
         public int location_id { get; set; }
         public string spot_number { get; set; }
     }
+
+    /*
+     trigger_type -> 
+     0 = anpr
+     1 = anpr - virtual
+     2 - lpr 
+         */
 
     public class SelectedPlateDetail
     {

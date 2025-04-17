@@ -48,7 +48,7 @@ namespace ImageReview.UI
                 MessageBox.Show(ee.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        
+
         private static void GrantAccess()
         {
             try

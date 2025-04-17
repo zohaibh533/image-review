@@ -1,5 +1,6 @@
 ﻿using DevExpress.Utils;
 using DevExpress.XtraBars;
+using DevExpress.XtraEditors;
 using DevExpress.XtraEditors.Controls;
 using ImageReview.Logic;
 using Newtonsoft.Json;
@@ -36,6 +37,7 @@ namespace ImageReview.UI
         System.Timers.Timer tmAppClose = new System.Timers.Timer() { Enabled = true, Interval = (60 * 1000) };
         System.Timers.Timer tmTimer = new System.Timers.Timer() { Enabled = false, Interval = 1000 };
         System.Timers.Timer tmExitPlates = new System.Timers.Timer() { Enabled = true, Interval = 1000 * 60 }; // 5 mints
+        System.Timers.Timer tmWarning = new System.Timers.Timer() { Enabled = false, Interval = 300 };
 
         #region General & Events
 
@@ -100,6 +102,7 @@ namespace ImageReview.UI
                 tmTimer.Elapsed += TmTimer_Elapsed;
                 tmExitPlates.Elapsed += TmExitPlates_Elapsed;
                 tmZoomPlate.Elapsed += TmZoomPlate_Elapsed;
+                tmWarning.Elapsed += TmWarning_Elapsed;
 
                 FillLocationAndAccessPoints();
 
@@ -107,6 +110,9 @@ namespace ImageReview.UI
                 ImgSliderH = imgSlider.Height;
                 picZoomW = picZoom.Width;
                 picZoomH = picZoom.Height;
+
+                RefreshFalseTriggeringData();
+                InitToolTipConverter();
             }
             catch (Exception ee)
             {
@@ -116,9 +122,9 @@ namespace ImageReview.UI
             pnlWait.InvokeControl(l => l.Visible = false);
         }
 
-
         public static List<AccessPoint> lstAccessPointsData = new List<AccessPoint>();
         public static List<Location> lstLocations = new List<Location>();
+        public static Dictionary<int, AccessPoint> dicApLocation = null;
 
         private async void FillLocationAndAccessPoints()
         {
@@ -144,10 +150,13 @@ namespace ImageReview.UI
                                     locationName = lo.name,
                                     id = ap.id,
                                     name = string.Format("{0} - {1} - {2}", ap.id, ap.name, lo.name),
+                                    AccessPointIDName = string.Format("{0} - {1}", ap.id, ap.name),
                                     is_exit = ap.is_exit
                                 });
                             }
                         }
+
+                        dicApLocation = lstAccessPointsData.ToDictionary(ap => ap.id);
                     }
                     else
                     {
@@ -164,7 +173,6 @@ namespace ImageReview.UI
                 LogFile.UpdateLogFile(string.Format("Error FillLocationAndAccessPoints : {0}", ee.Message));
             }
         }
-
 
         private void TmTimer_Elapsed(object sender, ElapsedEventArgs e)
         {
@@ -227,8 +235,12 @@ namespace ImageReview.UI
             imgSlider.Height = this.Height - (pnlButtons.Location.Y + pnlButtons.Height + 50);
             picZoom.Location = imgSlider.Location;
 
+            pnlDirection.Location = new Point((this.Width - pnlDirection.Width - 18),
+                (imgSlider.Location.Y - (pnlDirection.Height / 2)));
+
             if (Utilis.UserType == "admin")
             {
+                pnlChangeAP.Visible = true;
                 btnForward.Visible = false;
                 btnActiveTrip.Visible = true;
                 bbForward.Visibility = BarItemVisibility.Never;
@@ -236,6 +248,7 @@ namespace ImageReview.UI
             }
             else
             {
+                pnlChangeAP.Visible = false;
                 btnForward.Visible = true;
                 btnActiveTrip.Visible = false;
                 //btnSave.Location = new Point(168, 4);
@@ -659,6 +672,7 @@ namespace ImageReview.UI
                             btnSave.InvokeControl(l => l.Enabled = true);
                             btnForward.InvokeControl(l => l.Enabled = true);
 
+                            CheckDirection();
                             LoadSliderImages(fPic);
                             if (IsFromTimer)
                                 PlayRingTone();
@@ -705,6 +719,121 @@ namespace ImageReview.UI
             }
         }
 
+        private void CheckDirection()
+        {
+            try
+            {
+                if (_pd.correction.trigger_type.HasValue)
+                {
+                    _pd.correction.TriggerTypeLocal = _pd.correction.trigger_type.Value;
+                    string direction = string.IsNullOrEmpty(_pd.correction.direction) ? "" : _pd.correction.direction;
+                    pnlDirection.InvokeControl(l => l.Visible = true);
+                    int IsBackWard = -1;
+
+                    if ((_pd.correction.TriggerTypeLocal == 0 || _pd.correction.TriggerTypeLocal == 1) &&
+                        _pd.correction.is_anpr_foucs_backward.HasValue) // ANPR physcial & virtual
+                    {
+                        IsBackWard = _pd.correction.is_anpr_foucs_backward.Value;
+                        CamDirection(IsBackWard == 1);
+                        LogFile.UpdateLogFile(string.Format("ANPR direction: {0}, {1}", direction, _pd.correction.is_anpr_foucs_backward));
+                    }
+                    else if (_pd.correction.TriggerTypeLocal == 2 && _pd.correction.is_lpr_focus_backward.HasValue) // LPR
+                    {
+                        IsBackWard = _pd.correction.is_lpr_focus_backward.Value;
+                        CamDirection(IsBackWard == 1);
+                        LogFile.UpdateLogFile(string.Format("LPR direction: {0}, {1}", direction, _pd.correction.is_lpr_focus_backward));
+                    }
+                    _pd.correction.IsBackwardFocusLocal = IsBackWard;
+                    _pd.correction.DirectionLocal = direction;
+
+                    // if direction in oppo side, start blinking
+                    if ((IsBackWard == 1 && direction.ToLower() == "forward") || (IsBackWard != 1 && direction.ToLower() == "reverse"))
+                    {
+                        tmWarning.Enabled = true;
+                    }
+                }
+                else
+                {
+                    _pd.correction.IsBackwardFocusLocal = -1;
+                    _pd.correction.DirectionLocal = "";
+                    _pd.correction.TriggerTypeLocal = -1;
+                    pnlDirection.InvokeControl(l => l.Visible = false);
+                }
+            }
+            catch (Exception ee)
+            {
+                LogFile.UpdateLogFile(string.Format("Error CheckDirection : {0}", ee.Message));
+            }
+        }
+
+        private void CamDirection(bool IsBackward)
+        {
+            if (IsBackward)
+            {
+                lblDirection.InvokeControl(l => l.Text = "Back Side");
+                picDirection.InvokeControl(l => l.Image = Properties.Resources.backSideCap);
+            }
+            else
+            {
+                lblDirection.InvokeControl(l => l.Text = "Front Side");
+                picDirection.InvokeControl(l => l.Image = Properties.Resources.FrontSideCap);
+            }
+        }
+
+        private int borderThickness = 2;
+        private bool shrinking = true;
+        Color borderClr = Color.Red;
+
+        private void pnlDirection_Paint(object sender, PaintEventArgs e)
+        {
+            try
+            {
+                if (tmWarning.Enabled)
+                {
+                    ControlPaint.DrawBorder(e.Graphics, pnlDirection.ClientRectangle,
+                     borderClr, borderThickness, ButtonBorderStyle.Solid,
+                     borderClr, borderThickness, ButtonBorderStyle.Solid,
+                     borderClr, borderThickness, ButtonBorderStyle.Solid,
+                     borderClr, borderThickness, ButtonBorderStyle.Solid);
+                }
+                else
+                {
+                    ControlPaint.DrawBorder(e.Graphics, pnlDirection.ClientRectangle,
+                    Color.Black, 1, ButtonBorderStyle.Solid,
+                    Color.Black, 1, ButtonBorderStyle.Solid,
+                    Color.Black, 1, ButtonBorderStyle.Solid,
+                    Color.Black, 1, ButtonBorderStyle.Solid);
+                }
+            }
+            catch (Exception ee)
+            {
+                LogFile.UpdateLogFile(string.Format("Error pnlDirection_Paint : {0}", ee.Message));
+            }
+        }
+
+        private void TmWarning_Elapsed(object sender, ElapsedEventArgs e)
+        {
+            try
+            {
+                if (shrinking)
+                    borderThickness--;
+                else
+                    borderThickness++;
+
+                borderClr = Color.Red;
+                if (borderThickness <= 1)
+                    shrinking = false;
+                else if (borderThickness >= 3)
+                    shrinking = true;
+
+                pnlDirection.Invalidate();
+            }
+            catch (Exception ee)
+            {
+                LogFile.UpdateLogFile(string.Format("Error TmWarning_Elapsed : {0}", ee.Message));
+            }
+        }
+
         private async void GetPlateForwardedReason(string TransID)
         {
             try
@@ -721,6 +850,34 @@ namespace ImageReview.UI
             catch (Exception ee)
             {
                 LogFile.UpdateLogFile(string.Format("Error GetPlateForwardedReason : {0}", ee.Message));
+            }
+        }
+
+        private void chkChangeAP_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                bool IsChked = false;
+                chkChangeAP.InvokeControl(l => IsChked = l.Checked);
+                if (IsChked)
+                {
+                    cmbChangeAP.InvokeControl(l => l.Enabled = true);
+                    cmbChangeAP.InvokeControl(l => l.DataSource = null);
+
+                    List<AccessPoint> lstAP = lstAccessPointsData.Where(l => l.locationID == _pd.correction.location_id && l.is_exit != _pd.correction.is_exit).ToList();
+                    cmbChangeAP.InvokeControl(l => l.DataSource = lstAP);
+                    cmbChangeAP.InvokeControl(l => l.DisplayMember = "AccessPointIDName");
+                    cmbChangeAP.InvokeControl(l => l.ValueMember = "id");
+                }
+                else
+                {
+                    cmbChangeAP.InvokeControl(l => l.SelectedIndex = -1);
+                    cmbChangeAP.InvokeControl(l => l.Enabled = false);
+                }
+            }
+            catch (Exception ee)
+            {
+                LogFile.UpdateLogFile(string.Format("Error chkChangeAP_CheckedChanged : {0}", ee.Message));
             }
         }
 
@@ -837,23 +994,22 @@ namespace ImageReview.UI
         {
             CreateLogForExitPlates();
             IgnoreAPPlates();
-            await ReadReviewPlates();
+
             if (Utilis.UserType == "admin")
             {
                 int rec = await RefreshFalseTriggeringData();
-                if (PreFalseTriggerCount != rec)
+                if (PreFalseTriggerCount != rec && rec > 0)
                     ShowNotification(rec);
                 PreFalseTriggerCount = rec;
             }
         }
 
-        public async Task<int> RefreshFalseTriggeringData()
+        private async Task<int> RefreshFalseTriggeringData()
         {
             try
             {
                 List<FalseTrigger> lstFT = await MySqlDAL.GetFalseTriggeringData();
-                lblFalseTriger.InvokeControl(l => l.Text = lstFT.Count.ToString());
-                lblFalseTriger.InvokeControl(l => l.ForeColor = lstFT.Count > 0 ? Color.Red : Color.Black);
+                RefreshFalseTriggeringCount(lstFT.Count);
                 return lstFT.Count;
             }
             catch (Exception ee)
@@ -863,10 +1019,26 @@ namespace ImageReview.UI
             }
         }
 
+        public void RefreshFalseTriggeringCount(int count)
+        {
+            try
+            {
+                lblFalseTriger.InvokeControl(l => l.Text = count.ToString());
+                lblFalseTriger.InvokeControl(l => l.ForeColor = count > 0 ? Color.Red : Color.Black);
+            }
+            catch (Exception ee)
+            {
+                LogFile.UpdateLogFile(string.Format("Error RefreshFalseTriggeringCount : {0}", ee.Message));
+            }
+        }
+
         private void lblFalseTriger_Click(object sender, EventArgs e)
         {
             try
             {
+                frmFalseTriggering frm = new frmFalseTriggering();
+                frm.Owner = this;
+                frm.ShowDialog();
             }
             catch (Exception ee)
             {
@@ -884,57 +1056,12 @@ namespace ImageReview.UI
                     Visible = true
                 };
 
-                notifyIcon.ShowBalloonTip((1000 * 60 * 1), "False Triggering Cases Update",
+                notifyIcon.ShowBalloonTip((1000 * 10), "False Triggering Cases Update",
                     string.Format("{0} false triggering cases are pending.", Count), ToolTipIcon.Warning);
             }
             catch (Exception ee)
             {
                 LogFile.UpdateLogFile(string.Format("Error ShowNotification : {0}", ee.Message));
-            }
-        }
-
-        List<FalseTrigger> lstFT;
-        string[] strs;
-        private async Task<int> ReadReviewPlates()
-        {
-            try
-            {
-                List<string> lstFldr = new DirectoryInfo(Utilis.ReviewPath)
-                    .GetDirectories()
-                    .Select(y => y.Name)
-                    .Take(15)
-                    .ToList();
-
-                lstFT = new List<FalseTrigger>();
-                foreach (string folder in lstFldr)
-                {
-                    strs = folder.Split('_');
-                    if (strs.Length > 2)
-                    {
-                        lstFT.Add(new FalseTrigger()
-                        {
-                            FolderName = folder,
-                            AccessPointID = Convert.ToInt32(strs[1]),
-                            EventDate = Utilis.ConvertTransactionIDToDateTime(strs[0], strs[1]).ToString("yyyy-MM-dd HH:mm:ss")
-                        });
-                        MoveFolderToModification(folder, Utilis.ReviewPath);
-                        Directory.Delete(string.Format("{0}\\{1}", Utilis.ReviewPath, folder), true);
-                    }
-                }
-
-                //save data to db
-                if (lstFT.Count > 0)
-                {
-                    int rec = await MySqlDAL.InsertFalseTriggeringData(lstFT);
-                    LogFile.UpdateLogFile(string.Format("False Triggering Data Saved : {0}", rec));
-                }
-
-                return lstFT.Count;
-            }
-            catch (Exception ee)
-            {
-                LogFile.UpdateLogFile(string.Format("Error ReadReviewPlates : {0}", ee.Message));
-                return 0;
             }
         }
 
@@ -995,7 +1122,8 @@ namespace ImageReview.UI
 
                     //delete the folder and save log 
                     DeletePlateFile(str, PlateD, Utilis.CorrectionFolderPath, ActionMaster.ExitPlates);
-                    SaveCorrectionLog(ActionMaster.ExitPlates, PlateD, "", "", "", "", 0, str);
+                    SaveCorrectionLog(ActionMaster.ExitPlates, PlateD, "", "", "", "", 0, str,
+                        Convert.ToInt32(_pd.correction.access_point_id));
                 }
             }
             catch (Exception ee)
@@ -1033,6 +1161,11 @@ namespace ImageReview.UI
                 cmbReason.InvokeControl(l => l.SelectedIndex = -1);
                 txtNoPlateRemarks.InvokeControl(l => l.Text = "");
 
+                borderThickness = 1;
+                borderClr = Color.Black;
+                pnlDirection.InvokeControl(l => l.Visible = false);
+                tmWarning.Enabled = false;
+
                 btnVideo.InvokeControl(l => l.Enabled = false);
                 btnIgnore.InvokeControl(l => l.Enabled = false);
                 btnSave.InvokeControl(l => l.Enabled = false);
@@ -1043,7 +1176,12 @@ namespace ImageReview.UI
                     gvRecentPlates.Columns.Clear();
                     gcRecentPlates.InvokeControl(l => l.DataSource = null);
                     lblForwardedUser.InvokeControl(l => l.Text = "");
+                    chkChangeAP.InvokeControl(l => l.Checked = false);
+                    cmbChangeAP.InvokeControl(l => l.Enabled = false);
                 }
+
+                picCodeConv.InvokeControl(l => l.Visible = false);
+                picPlateNoConv.InvokeControl(l => l.Visible = false);
 
                 picZoom.InvokeControl(l => l.BackgroundImage = null);
                 lblTimer.InvokeControl(l => l.Text = "00:00");
@@ -1089,10 +1227,23 @@ namespace ImageReview.UI
             {
                 if (_pd != null && _pd.correction != null && _pd.correction.transactionid != "")
                 {
-                    string code = "", plateNo = "", plateCity = "", userRemarks = "";
-                    int ReasonID = 0, cityIndex = -1;
-                    bool TypeCityname = false;
+                    //wrong direction warning
+                    if (
+                        Utilis.UserType == "user" &&
+                        ((_pd.correction.IsBackwardFocusLocal == 1 && _pd.correction.DirectionLocal.ToLower() == "forward")
+                        || (_pd.correction.IsBackwardFocusLocal != 1 && _pd.correction.DirectionLocal.ToLower() == "reverse")))
+                    {
+                        MessageBox.Show("Vehicle is moving in the wrong direction. Please forward this case to admin.",
+                            "Wrong Direction Detected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
 
+
+                    string code = "", plateNo = "", plateCity = "", userRemarks = "";
+                    int ReasonID = 0, cityIndex = -1, changeAPid = -1;
+                    bool TypeCityname = false, ChangeAP = false;
+
+                    chkChangeAP.InvokeControl(l => ChangeAP = l.Checked);
                     chkManualType.InvokeControl(l => TypeCityname = l.Checked);
                     txtCode.InvokeControl(l => code = l.Text.Trim());
                     txtPlateNo.InvokeControl(l => plateNo = l.Text.Trim());
@@ -1100,6 +1251,7 @@ namespace ImageReview.UI
                     cmbCity.InvokeControl(l => cityIndex = l.SelectedIndex);
                     txtNoPlateRemarks.InvokeControl(l => userRemarks = l.Text.Trim());
                     cmbReason.InvokeControl(l => ReasonID = l.SelectedIndex > -1 ? Convert.ToInt32(l.SelectedValue) : 0);
+                    cmbChangeAP.InvokeControl(l => changeAPid = l.SelectedIndex > -1 ? Convert.ToInt32(l.SelectedValue) : 0);
 
                     if (!TypeCityname && cityIndex == -1)
                     {
@@ -1111,6 +1263,20 @@ namespace ImageReview.UI
                         MessageBox.Show("Plate number and city is mandatory", "Invalid Plate Detail", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
+                    else if (ChangeAP && changeAPid <= 0)
+                    {
+                        MessageBox.Show("Kindly select the Access Point for wrong direction", "Invalid Access Point", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        cmbChangeAP.InvokeControl(l => l.Focus());
+                        return;
+                    }
+
+                    if (ChangeAP)
+                    {
+                        LogFile.UpdateLogFile(string.Format("Access Point Changed from {0} to {1}", _pd.correction.access_point_id, changeAPid));
+                        _pd.correction.access_point_id_new = changeAPid;
+                    }
+                    else
+                        _pd.correction.access_point_id_new = Convert.ToInt32(_pd.correction.access_point_id);
 
                     code = FormatData(code);
                     plateNo = FormatData(plateNo);
@@ -1136,18 +1302,21 @@ namespace ImageReview.UI
                     //30-jan2025, waheed asked to remove this condition, and save all corrections to aws
                     //in case of any correction, move data to the modification folder
                     //if admin is doing something save that also
-                    Anpr an = _pd.correction.anpr;
-                    if (Utilis.UserType == "admin" ||
-                        code.ToLower() != an.category.ToLower() ||
-                        plateNo.ToLower() != an.text.ToLower() ||
-                        plateCity.ToLower() != an.country.ToLower())
-                    {
-                        MoveFolderToModification(CurrentFolder, Utilis.CorrectionFolderPath);
-                    }
+                    //08Apr2025 Save all Data
+
+                    //Anpr an = _pd.correction.anpr;
+                    //if (Utilis.UserType == "admin" ||
+                    //    code.ToLower() != an.category.ToLower() ||
+                    //    plateNo.ToLower() != an.text.ToLower() ||
+                    //    plateCity.ToLower() != an.country.ToLower())
+                    // {
+                    MoveFolderToModification(CurrentFolder, Utilis.CorrectionFolderPath);
+                    //  }
                     SaveCorrectedData(code, plateNo, plateCity, userRemarks);
 
                     //save data to local server
-                    PlateSavedActions("Plate Correction", code, plateNo, plateCity, userRemarks, ReasonID);
+                    PlateSavedActions("Plate Correction", code, plateNo, plateCity, userRemarks,
+                        ReasonID, _pd.correction.access_point_id_new);
                 }
                 else
                     MessageBox.Show("Invalid transaction ID to save the no plate", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -1188,7 +1357,7 @@ namespace ImageReview.UI
             try
             {
                 Correction cor = _pd.correction;
-                IRestResponse rsp = await APIs_DAL.CorrectPlateNoAWS(cor.transactionid, cor.access_point_id,
+                IRestResponse rsp = await APIs_DAL.CorrectPlateNoAWS(cor.transactionid, cor.access_point_id_new,
                        code, plateNo, plateCity, cor.event_datetime == "" ?
                        Utilis.ConvertTransactionIDToDateTime(cor.transactionid, cor.access_point_id).ToString("yyyy-MM-dd HH:mm:ss")
                        : cor.event_datetime, 0, userRemarks,
@@ -1221,12 +1390,12 @@ namespace ImageReview.UI
         }
 
         private void PlateSavedActions(string type, string code, string plateNo,
-            string plateCity, string userRemarks, int ReasonID)
+            string plateCity, string userRemarks, int ReasonID, int AccessPointID)
         {
             try
             {
                 SaveCorrectionLog(ActionMaster.Correction, _pd, code, plateNo, plateCity, userRemarks,
-                    ReasonID, CurrentFolder);
+                    ReasonID, CurrentFolder, AccessPointID);
 
                 LogFile.UpdateLogFile(string.Format(@"Success, Captured Plate : {0}-{1} {2}, Corrected Plate : {5}-{6} {7}, Trans. ID : {3} Location : {4}, Type: {8}",
                   _pd.correction.anpr.category,
@@ -1275,7 +1444,7 @@ namespace ImageReview.UI
 
                 DeletePlateFile(CurrentFolder, _pd, Utilis.CorrectionFolderPath, ActionMaster.Ignored);
                 SaveCorrectionLog(ActionMaster.Ignored, _pd, code, plateNo, plateCity, userRemarks,
-                    ReasonID, CurrentFolder);
+                    ReasonID, CurrentFolder, Convert.ToInt32(_pd.correction.access_point_id));
                 ReSet();
             }
             catch (Exception ee)
@@ -1412,7 +1581,7 @@ namespace ImageReview.UI
 
         private async void SaveCorrectionLog(ActionMaster action, SelectedPlateDetail data,
            string code, string plateNo, string plateCity, string userRemarks, int reasonID,
-           string folderName)
+           string folderName, int AccessPointID)
         {
             try
             {
@@ -1420,11 +1589,12 @@ namespace ImageReview.UI
                 {
                     int ActID = (int)action;
                     Correction co = data.correction;
+
                     await MySqlDAL.AddCorrectionLog(new CorrectionLog()
                     {
                         ActionType = ActID,
                         TransactionID = co.transactionid,
-                        AccessPointID = Convert.ToInt32(co.access_point_id),
+                        AccessPointID = AccessPointID,
                         AccessPointName = co.entrance_Name,
                         UserID = ActID == 4 ? 0 : Utilis.UserID,
                         LocationID = co.location_id,
@@ -1442,7 +1612,11 @@ namespace ImageReview.UI
                         LoginID = ActID == 4 ? 0 : Utilis.LoginID,
                         FolderName = folderName,
                         PlateReadTime = ActID == 4 ? DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") : dtReadTime.ToString("yyyy-MM-dd HH:mm:ss"),
-                        ReasonID = reasonID
+                        ReasonID = reasonID,
+
+                        TriggerType = co.TriggerTypeLocal,
+                        IsBackWard = co.IsBackwardFocusLocal,
+                        Direction = co.DirectionLocal
                     });
                 }
             }
@@ -1502,7 +1676,7 @@ namespace ImageReview.UI
                 ForwardFolderToAdmin(CurrentFolder);
                 DeletePlateFile(CurrentFolder, _pd, Utilis.CorrectionFolderPath, ActionMaster.Forwarded);
                 SaveCorrectionLog(ActionMaster.Forwarded, _pd, code, plateNo, plateCity, userRemarks,
-                    ReasonID, CurrentFolder);
+                    ReasonID, CurrentFolder, Convert.ToInt32(_pd.correction.access_point_id));
                 ReSet();
             }
             catch (Exception ee)
@@ -1688,7 +1862,63 @@ namespace ImageReview.UI
         Rectangle srcRect;
         Bitmap srcBitmap;
 
+        private void bbArKeyboard_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            OpenArKeyboard();
+        }
 
+        private void bBtnArKeyboard_ItemClick_1(object sender, ItemClickEventArgs e)
+        {
+            OpenArKeyboard();
+        }
+
+        private Control lastFocusedControl;
+        private void OpenArKeyboard()
+        {
+            lastFocusedControl = this.ActiveControl;
+            frmArKeyboard keyboard = new frmArKeyboard();
+            keyboard.CharacterSelected += Keyboard_CharacterSelected;
+            keyboard.Location = new Point(((this.Width / 2) - (keyboard.Width / 2)), pnlButtons.Location.Y);
+            keyboard.Show();
+            this.ActiveControl = lastFocusedControl;
+        }
+
+        private void Keyboard_CharacterSelected(object sender, string character)
+        {
+            try
+            {
+                if (this.ActiveControl is TextBox)
+                {
+                    TextBox txtAC = (TextBox)this.ActiveControl;
+                    int selectionStart = txtAC.SelectionStart;
+                    if (character == "<")
+                    {
+                        if (txtAC.SelectionStart > 0)
+                        {
+                            txtAC.Text = txtAC.Text.Remove(selectionStart - 1, 1);
+                            txtAC.SelectionStart = selectionStart - 1;
+                        }
+                    }
+                    else
+                    {
+                        txtAC.Text = txtAC.Text.Insert(selectionStart, character);
+                        txtAC.SelectionStart = selectionStart + character.Length;
+                    }
+                }
+            }
+            catch (Exception ee)
+            {
+                LogFile.UpdateLogFile(string.Format("Error Keyboard_CharacterSelected : {0}", ee.Message));
+            }
+        }
+
+        private void cmbCity_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //   OpenArKeyboard();
+            picPlateNoConv.Visible = picCodeConv.Visible = cmbCity.Text.ToLower() == "ksa";
+            //picCodeConv.InvokeControl(l => l.Visible = true);
+            //picPlateNoConv.InvokeControl(l => l.Visible = true);
+        }
 
         Bitmap zoomed;
         Graphics g;
@@ -1736,6 +1966,93 @@ namespace ImageReview.UI
         }
 
         #endregion
+
+        #region Tooltip and eng-ar converter
+
+        private void picCodeConv_EditValueChanged(object sender, EventArgs e)
+        {
+            ConvertEngToAr(txtCode);
+        }
+
+        private void picPlateNoConv_EditValueChanged(object sender, EventArgs e)
+        {
+            ConvertEngToAr(txtPlateNo);
+        }
+
+        private void ConvertEngToAr(TextEdit txt)
+        {
+            try
+            {
+                string engTxt = "";
+                txt.InvokeControl(l => engTxt = l.Text);
+                if (string.IsNullOrEmpty(engTxt))
+                    return;
+
+                string arTxt = Utilis.ConvertEnglishToArabic(engTxt);
+
+                if (engTxt.Length == arTxt.Length)
+                    txt.InvokeControl(l => l.Text = arTxt);
+                else
+                    MessageBox.Show("Some characters cannot be converted. Please use the Arabic keyboard by pressing F7.", "Invalid Characters Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ee)
+            {
+                LogFile.UpdateLogFile(string.Format("Error ConvertEngToAr : {0}", ee.Message));
+            }
+        }
+
+        private void picCodeConv_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Space)
+                ConvertEngToAr(txtCode);
+        }
+
+        private void picPlateNoConv_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Space)
+                ConvertEngToAr(txtPlateNo);
+        }
+
+
+
+        private ToolTipController toolTipController;
+
+        private void InitToolTipConverter()
+        {
+            try
+            {
+                toolTipController = new ToolTipController();
+                toolTipController.GetActiveObjectInfo += ToolTipController_GetActiveObjectInfo;
+
+                picCodeConv.ToolTipController = toolTipController;
+                picPlateNoConv.ToolTipController = toolTipController;
+            }
+            catch (Exception ee)
+            {
+                LogFile.UpdateLogFile(string.Format("Error InitToolTipConverter : {0}", ee.Message));
+            }
+        }
+
+        private void ToolTipController_GetActiveObjectInfo(object sender, ToolTipControllerGetActiveObjectInfoEventArgs e)
+        {
+            try
+            {
+                SuperToolTip superToolTip = new SuperToolTip();
+                SuperToolTipSetupArgs args = new SuperToolTipSetupArgs();
+                args.Title.Text = "Arabic Number Plate Sequance";
+                args.Contents.Text = "Please write from left to right to convert the text into Arabic.";
+                args.Contents.Image = Properties.Resources.picArabicPlateToolTip;
+                superToolTip.Setup(args);
+                e.Info = new ToolTipControlInfo(e.SelectedControl, "") { SuperTip = superToolTip };
+            }
+            catch (Exception ee)
+            {
+                LogFile.UpdateLogFile(string.Format("Error ToolTipController_GetActiveObjectInfo : {0}", ee.Message));
+            }
+        }
+
+        #endregion
+
     }
 
 

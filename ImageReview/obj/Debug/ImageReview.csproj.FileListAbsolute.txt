@@ -413,3 +413,6 @@ D:\Image Review\ImageReview\obj\Debug\ImageReview.exe.licenses
 D:\Image Review\ImageReview\obj\Debug\ImageReview.exe
 D:\Image Review\ImageReview\obj\Debug\ImageReview.pdb
 D:\Image Review\ImageReview\obj\Debug\ImageReview.csprojResolveAssemblyReference.cache
+D:\Image Review\ImageReview\obj\Debug\ImageReview.UI.frmFalseTriggering.resources
+D:\Image Review\ImageReview\obj\Debug\ImageReview.UI.frmMultiImageSlider.resources
+D:\Image Review\ImageReview\obj\Debug\ImageReview.UI.frmArKeyboard.resources

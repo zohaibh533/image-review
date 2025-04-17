@@ -42,7 +42,7 @@ namespace ImageReview.UI
                 FillUsers();
                 //if (Utilis.UserType != "admin")
                 //{
-                    
+
                 //}
 
                 CorrectMissingLocationsInfo();
@@ -61,16 +61,15 @@ namespace ImageReview.UI
                 await Task.Run(async () =>
                 {
                     DataTable dt = await MySqlDAL.ExecuteDataTable(@"SELECT id,access_point_id FROM tbl_correction_log 
-                    WHERE (location_id = 0 OR location_name = '' OR access_point_name = '') AND access_point_id<>0");
+                    WHERE location_id = 0 AND access_point_id<>0");
 
                     if (dt != null && dt.Rows.Count > 0)
                     {
                         AccessPoint ap = null;
                         foreach (DataRow dr in dt.Rows)
                         {
-                            ap = frmDashboard.lstAccessPointsData.Where(l => l.id == Convert.ToInt32(dr["access_point_id"])).FirstOrDefault();
-                            if (ap != null)
-                                await MySqlDAL.UpdateMissingLocationInfo(Convert.ToInt32(dr["id"]), ap.locationID, ap.name, ap.locationName);
+                            if (frmDashboard.dicApLocation.TryGetValue(Convert.ToInt32(dr["access_point_id"]), out ap))
+                                await MySqlDAL.UpdateMissingLocationInfo(Convert.ToInt32(dr["id"]), ap.locationID);
                         }
                     }
                 });
@@ -132,8 +131,9 @@ namespace ImageReview.UI
                 TIME_FORMAT(SEC_TO_TIME(TIMESTAMPDIFF(SECOND, l.PlateRead_Time, l.Created_At)), '%i:%s') as ActionTime,
                 CONCAT(l.Captured_Code,' ',l.Captured_PlateNo,' ',l.Captured_City) CapturedPlate,
                 CONCAT(l.Corrected_Code,' ',l.Corrected_PlateNo,' ',l.Corrected_City) CorrectedPlate,
-                l.Transaction_ID,l.Location_Name,CONCAT(l.Access_Point_ID,' - ',l.Access_Point_Name) apname,
-                IFNULL(r.name,'')Reason,l.User_Remarks AS Remarks,l.ANPR_Message,l.Location_ID,l.User_ID,l.FolderName
+                l.Transaction_ID,'' as Location_Name,'' as apname,
+                IFNULL(r.name,'')Reason,l.User_Remarks AS Remarks,l.ANPR_Message,l.Location_ID,l.User_ID,l.FolderName,
+l.access_point_id
 
                 FROM tbl_correction_log l
                 LEFT OUTER JOIN tbl_users u ON u.ID=l.User_ID
@@ -148,6 +148,18 @@ namespace ImageReview.UI
 
                 ppWait.Visible = true;
                 DataTable dt = await MySqlDAL.ExecuteDataTable(qry);
+
+                AccessPoint ap;
+                // update location name and access point
+                foreach (DataRow dr in dt.Rows)
+                {
+                    if (frmDashboard.dicApLocation.TryGetValue(Convert.ToInt32(dr["access_point_id"]), out ap))
+                    {
+                        dr["Location_Name"] = ap.locationName;
+                        dr["apname"] = ap.AccessPointIDName;
+                    }
+                }
+
                 gcData.DataSource = dt;
                 FormatGridColumns();
 
@@ -167,6 +179,7 @@ namespace ImageReview.UI
             gvData.Columns["User_ID"].Visible = false;
             gvData.Columns["Location_ID"].Visible = false;
             gvData.Columns["FolderName"].Visible = false;
+            gvData.Columns["access_point_id"].Visible = false;
 
             gvData.Columns["UserAction"].Caption = "Action";
             gvData.Columns["Username"].Caption = "User";
@@ -440,6 +453,17 @@ WITH CorrectionStats AS (
 
                 //Report Datasource
                 DataTable dt = await MySqlDAL.ExecuteDataTable(LocationWiseSummaryQry());
+
+                Location loc;
+                // update location name and access point
+                foreach (DataRow dr in dt.Rows)
+                {
+                    loc = frmDashboard.lstLocations.Where(l => l.id == Convert.ToInt32(dr["LocationID"])).FirstOrDefault();
+
+                    if (loc != null)
+                        dr["LocationName"] = loc.name;
+                }
+
                 report.DataSource = dt;
                 report.DataMember = dt.TableName;
 
@@ -456,7 +480,7 @@ WITH CorrectionStats AS (
 
         private string LocationWiseSummaryQry()
         {
-            string qry = string.Format(@"SELECT IFNULL(l.Location_Name,'')LocationName,l.Location_id as LocationID,
+            string qry = string.Format(@"SELECT '' as LocationName,l.Location_id as LocationID,
 sum(case when l.Action_Type=1 then 1 else 0 end) as Correction,
 sum(case when l.Action_Type=2 then 1 else 0 end) as Ignored,
 sum(case when l.Action_Type=3 then 1 else 0 end) as Forwarded,
@@ -468,7 +492,7 @@ count(l.id) AS total,avg(TIMESTAMPDIFF(SECOND, l.PlateRead_Time, l.Created_At)) 
                 where l.Created_At between '{0}' and '{1}' and l.Action_Type<>4 ",
                dtFrom.Value.ToString("yyyy-MM-dd HH:mm:ss"), dtTo.Value.ToString("yyyy-MM-dd HH:mm:ss"));
 
-            qry = string.Format("{0} {1} group by l.Location_Name,l.Location_ID  order BY total desc", qry, GetQueryFilters());
+            qry = string.Format("{0} {1} group by l.Location_ID  order BY total desc", qry, GetQueryFilters());
             return qry;
         }
 

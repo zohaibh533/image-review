@@ -38,7 +38,7 @@ namespace ImageReview.Logic
         //    });
         //}
 
-        public static Task<IRestResponse> CorrectPlateNoAWS(string TransID, string AccessPointID,
+        public static Task<IRestResponse> CorrectPlateNoAWS(string TransID, int AccessPointID,
           string PlateCode, string PlateNo, string PlateCity, string eventDate, int IsException,
           string _Remarks, string _spotNo)
         {

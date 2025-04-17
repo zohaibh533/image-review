@@ -49,6 +49,10 @@ namespace ImageReview.Logic
         public string PlateReadTime { get; set; }
         public int ReasonID { get; set; }
         public string UserName { get; set; }
+
+        public int TriggerType { get; set; }
+        public int IsBackWard { get; set; }
+        public string Direction { get; set; }
     }
 
     public enum ActionMaster

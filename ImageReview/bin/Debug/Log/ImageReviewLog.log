@@ -1,14 +1,254 @@
-2025-03-25 12:03:45,769 [11] INFO  Priority : 12338, User Count : 1, Queue : 352
-2025-03-25 12:03:45,841 [11] INFO  Current Folder : 4501742886538285_450_82_0_1
-2025-03-25 12:05:51,687 [21] INFO  MoveFolderToModification Error : Thread was being aborted.
-2025-03-25 12:05:51,705 [21] INFO  Error ReadReviewPlates : Thread was being aborted.
-2025-03-25 12:06:44,934 [14] INFO  MoveFolderToModification Error : Thread was being aborted.
-2025-03-25 12:06:44,957 [14] INFO  Error ReadReviewPlates : Thread was being aborted.
-2025-03-25 12:07:23,922 [11] INFO  Priority : 12339, User Count : 1, Queue : 355
-2025-03-25 12:07:24,008 [11] INFO  Current Folder : 1311742889801488_131_24_0_1
-2025-03-25 12:07:25,260 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
-2025-03-25 12:08:50,761 [18] INFO  False Triggering Data Saved : 20
-2025-03-25 12:09:39,461 [12] INFO  False Triggering Data Saved : 20
-2025-03-25 12:14:52,486 [11] INFO  Priority : 12343, User Count : 1, Queue : 360
-2025-03-25 12:14:52,554 [11] INFO  Current Folder : 1271742890158601_127_23_0_1
-2025-03-25 12:16:05,524 [7] INFO  False Triggering Data Saved : 15
+2025-04-08 10:26:10,871 [9] INFO  Priority : 14425, User Count : 1, Queue : 2019
+2025-04-08 10:26:10,911 [9] INFO  Current Folder : 1331744092459919_133_24_0_1
+2025-04-08 10:30:47,761 [9] INFO  Priority : 14426, User Count : 1, Queue : 1445
+2025-04-08 10:30:47,816 [9] INFO  Current Folder : 1331744092459919_133_24_0_1
+2025-04-08 17:30:46,033 [9] INFO  Priority : 14500, User Count : 1, Queue : 695
+2025-04-08 17:30:46,120 [9] INFO  Current Folder : 1251744108154144_125_22_0_1
+2025-04-08 17:31:43,934 [20] INFO  Warning Plate IgnoredAP, zohaib-14500 Plate : -  Trans. ID : 4361744032017662 Location : Dubai Harbour On-Street Parking
+2025-04-08 17:31:43,970 [20] INFO  Warning Plate IgnoredAP, zohaib-14500 Plate : -  Trans. ID : 4361744032564329 Location : Dubai Harbour On-Street Parking
+2025-04-08 17:31:44,005 [20] INFO  Warning Plate IgnoredAP, zohaib-14500 Plate : -  Trans. ID : 4361744032571259 Location : Dubai Harbour On-Street Parking
+2025-04-08 17:31:44,044 [20] INFO  Warning Plate IgnoredAP, zohaib-14500 Plate : -  Trans. ID : 4361744032984557 Location : Dubai Harbour On-Street Parking
+2025-04-08 17:31:44,086 [20] INFO  Warning Plate IgnoredAP, zohaib-14500 Plate : -  Trans. ID : 4361744033631089 Location : Dubai Harbour On-Street Parking
+2025-04-08 17:31:44,128 [20] INFO  Warning Plate IgnoredAP, zohaib-14500 Plate : -  Trans. ID : 4361744033688293 Location : Dubai Harbour On-Street Parking
+2025-04-08 17:31:44,161 [20] INFO  Warning Plate IgnoredAP, zohaib-14500 Plate : -  Trans. ID : 4361744034027027 Location : Dubai Harbour On-Street Parking
+2025-04-08 17:31:44,197 [20] INFO  Warning Plate IgnoredAP, zohaib-14500 Plate : -  Trans. ID : 4361744034704924 Location : Dubai Harbour On-Street Parking
+2025-04-08 17:31:44,239 [20] INFO  Warning Plate IgnoredAP, zohaib-14500 Plate : -  Trans. ID : 4361744035350833 Location : Dubai Harbour On-Street Parking
+2025-04-08 17:31:44,277 [20] INFO  Warning Plate IgnoredAP, zohaib-14500 Plate : O-39746 Dubai Trans. ID : 4361744037527012 Location : Dubai Harbour On-Street Parking
+2025-04-08 17:31:44,316 [20] INFO  Warning Plate IgnoredAP, zohaib-14500 Plate : -  Trans. ID : 4361744039229921 Location : Dubai Harbour On-Street Parking
+2025-04-08 17:31:44,350 [20] INFO  Warning Plate IgnoredAP, zohaib-14500 Plate : -  Trans. ID : 4361744039268850 Location : Dubai Harbour On-Street Parking
+2025-04-08 17:31:44,385 [20] INFO  Warning Plate IgnoredAP, zohaib-14500 Plate : -  Trans. ID : 4361744040634268 Location : Dubai Harbour On-Street Parking
+2025-04-08 17:31:44,423 [20] INFO  Warning Plate IgnoredAP, zohaib-14500 Plate : -5162 Fujairah Trans. ID : 4361744105993805 Location : Dubai Harbour On-Street Parking
+2025-04-08 17:31:44,460 [20] INFO  Warning Plate IgnoredAP, zohaib-14500 Plate : -  Trans. ID : 4361744106121503 Location : Dubai Harbour On-Street Parking
+2025-04-08 17:31:44,505 [20] INFO  Warning Plate IgnoredAP, zohaib-14500 Plate : -  Trans. ID : 4361744106322909 Location : Dubai Harbour On-Street Parking
+2025-04-11 11:00:05,895 [10] INFO  Priority : 14923, User Count : 1, Queue : 670
+2025-04-11 11:00:05,979 [10] INFO  Current Folder : 1811744354654388_181_36_1_1
+2025-04-14 16:19:06,750 [10] INFO  Priority : 15541, User Count : 2, Queue : 326
+2025-04-14 16:19:06,786 [10] INFO  Current Folder : 7931744633103092_793_143_1_1
+2025-04-14 17:35:44,913 [9] INFO  Priority : 15558, User Count : 1, Queue : 22
+2025-04-14 17:35:44,976 [9] INFO  Current Folder : 1681744637378169_168_34_0_1
+2025-04-14 17:35:45,157 [9] INFO  LPR direction: reverse, 1
+2025-04-14 17:35:46,206 [9] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-14 17:39:30,636 [9] INFO  Warning Plate Ignored, zohaib-15558 Plate : W-84510 Dubai Trans. ID : 1681744637378169 Location : Cedre Villas Community Center
+2025-04-14 17:39:30,709 [9] INFO  Priority : 15558, User Count : 1, Queue : 45
+2025-04-14 17:39:30,717 [9] INFO  Current Folder : 1681744637661092_168_34_0_1
+2025-04-14 17:39:30,741 [9] INFO  ANPR direction: , 0
+2025-04-14 17:39:31,556 [9] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-14 17:55:09,289 [10] INFO  Priority : 15564, User Count : 1, Queue : 39
+2025-04-14 17:55:09,362 [10] INFO  Current Folder : 1681744637661092_168_34_0_1
+2025-04-14 17:55:09,546 [10] INFO  ANPR direction: , 0
+2025-04-14 17:55:10,561 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-14 18:26:42,564 [9] INFO  Priority : 15582, User Count : 1, Queue : 75
+2025-04-14 18:26:42,618 [9] INFO  Current Folder : 1681744637661092_168_34_0_1
+2025-04-14 18:26:42,789 [9] INFO  ANPR direction: , 0
+2025-04-14 18:26:43,833 [9] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-14 18:36:41,353 [11] INFO  Time-Out, System closing application
+2025-04-15 15:55:23,063 [10] INFO  Priority : 15697, User Count : 1, Queue : 794
+2025-04-15 15:55:23,149 [10] INFO  Current Folder : 1681744717477904_168_34_0_1
+2025-04-15 15:55:23,316 [10] INFO  LPR direction: reverse, 1
+2025-04-15 15:55:24,368 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 15:57:04,585 [11] INFO  Priority : 15698, User Count : 1, Queue : 798
+2025-04-15 15:57:04,693 [11] INFO  Current Folder : 1681744717477904_168_34_0_1
+2025-04-15 15:57:04,849 [11] INFO  LPR direction: reverse, 1
+2025-04-15 15:57:05,864 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 15:58:59,018 [11] INFO  Priority : 15699, User Count : 1, Queue : 800
+2025-04-15 15:58:59,103 [11] INFO  Current Folder : 1681744717477904_168_34_0_1
+2025-04-15 15:58:59,270 [11] INFO  LPR direction: reverse, 1
+2025-04-15 15:59:00,282 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 16:04:53,792 [10] INFO  Priority : 15700, User Count : 1, Queue : 803
+2025-04-15 16:04:53,889 [10] INFO  Current Folder : 1311744718585713_131_24_0_1
+2025-04-15 16:05:54,555 [11] INFO  Priority : 15701, User Count : 1, Queue : 804
+2025-04-15 16:05:54,649 [11] INFO  Current Folder : 1311744718585713_131_24_0_1
+2025-04-15 16:22:56,866 [11] INFO  Priority : 15702, User Count : 1, Queue : 822
+2025-04-15 16:22:56,962 [11] INFO  Current Folder : 1311744718585713_131_24_0_1
+2025-04-15 16:25:29,951 [11] INFO  Priority : 15703, User Count : 1, Queue : 823
+2025-04-15 16:25:30,064 [11] INFO  Current Folder : 1311744718585713_131_24_0_1
+2025-04-15 16:26:25,584 [9] INFO  Priority : 15704, User Count : 1, Queue : 824
+2025-04-15 16:26:25,618 [9] INFO  Current Folder : 1311744718585713_131_24_0_1
+2025-04-15 16:27:51,730 [9] INFO  Priority : 15705, User Count : 1, Queue : 827
+2025-04-15 16:27:51,823 [9] INFO  Current Folder : 1311744718585713_131_24_0_1
+2025-04-15 16:28:37,780 [9] INFO  Priority : 15706, User Count : 1, Queue : 828
+2025-04-15 16:28:37,941 [9] INFO  Current Folder : 1311744718585713_131_24_0_1
+2025-04-15 16:29:10,553 [11] INFO  Priority : 15707, User Count : 1, Queue : 828
+2025-04-15 16:29:10,640 [11] INFO  Current Folder : 1311744718585713_131_24_0_1
+2025-04-15 16:29:22,848 [10] INFO  Priority : 15708, User Count : 1, Queue : 828
+2025-04-15 16:29:22,938 [10] INFO  Current Folder : 1311744718585713_131_24_0_1
+2025-04-15 16:29:46,761 [1] INFO  Priority : 15710, User Count : 1, Queue : 90
+2025-04-15 16:29:46,806 [1] INFO  Current Folder : 1121744719915104_112_19_0
+2025-04-15 17:02:44,208 [11] INFO  Priority : 15720, User Count : 1, Queue : 17
+2025-04-15 17:02:44,248 [11] INFO  Current Folder : 1231743010681694_123_22_0_1
+2025-04-15 17:03:18,170 [11] INFO  Priority : 15720, User Count : 1, Queue : 6
+2025-04-15 17:03:18,181 [11] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:03:18,821 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:05:33,553 [11] INFO  Priority : 15720, User Count : 1, Queue : 6
+2025-04-15 17:05:33,560 [11] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:05:33,575 [11] INFO  LPR direction: reverse, 1
+2025-04-15 17:05:34,215 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:06:28,801 [11] INFO  Priority : 15720, User Count : 1, Queue : 6
+2025-04-15 17:06:28,810 [11] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:06:28,823 [11] INFO  LPR direction: reverse, 1
+2025-04-15 17:06:44,064 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:07:10,975 [11] INFO  Priority : 15720, User Count : 1, Queue : 6
+2025-04-15 17:07:10,990 [11] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:07:11,001 [11] INFO  LPR direction: reverse, 1
+2025-04-15 17:07:11,348 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:07:27,465 [11] INFO  Priority : 15720, User Count : 1, Queue : 6
+2025-04-15 17:07:27,477 [11] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:07:27,488 [11] INFO  LPR direction: reverse, 1
+2025-04-15 17:07:31,031 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:09:25,309 [10] INFO  Priority : 15721, User Count : 1, Queue : 6
+2025-04-15 17:09:25,342 [10] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:09:25,499 [10] INFO  LPR direction: reverse, 1
+2025-04-15 17:09:26,992 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:11:06,574 [10] INFO  Priority : 15723, User Count : 1, Queue : 6
+2025-04-15 17:11:06,604 [10] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:11:06,755 [10] INFO  LPR direction: reverse, 1
+2025-04-15 17:11:07,811 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:13:12,396 [10] INFO  Priority : 15724, User Count : 1, Queue : 6
+2025-04-15 17:13:12,424 [10] INFO  Current Folder : 3801744721290687_380_65_0
+2025-04-15 17:13:46,132 [10] INFO  Priority : 15724, User Count : 1, Queue : 6
+2025-04-15 17:13:46,142 [10] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:13:46,166 [10] INFO  LPR direction: reverse, 1
+2025-04-15 17:13:46,756 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:14:06,587 [10] INFO  Priority : 15724, User Count : 1, Queue : 6
+2025-04-15 17:14:06,594 [10] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:14:06,605 [10] INFO  LPR direction: reverse, 1
+2025-04-15 17:14:06,966 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:14:34,062 [10] INFO  Priority : 15724, User Count : 1, Queue : 6
+2025-04-15 17:14:34,069 [10] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:14:34,083 [10] INFO  LPR direction: reverse, 1
+2025-04-15 17:14:34,454 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:14:45,648 [10] INFO  Priority : 15724, User Count : 1, Queue : 6
+2025-04-15 17:14:45,656 [10] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:14:45,668 [10] INFO  LPR direction: reverse, 0
+2025-04-15 17:14:46,023 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:15:57,443 [10] INFO  Priority : 15724, User Count : 1, Queue : 6
+2025-04-15 17:15:57,451 [10] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:15:57,462 [10] INFO  LPR direction: reverse, 0
+2025-04-15 17:15:57,824 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:17:04,579 [9] INFO  Priority : 15725, User Count : 1, Queue : 6
+2025-04-15 17:17:04,608 [9] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:17:04,763 [9] INFO  LPR direction: reverse, 0
+2025-04-15 17:17:05,843 [9] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:20:03,482 [18] INFO  Time-Out, System closing application
+2025-04-15 17:20:11,686 [11] INFO  Priority : 15726, User Count : 1, Queue : 6
+2025-04-15 17:20:11,717 [11] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:20:11,865 [11] INFO  LPR direction: reverse, 0
+2025-04-15 17:20:12,892 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:23:52,475 [11] INFO  Priority : 15726, User Count : 1, Queue : 6
+2025-04-15 17:23:52,483 [11] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:23:52,492 [11] INFO  LPR direction: reverse, 0
+2025-04-15 17:23:53,387 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:24:04,089 [11] INFO  Priority : 15726, User Count : 1, Queue : 6
+2025-04-15 17:24:04,099 [11] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:24:04,115 [11] INFO  LPR direction: reverse, 1
+2025-04-15 17:24:04,495 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:24:30,895 [11] INFO  Priority : 15726, User Count : 1, Queue : 6
+2025-04-15 17:24:30,901 [11] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:24:30,913 [11] INFO  LPR direction: reverse, 0
+2025-04-15 17:24:31,323 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:26:21,722 [11] INFO  Priority : 15726, User Count : 1, Queue : 6
+2025-04-15 17:26:21,761 [11] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:26:21,792 [11] INFO  LPR direction: reverse, 1
+2025-04-15 17:26:22,531 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:27:49,259 [11] INFO  Priority : 15726, User Count : 1, Queue : 6
+2025-04-15 17:27:49,280 [11] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:27:49,331 [11] INFO  LPR direction: , 1
+2025-04-15 17:27:49,851 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 17:32:12,943 [11] INFO  Priority : 15726, User Count : 1, Queue : 6
+2025-04-15 17:32:12,959 [11] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 17:32:12,970 [11] INFO  LPR direction: , 0
+2025-04-15 17:32:13,616 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 18:19:30,553 [11] INFO  Priority : 15737, User Count : 1, Queue : 1
+2025-04-15 18:19:30,585 [11] INFO  Current Folder : 1231742958052615_123_22_0_0
+2025-04-15 18:32:21,644 [10] INFO  Priority : 15740, User Count : 1, Queue : 1
+2025-04-15 18:32:21,679 [10] INFO  Current Folder : 1231742958052615_123_22_0_0
+2025-04-15 18:33:47,329 [10] INFO  Priority : 15741, User Count : 1, Queue : 6
+2025-04-15 18:33:47,367 [10] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 18:33:47,543 [10] INFO  LPR direction: reverse, 1
+2025-04-15 18:33:48,577 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 18:35:17,869 [10] INFO  Priority : 15741, User Count : 1, Queue : 6
+2025-04-15 18:35:17,880 [10] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 18:35:17,890 [10] INFO  LPR direction: reverse, 0
+2025-04-15 18:35:18,239 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 18:35:26,075 [10] INFO  Priority : 15741, User Count : 1, Queue : 6
+2025-04-15 18:35:26,108 [10] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 18:35:26,126 [10] INFO  LPR direction: , 0
+2025-04-15 18:35:26,504 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-15 18:36:25,012 [10] INFO  Priority : 15741, User Count : 1, Queue : 6
+2025-04-15 18:36:25,019 [10] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-15 18:36:25,031 [10] INFO  LPR direction: reverse, 0
+2025-04-15 18:36:25,389 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-17 10:33:26,906 [10] INFO  Priority : 15992, User Count : 1, Queue : 6
+2025-04-17 10:33:26,942 [10] INFO  Current Folder : 3661744721281414_366_65_0
+2025-04-17 10:33:27,108 [10] INFO  LPR direction: reverse, 0
+2025-04-17 10:33:28,210 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-17 10:33:48,508 [9] INFO  Priority : 15993, User Count : 1, Queue : 2213
+2025-04-17 10:33:48,552 [9] INFO  Current Folder : 121744871221270_12_6_0_1
+2025-04-17 10:33:48,711 [9] INFO  LPR direction: reverse, 0
+2025-04-17 10:33:49,724 [9] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-17 10:35:00,831 [10] INFO  Priority : 15994, User Count : 1, Queue : 2214
+2025-04-17 10:35:01,004 [10] INFO  Current Folder : 121744871221270_12_6_0_1
+2025-04-17 10:35:01,159 [10] INFO  LPR direction: reverse, 0
+2025-04-17 10:35:02,180 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-17 10:45:40,612 [10] INFO  Priority : 15995, User Count : 1, Queue : 2229
+2025-04-17 10:45:40,655 [10] INFO  Current Folder : 121744871221270_12_6_0_1
+2025-04-17 10:45:40,820 [10] INFO  LPR direction: reverse, 0
+2025-04-17 10:45:41,829 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-17 12:15:18,848 [11] INFO  Priority : 16007, User Count : 1, Queue : 2428
+2025-04-17 12:15:19,051 [11] INFO  Current Folder : 121744871328987_12_6_0_1
+2025-04-17 12:15:19,226 [11] INFO  LPR direction: reverse, 0
+2025-04-17 12:15:20,296 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-17 12:16:13,511 [11] INFO  Priority : 16007, User Count : 1, Queue : 4458
+2025-04-17 12:16:13,658 [11] INFO  Current Folder : 121744871328987_12_6_0_1
+2025-04-17 12:16:13,674 [11] INFO  LPR direction: reverse, 0
+2025-04-17 12:16:14,058 [11] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-17 12:16:33,058 [10] INFO  Priority : 16008, User Count : 1, Queue : 2429
+2025-04-17 12:16:33,168 [10] INFO  Current Folder : 121744871328987_12_6_0_1
+2025-04-17 12:16:33,335 [10] INFO  LPR direction: reverse, 0
+2025-04-17 12:16:34,405 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-17 12:17:13,840 [10] INFO  Priority : 16008, User Count : 1, Queue : 4473
+2025-04-17 12:17:13,980 [10] INFO  Current Folder : 121744871328987_12_6_0_1
+2025-04-17 12:17:14,004 [10] INFO  LPR direction: reverse, 0
+2025-04-17 12:17:14,357 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-17 12:28:32,728 [10] INFO  Priority : 16010, User Count : 2, Queue : 2469
+2025-04-17 12:28:32,978 [10] INFO  Current Folder : 121744871328987_12_6_0_1
+2025-04-17 12:28:33,140 [10] INFO  LPR direction: reverse, 0
+2025-04-17 12:28:34,007 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-17 12:28:58,814 [10] INFO  Priority : 16010, User Count : 2, Queue : 2471
+2025-04-17 12:28:59,021 [10] INFO  Current Folder : 121744871328987_12_6_0_1
+2025-04-17 12:28:59,182 [10] INFO  LPR direction: reverse, 0
+2025-04-17 12:29:00,031 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-17 12:29:32,365 [10] INFO  Priority : 16013, User Count : 8, Queue : 2474
+2025-04-17 12:29:32,515 [10] INFO  Current Folder : 121744871328987_12_6_0_1
+2025-04-17 12:29:32,681 [10] INFO  LPR direction: reverse, 0
+2025-04-17 12:54:45,044 [10] INFO  Priority : 16036, User Count : 2, Queue : 2568
+2025-04-17 12:54:45,225 [10] INFO  Current Folder : 121744872113371_12_6_0_1
+2025-04-17 12:54:45,396 [10] INFO  LPR direction: reverse, 0
+2025-04-17 12:54:52,281 [10] INFO  Warning Plate Ignored, zohaib-16036 Plate : BB-38627 Dubai Trans. ID : 121744872113371 Location : Golden Mile Galleria 1
+2025-04-17 12:54:52,371 [10] INFO  Priority : 16030, User Count : 2, Queue : 4751
+2025-04-17 12:54:52,395 [10] INFO  Current Folder : 121744872304237_12_6_0_1
+2025-04-17 12:54:52,426 [10] INFO  LPR direction: reverse, 0
+2025-04-17 12:55:04,474 [10] INFO  Warning Plate Ignored, zohaib-16036 Plate : AA-45988 Dubai Trans. ID : 121744872304237 Location : Golden Mile Galleria 1
+2025-04-17 12:55:04,518 [10] INFO  Priority : 16030, User Count : 2, Queue : 4750
+2025-04-17 12:55:04,540 [10] INFO  Current Folder : 121744872370231_12_6_0_1
+2025-04-17 12:55:04,567 [10] INFO  LPR direction: reverse, 0
+2025-04-17 12:55:08,458 [10] INFO  Warning Plate Ignored, zohaib-16036 Plate : 7-35985 Abu Dhabi Trans. ID : 121744872370231 Location : Golden Mile Galleria 1
+2025-04-17 12:55:08,536 [10] INFO  Priority : 16030, User Count : 2, Queue : 4749
+2025-04-17 12:55:08,564 [10] INFO  Current Folder : 121744872478167_12_6_0_1
+2025-04-17 12:55:08,591 [10] INFO  LPR direction: reverse, 0
+2025-04-17 12:55:12,969 [10] INFO  Success, Captured Plate : S-18648 Dubai, Corrected Plate : S-18648 Dubai, Trans. ID : 121744872478167 Location : Golden Mile Galleria 1, Type: Plate Correction
+2025-04-17 12:55:13,061 [10] INFO  Priority : 16030, User Count : 2, Queue : 4748
+2025-04-17 12:55:13,088 [10] INFO  Current Folder : 121744872595131_12_6_0_1
+2025-04-17 12:55:13,113 [10] INFO  LPR direction: reverse, 0
+2025-04-17 12:55:13,486 [10] INFO  Data has been successfully saved on the portal.
+2025-04-17 12:55:14,606 [10] INFO  Error FormatSearchGridColumns : Object reference not set to an instance of an object.
+2025-04-17 12:55:17,221 [10] INFO  Success, Captured Plate : 13-20328 Abu Dhabi, Corrected Plate : 13-20328 Abu Dhabi, Trans. ID : 121744872595131 Location : Golden Mile Galleria 1, Type: Plate Correction
+2025-04-17 12:55:17,470 [10] INFO  Priority : 16039, User Count : 2, Queue : 4748
+2025-04-17 12:55:17,657 [10] INFO  Current Folder : 121744872646852_12_6_0_1
+2025-04-17 12:55:17,688 [10] INFO  LPR direction: reverse, 0
+2025-04-17 12:55:17,738 [10] INFO  Data has been successfully saved on the portal.
+2025-04-17 12:55:20,338 [10] INFO  Success, Captured Plate : F-27780 Dubai, Corrected Plate : F-27780 Dubai, Trans. ID : 121744872646852 Location : Golden Mile Galleria 1, Type: Plate Correction
+2025-04-17 12:55:20,517 [10] INFO  Priority : 16039, User Count : 2, Queue : 4747
+2025-04-17 12:55:20,711 [10] INFO  Current Folder : 121744872730232_12_6_0_1
+2025-04-17 12:55:20,740 [10] INFO  LPR direction: reverse, 0
+2025-04-17 12:55:20,831 [10] INFO  Data has been successfully saved on the portal.

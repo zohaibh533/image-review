@@ -38,13 +38,12 @@ namespace ImageReview.Logic
             });
         }
 
-        public static Task<int> UpdateMissingLocationInfo(int LogID, int LocationID, string AccessPointName, string locationName)
+        public static Task<int> UpdateMissingLocationInfo(int LogID, int LocationID)
         {
             return Task.Run(() =>
             {
-                string Qry = string.Format(@"update tbl_correction_log set location_id = {1}, 
-                location_name= '{2}',access_point_name='{3}' where id = {0};",
-                       LogID, LocationID, locationName, AccessPointName);
+                string Qry = string.Format(@"update tbl_correction_log set location_id = {1} where id = {0};",
+                       LogID, LocationID);
 
                 using (MySqlCommand cmd = new MySqlCommand(Qry, mySqlConnection)
                 {
@@ -466,19 +465,20 @@ namespace ImageReview.Logic
             return Task.Run(() =>
             {
                 string Qry = string.Format(@"insert into tbl_correction_log(User_ID,User_Remarks,Action_Type,Login_ID,
-                Location_ID,Location_Name,Access_Point_ID,Access_Point_Name,IsExit,Transaction_ID,Event_DateTime,
+                Location_ID,Access_Point_ID,IsExit,Transaction_ID,Event_DateTime,
                 Captured_Code,Captured_PlateNo,Captured_City,Corrected_Code,Corrected_PlateNo,Corrected_City,ANPR_Message,
-                FolderName,PlateRead_Time,Created_At,Reason_ID)
-                values({0},'{1}',{2},{3},{4},'{5}',{6},'{7}',{8},'{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}',
-                '{18}','{19}','{20}',{21});
+                FolderName,PlateRead_Time,Created_At,Reason_ID,trigger_type,is_backward,direction)
+                values({0},'{1}',{2},{3},{4},{6},{8},'{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}',
+                '{18}','{19}','{20}',{21},{22},{23},'{24}');
 
-UPDATE tbl_active_folder SET IsIdle =1,Folder_Name='' where Login_ID={3};
-",
+                UPDATE tbl_active_folder SET IsIdle =1,Folder_Name='' where Login_ID={3};",
 
-                log.UserID, log.UserRemarks, log.ActionType, log.LoginID, log.LocationID, log.LocationName,
-                log.AccessPointID, log.AccessPointName, log.IsExit, log.TransactionID, log.EventDateTime, log.CapturedCode,
+                log.UserID, log.UserRemarks, log.ActionType, log.LoginID, log.LocationID, "",
+                log.AccessPointID, "", log.IsExit, log.TransactionID, log.EventDateTime, log.CapturedCode,
                 log.CapturedPlateNo, log.CapturedCity, log.CorrectedCode, log.CorrectedPlateNo, log.CorrectedCity, log.ANPRMsg,
-                log.FolderName, log.PlateReadTime, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), log.ReasonID);
+                log.FolderName, log.PlateReadTime, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), log.ReasonID,
+
+                log.TriggerType, log.IsBackWard, log.Direction);
 
                 using (MySqlCommand cmd = new MySqlCommand(Qry, mySqlConnection)
                 {
@@ -520,20 +520,15 @@ UPDATE tbl_active_folder SET IsIdle =1,Folder_Name='' where Login_ID={3};
         {
             return Task.Run(() =>
             {
-                using (MySqlCommand cmd = new MySqlCommand(@"SELECT accesspoint_id,
-                COUNT(accesspoint_id)NoOfTrigger,DATE_FORMAT(event_date, '%Y-%m-%d %H:%i') AS EventTime,
-                '' AS LocationName,'' AS AccessPointName
-                from tbl_false_trigger_data
-                WHERE IFNULL(is_seen,0)=0
-                GROUP BY accesspoint_id,EventTime
-                HAVING COUNT(accesspoint_id)>=3
-                ORDER BY EventTime desc; ", mySqlConnection)
+                using (MySqlCommand cmd = new MySqlCommand(@"sp_get_false_triggers", mySqlConnection)
                 {
                     CommandType = CommandType.Text
                 })
                 {
                     List<FalseTrigger> ft = new List<FalseTrigger>();
                     cmd.Connection.Open();
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
                     MySqlDataReader reader = cmd.ExecuteReader();
 
                     while (reader.Read())
@@ -554,5 +549,45 @@ UPDATE tbl_active_folder SET IsIdle =1,Folder_Name='' where Login_ID={3};
             });
         }
 
+        public static Task<List<string>> GetFalseTriggerFolders(int AccessPointID, string EventTime)
+        {
+            return Task.Run(() =>
+            {
+                using (MySqlCommand cmd = new MySqlCommand(string.Format(@"SELECT ifnull(folder_name,'')folder_name
+                FROM tbl_false_trigger_data WHERE accesspoint_id={0} 
+                AND DATE_FORMAT(event_date, '%Y-%m-%d %H:%i') ='{1}' ", AccessPointID, EventTime), mySqlConnection)
+                {
+                    CommandType = CommandType.Text
+                })
+                {
+                    List<string> ft = new List<string>();
+                    cmd.Connection.Open();
+                    MySqlDataReader reader = cmd.ExecuteReader();
+
+                    while (reader.Read())
+                        ft.Add(reader["folder_name"].ToString());
+                    cmd.Connection.Close();
+                    return ft;
+                }
+            });
+        }
+
+        public static Task<int> UpdateFalseTriggersToSeen(int AccessPointID, string EventTime)
+        {
+            return Task.Run(() =>
+            {
+                using (MySqlCommand cmd = new MySqlCommand(string.Format(@"update tbl_false_trigger_data SET is_seen=1
+                WHERE accesspoint_id={0} AND DATE_FORMAT(event_date, '%Y-%m-%d %H:%i') ='{1}' ", AccessPointID, EventTime), mySqlConnection)
+                {
+                    CommandType = CommandType.Text
+                })
+                {
+                    cmd.Connection.Open();
+                    int rec = cmd.ExecuteNonQuery();
+                    cmd.Connection.Close();
+                    return rec;
+                }
+            });
+        }
     }
 }

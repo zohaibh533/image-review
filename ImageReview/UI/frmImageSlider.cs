@@ -18,6 +18,7 @@ namespace ImageReview.UI
         {
             InitializeComponent();
         }
+
         List<FileInfo> fPic;
 
         public void Show(List<FileInfo> _fPic)
