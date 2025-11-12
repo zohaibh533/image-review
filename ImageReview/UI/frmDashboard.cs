@@ -30,13 +30,13 @@ namespace ImageReview.UI
         string CurrentFolder = "";
         bool CloseFromTimeOut = false;
         DateTime dtReadTime = DateTime.Now;
-        List<int> lstSalikLocations = new List<int>();
+        public static List<int> lstSalikLocations = new List<int>();
         List<int> lstIgnoreAccessPoints = new List<int>();
+        public static List<int> lstLocalVerification = new List<int>();
 
         System.Timers.Timer tmIdle = new System.Timers.Timer() { Enabled = false, Interval = (2 * 1000) };
         System.Timers.Timer tmAppClose = new System.Timers.Timer() { Enabled = true, Interval = (60 * 1000) };
         System.Timers.Timer tmTimer = new System.Timers.Timer() { Enabled = false, Interval = 1000 };
-        System.Timers.Timer tmExitPlates = new System.Timers.Timer() { Enabled = true, Interval = 1000 * 60 }; // 5 mints
         System.Timers.Timer tmWarning = new System.Timers.Timer() { Enabled = false, Interval = 300 };
 
         #region General & Events
@@ -64,6 +64,15 @@ namespace ImageReview.UI
 
         private void frmDashboard_FormClosed(object sender, FormClosedEventArgs e)
         {
+            try
+            {
+                int aa = MySqlDAL.UpdateLoginActivity();
+                LogFile.UpdateLogFile(string.Format("Application Closing {0}", Utilis.LoginID));
+            }
+            catch (Exception ex)
+            {
+                LogFile.UpdateLogFile($"Error updating logout time: {ex}");
+            }
             Application.Exit();
         }
 
@@ -75,20 +84,11 @@ namespace ImageReview.UI
 
                 pnlWait.InvokeControl(l => l.Visible = true);
 
-                UpdateAPandSalikLoc();
+                UpdateAPandSalikLoc(true);
                 FillReasons();
                 FillCities();
-                if (Utilis.UserType == "user")
-                {
-                    bbSystemUsers.Visibility = BarItemVisibility.Never;
-                    gcRecentPlates.InvokeControl(l => l.Visible = false);
-                    lblForwardedUser.InvokeControl(l => l.Visible = false);
-                    lblFalseTriger.InvokeControl(l => l.Visible = false);
-                    lblFalseTrigerCap.InvokeControl(l => l.Visible = false);
-                }
 
-                if (Utilis.UserName.ToLower() == "waheed" || Utilis.UserName.ToLower() == "zohaib")
-                    bbReports.Visibility = BarItemVisibility.Always;
+                AccessControl();
 
                 btnVideo.InvokeControl(l => l.Enabled = false);
                 btnIgnore.InvokeControl(l => l.Enabled = false);
@@ -100,7 +100,6 @@ namespace ImageReview.UI
                 tmIdle.Elapsed += TmIdle_Elapsed;
                 tmAppClose.Elapsed += TmAppClose_Elapsed;
                 tmTimer.Elapsed += TmTimer_Elapsed;
-                tmExitPlates.Elapsed += TmExitPlates_Elapsed;
                 tmZoomPlate.Elapsed += TmZoomPlate_Elapsed;
                 tmWarning.Elapsed += TmWarning_Elapsed;
 
@@ -111,7 +110,6 @@ namespace ImageReview.UI
                 picZoomW = picZoom.Width;
                 picZoomH = picZoom.Height;
 
-                RefreshFalseTriggeringData();
                 InitToolTipConverter();
             }
             catch (Exception ee)
@@ -121,6 +119,55 @@ namespace ImageReview.UI
             }
             pnlWait.InvokeControl(l => l.Visible = false);
         }
+
+        private void AccessControl()
+        {
+            try
+            {
+                if (Utilis.UserType == "user")
+                {
+                    bbReview.Visibility = bbReports.Visibility = bbSalikLocations.Visibility =
+                        bbFalseTriggers.Visibility = bbSystemUsers.Visibility = BarItemVisibility.Never;
+                    lblForwardedUser.InvokeControl(l => l.Visible = false);
+                }
+                else
+                {
+                    Utilis.CorrectionFolderPath = Utilis.ForwardFolderPath;
+
+                    if (Utilis.UserType == "verify_admin") // only forwarded verifications
+                    {
+                        bbFalseTriggers.Visibility = BarItemVisibility.Always;
+
+                        bbReview.Visibility = bbSalikLocations.Visibility = bbReports.Visibility =
+                           bbSystemUsers.Visibility = BarItemVisibility.Never;
+                    }
+                    else if (Utilis.UserType == "review_admin") // only review
+                    {
+                        bbFalseTriggers.Visibility = bbReview.Visibility = BarItemVisibility.Always;
+
+                        bbSalikLocations.Visibility = bbReports.Visibility =
+                           bbSystemUsers.Visibility = BarItemVisibility.Never;
+                    }
+                    else if (Utilis.UserType == "sub_admin") // Sub Saqib
+                    {
+                        bbFalseTriggers.Visibility = bbSalikLocations.Visibility = bbReports.Visibility =
+                               bbSystemUsers.Visibility = BarItemVisibility.Always;
+
+                        bbReview.Visibility = BarItemVisibility.Never;
+                    }
+                    else if (Utilis.UserType == "admin")
+                    {
+                        bbReview.Visibility = bbFalseTriggers.Visibility = bbSalikLocations.Visibility =
+                            bbReports.Visibility = bbSystemUsers.Visibility = BarItemVisibility.Always;
+                    }
+                }
+            }
+            catch (Exception ee)
+            {
+                LogFile.UpdateLogFile(string.Format("Error AccessControl : {0}", ee.Message));
+            }
+        }
+
 
         public static List<AccessPoint> lstAccessPointsData = new List<AccessPoint>();
         public static List<Location> lstLocations = new List<Location>();
@@ -146,12 +193,15 @@ namespace ImageReview.UI
                             {
                                 lstAccessPointsData.Add(new AccessPoint()
                                 {
+                                    id = ap.id,
+                                    type = ap.type,
+                                    is_exit = ap.is_exit,
+
                                     locationID = lo.id,
                                     locationName = lo.name,
-                                    id = ap.id,
                                     name = string.Format("{0} - {1} - {2}", ap.id, ap.name, lo.name),
                                     AccessPointIDName = string.Format("{0} - {1}", ap.id, ap.name),
-                                    is_exit = ap.is_exit
+                                    Is_Loc_Active = lo.active
                                 });
                             }
                         }
@@ -187,14 +237,14 @@ namespace ImageReview.UI
             }
         }
 
-        private async void TmAppClose_Elapsed(object sender, ElapsedEventArgs e)
+        private void TmAppClose_Elapsed(object sender, ElapsedEventArgs e)
         {
             try
             {
                 if (GetIdleTime() > (2 * 60 * 1000) && _pd != null) //2 mints
                 {
                     LogFile.UpdateLogFile(string.Format("Time-Out, System closing application"));
-                    int aa = await MySqlDAL.UpdateLoginActivity();
+                    int aa = MySqlDAL.UpdateLoginActivity();
 
                     CloseFromTimeOut = true;
                     tmAppClose.Enabled = false;
@@ -238,7 +288,7 @@ namespace ImageReview.UI
             pnlDirection.Location = new Point((this.Width - pnlDirection.Width - 18),
                 (imgSlider.Location.Y - (pnlDirection.Height / 2)));
 
-            if (Utilis.UserType == "admin")
+            if (Utilis.UserType.Contains("admin"))
             {
                 pnlChangeAP.Visible = true;
                 btnForward.Visible = false;
@@ -300,13 +350,18 @@ namespace ImageReview.UI
             }
         }
 
-        private void UpdateAPandSalikLoc()
+        private async void UpdateAPandSalikLoc(bool IsFromLoad = false)
         {
-            UpdateIgnoreAccessPoints();
-            UpdateSalikLocations();
+            await UpdateIgnoreAccessPoints();
+            await UpdateSalikLocations();
+            await UpdateIgnoreDirectionAP();
+            await UpdateLocalVerification();
+
+            if (IsFromLoad)
+                GetCurrentCount();
         }
 
-        private async void UpdateIgnoreAccessPoints()
+        private async Task UpdateIgnoreAccessPoints()
         {
             try
             {
@@ -318,7 +373,7 @@ namespace ImageReview.UI
             }
         }
 
-        private async void UpdateSalikLocations()
+        private async Task UpdateSalikLocations()
         {
             try
             {
@@ -327,6 +382,30 @@ namespace ImageReview.UI
             catch (Exception ee)
             {
                 LogFile.UpdateLogFile(string.Format("Error UpdateSalikLocations : {0}", ee.Message));
+            }
+        }
+
+        private async Task UpdateIgnoreDirectionAP()
+        {
+            try
+            {
+                lstIgnoreDirection = await MySqlDAL.GetIgnoreDirectionAP();
+            }
+            catch (Exception ee)
+            {
+                LogFile.UpdateLogFile(string.Format("Error UpdateSalikLocations : {0}", ee.Message));
+            }
+        }
+
+        private async Task UpdateLocalVerification()
+        {
+            try
+            {
+                lstLocalVerification = await MySqlDAL.GetLocalVerificationLocations();
+            }
+            catch (Exception ee)
+            {
+                LogFile.UpdateLogFile(string.Format("Error UpdateLocalVerification : {0}", ee.Message));
             }
         }
 
@@ -430,11 +509,10 @@ namespace ImageReview.UI
             }
         }
 
-        private async void frmDashboard_FormClosing(object sender, FormClosingEventArgs e)
+        private void frmDashboard_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (CloseFromTimeOut || MessageBox.Show("Are you sure you want to close application?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                int aa = await MySqlDAL.UpdateLoginActivity();
                 e.Cancel = false;
             }
             else
@@ -476,22 +554,36 @@ namespace ImageReview.UI
                         BindingList<RecentPlatesData> lst = new BindingList<RecentPlatesData>();
 
                         foreach (RecentPlate de in res.data)
-                            lst.Add(new RecentPlatesData(de.time, de.image, de.plate_code,
-                                de.plate_number, de.emirates, de.trip_id, this));
-
-                        gcRecentPlates.InvokeControl(l => l.DataSource = lst);
-                        gvRecentPlates.OptionsView.RowAutoHeight = false;
-                        gvRecentPlates.OptionsView.AnimationType = DevExpress.XtraGrid.Views.Base.GridAnimationType.AnimateAllContent;
-
-                        gvRecentPlates.OptionsView.ColumnAutoWidth = true;
-                        gvRecentPlates.BestFitColumns();
-                        FormatRecentPlatesColumns();
-
-                        lst.ListChanged += (s, args) =>
                         {
-                            if (args.PropertyDescriptor != null && args.PropertyDescriptor.Name == "plateImage")
-                                gvRecentPlates.LayoutChanged();
-                        };
+                            var dataItem = new RecentPlatesData(
+                                string.IsNullOrEmpty(de.time) ? "" : de.time,
+                                string.IsNullOrEmpty(de.image) ? "" : de.image,
+                                string.IsNullOrEmpty(de.plate_code) ? "" : de.plate_code,
+                                string.IsNullOrEmpty(de.plate_number) ? "" : de.plate_number,
+                                string.IsNullOrEmpty(de.emirates) ? "" : de.emirates,
+                                string.IsNullOrEmpty(de.trip_id) ? "" : de.trip_id
+                            );
+
+                            lst.Add(dataItem);
+                            LoadImageAsync(dataItem);
+                        }
+
+                        if (lst != null && lst.Count > 0)
+                        {
+                            gcRecentPlates.InvokeControl(l => l.DataSource = lst);
+                            gvRecentPlates.OptionsView.RowAutoHeight = false;
+                            gvRecentPlates.OptionsView.AnimationType = DevExpress.XtraGrid.Views.Base.GridAnimationType.AnimateAllContent;
+
+                            gvRecentPlates.OptionsView.ColumnAutoWidth = true;
+                            gvRecentPlates.BestFitColumns();
+                            FormatRecentPlatesColumns();
+
+                            lst.ListChanged += (s, args) =>
+                            {
+                                if (args.PropertyDescriptor != null && args.PropertyDescriptor.Name == "plateImage")
+                                    gvRecentPlates.LayoutChanged();
+                            };
+                        }
                     }
                 }
             }
@@ -501,24 +593,73 @@ namespace ImageReview.UI
             }
         }
 
+        private void LoadImageAsync(RecentPlatesData data)
+        {
+            try
+            {
+                BackgroundImageLoader bg = new BackgroundImageLoader();
+                bg.Load(data.ImageURL);
+                bg.Loaded += (s, e) =>
+                {
+                    try
+                    {
+                        Image result = bg.Result ?? ResourceImageHelper.CreateImageFromResources("DevExpress.XtraEditors.Images.Error.png", typeof(BackgroundImageLoader).Assembly);
+
+                        if (gcRecentPlates.InvokeRequired)
+                        {
+                            gcRecentPlates.BeginInvoke(new Action(() => data.PlateImage = (Image)result.Clone()));
+                        }
+                        else
+                        {
+                            data.PlateImage = (Image)result.Clone();
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        LogFile.UpdateLogFile($"Image load error: {ex.Message}");
+                    }
+                    finally
+                    {
+                        bg.Dispose();
+                    }
+                };
+            }
+            catch (Exception ee)
+            {
+                LogFile.UpdateLogFile(string.Format("Error LoadImageAsync : {0}", ee.Message));
+            }
+        }
+
         private void FormatRecentPlatesColumns()
         {
             try
             {
-                gvRecentPlates.Columns["ImageURL"].Visible = false;
-                gvRecentPlates.Columns["TripID"].Visible = false;
+                if (gvRecentPlates.Columns["ImageURL"] != null)
+                    gvRecentPlates.Columns["ImageURL"].Visible = false;
 
-                gvRecentPlates.Columns["EventTime"].Caption = "Time";
-                gvRecentPlates.Columns["PlateNo"].Caption = "Plate";
-                gvRecentPlates.Columns["plateImage"].Caption = "Image";
+                if (gvRecentPlates.Columns["TripID"] != null)
+                    gvRecentPlates.Columns["TripID"].Visible = false;
 
-                gvRecentPlates.Columns["plateImage"].AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
-                gvRecentPlates.Columns["EventTime"].AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
-                gvRecentPlates.Columns["PlateNo"].AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
+                if (gvRecentPlates.Columns["EventTime"] != null)
+                {
+                    gvRecentPlates.Columns["EventTime"].Caption = "Time";
+                    gvRecentPlates.Columns["EventTime"].AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
+                    gvRecentPlates.Columns["EventTime"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Center;
+                }
 
-                gvRecentPlates.Columns["plateImage"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Center;
-                gvRecentPlates.Columns["EventTime"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Center;
-                gvRecentPlates.Columns["PlateNo"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Center;
+                if (gvRecentPlates.Columns["PlateNo"] != null)
+                {
+                    gvRecentPlates.Columns["PlateNo"].Caption = "Plate";
+                    gvRecentPlates.Columns["PlateNo"].AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
+                    gvRecentPlates.Columns["PlateNo"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Center;
+                }
+
+                if (gvRecentPlates.Columns["plateImage"] != null)
+                {
+                    gvRecentPlates.Columns["plateImage"].Caption = "Image";
+                    gvRecentPlates.Columns["plateImage"].AppearanceHeader.TextOptions.HAlignment = HorzAlignment.Center;
+                    gvRecentPlates.Columns["plateImage"].AppearanceCell.TextOptions.HAlignment = HorzAlignment.Center;
+                }
             }
             catch (Exception ee)
             {
@@ -534,37 +675,27 @@ namespace ImageReview.UI
         {
             try
             {
-                /*
-                 [0] = transaction id
-                 [1] = access point id
-                 [2] = location id
-                 [3] = entry/exit, 1 = exit, 0 = entry
-                 [4] = priority, 1 = high, 0 = low
-                 */
-
-                //get free plates, order by priority
-                //only entry plates or salik locations, ignore the marked access points
-                int num = 0;
+                int accessPoint = 0, location = 0;
                 List<string> lstPending = new DirectoryInfo(Utilis.CorrectionFolderPath)
-                    .GetDirectories()
-                    .Select(y => y.Name)
-                    .Where(y => (y.Split('_').Length >= 4)
-                    && (!lstLocked.Contains(y))
-                    && (!lstIgnoreAccessPoints.Contains(Convert.ToInt32(y.Split('_')[1])))
-                    && (y.Split('_')[3] == "0" || lstSalikLocations.Contains(Convert.ToInt32(y.Split('_')[2]))))
-                    .OrderByDescending(s =>
-                    {
-                        if (int.TryParse(s.Split('_').Last(), out num))
-                            return num;
-                        return int.MinValue; // Push non-numeric to the end
-                    })
-                    .ToList();
+                .GetDirectories()
+                .Where(dir =>
+                {
+                    string[] parts = dir.Name.Split('_');
+                    return parts.Length >= 4
+                        && !lstLocked.Contains(dir.Name)
+                        && !lstErrorFolders.Contains(dir.Name)
+                        && int.TryParse(parts[1], out accessPoint) && !lstIgnoreAccessPoints.Contains(accessPoint)
+                        && (parts[3] == "0" || (int.TryParse(parts[2], out location) && lstSalikLocations.Contains(location)));
+                })
+                .OrderBy(dir => dir.CreationTime) // Ascending (oldest first)
+                .Select(dir => dir.Name)
+                .ToList();
 
                 //in case of arabic user try to fetch ksa plates first
                 //but if queue is less then active users, then no need to check, as already limited plates are there
-                string JsonTxt = "";
                 if (Utilis.IsArabicUser && lstPending.Count > UsersCount)
                 {
+                    string JsonTxt = "";
                     foreach (string fldr in lstPending)
                     {
                         DirInfo = new DirectoryInfo(string.Format("{0}\\{1}", Utilis.CorrectionFolderPath, fldr));
@@ -578,11 +709,7 @@ namespace ImageReview.UI
                     }
                 }
 
-                return lstPending.FirstOrDefault(
-                //    s => s.Split('_').Length >= 4
-                //&& (s.Split('_')[3] == "0" || lstSalikLocations.Contains(Convert.ToInt32(s.Split('_')[2])))
-                //&& (!lstIgnoreAccessPoints.Contains(Convert.ToInt32(s.Split('_')[1])))
-                );
+                return lstPending.FirstOrDefault();
             }
             catch (Exception ee)
             {
@@ -591,6 +718,7 @@ namespace ImageReview.UI
             }
         }
 
+        List<string> lstErrorFolders = new List<string>();
         DirectoryInfo DirInfo;
         List<FileInfo> fPic;
         FileInfo fJson;
@@ -604,7 +732,6 @@ namespace ImageReview.UI
                 if (_IsDataLoaded)
                 {
                     _IsDataLoaded = false;
-                    pnlWait.InvokeControl(l => l.Visible = true);
 
                     //check priority for the user
                     LoginIDAndUserCount lu = await MySqlDAL.GetPriorityLoginID();
@@ -627,11 +754,11 @@ namespace ImageReview.UI
                         LogFile.UpdateLogFile(string.Format("Priority is for the loginID : {0}, current user loginID: {1}",
                             lu.LoginID, Utilis.LoginID));
                         tmIdle.Enabled = true;
-                        pnlWait.InvokeControl(l => l.Visible = false);
                         _IsDataLoaded = true;
                         return;
                     }
 
+                    pnlWait.InvokeControl(l => l.Visible = true);
                     //first get the locked folders
                     List<string> lstLocked = await MySqlDAL.GetCurrentFolders();
                     CurrentFolder = GetPendingPlate(lstLocked, lu.UsersCount);
@@ -646,7 +773,7 @@ namespace ImageReview.UI
                             return;
                         }
 
-                        LogFile.UpdateLogFile(string.Format("Current Folder : {0}", CurrentFolder));
+                        LogFile.UpdateLogFile(string.Format("Loading Current Folder : {0}", CurrentFolder));
                         tmIdle.Enabled = false;
 
                         //load images from path
@@ -677,6 +804,14 @@ namespace ImageReview.UI
                             if (IsFromTimer)
                                 PlayRingTone();
 
+                            Anpr cam = _pd.correction.anpr;
+                            if (cam != null)
+                            {
+                                txtCode.InvokeControl(l => l.Text = cam.category);
+                                txtPlateNo.InvokeControl(l => l.Text = cam.text);
+                                cmbCity.InvokeControl(l => l.Text = cam.country);
+                            }
+
                             cmbCity.InvokeControl(l => l.Focus());
                             //start timer
                             dtReadTime = DateTime.Now;
@@ -686,11 +821,12 @@ namespace ImageReview.UI
                             fPic = null;
                             DirInfo = null;
 
-                            if (Utilis.UserType == "admin")
+                            if (Utilis.UserType.Contains("admin"))
                             {
                                 GetPlateForwardedReason(_pd.correction.transactionid);
-                                BindRecentPlatesGrid(_pd.correction.access_point_id, _pd.correction.event_datetime);
                             }
+                            BindRecentPlatesGrid(_pd.correction.access_point_id, _pd.correction.event_datetime);
+                            LogFile.UpdateLogFile(string.Format("Loaded Current Folder : {0}", CurrentFolder));
                         }
                         else
                         {
@@ -713,17 +849,23 @@ namespace ImageReview.UI
             catch (Exception ee)
             {
                 LogFile.UpdateLogFile(string.Format("Error lstPendingPlates : {0}", ee.Message));
+
+                if (ee.Message.ToLower().Contains("is denied"))
+                    lstErrorFolders.Add(CurrentFolder);
                 await MySqlDAL.MakeUserIdle();
                 tmIdle.Enabled = true;
                 ReSet();
             }
         }
 
+        List<int> lstIgnoreDirection = new List<int>();
         private void CheckDirection()
         {
             try
             {
-                if (_pd.correction.trigger_type.HasValue)
+                if (_pd.correction.trigger_type.HasValue
+                   && lstSalikLocations.Contains(_pd.correction.location_id)
+                   && !lstIgnoreDirection.Contains(Convert.ToInt32(_pd.correction.access_point_id)))
                 {
                     _pd.correction.TriggerTypeLocal = _pd.correction.trigger_type.Value;
                     string direction = string.IsNullOrEmpty(_pd.correction.direction) ? "" : _pd.correction.direction;
@@ -746,8 +888,9 @@ namespace ImageReview.UI
                     _pd.correction.IsBackwardFocusLocal = IsBackWard;
                     _pd.correction.DirectionLocal = direction;
 
-                    // if direction in oppo side, start blinking
-                    if ((IsBackWard == 1 && direction.ToLower() == "forward") || (IsBackWard != 1 && direction.ToLower() == "reverse"))
+                    // if direction in oppo side, start blinking 
+                    if ((IsBackWard == 1 && (direction.ToLower() == "forward" || direction.ToLower() == "approaching"))
+                        || (IsBackWard != 1 && (direction.ToLower() == "reverse" || direction.ToLower() == "moving away")))
                     {
                         tmWarning.Enabled = true;
                     }
@@ -838,8 +981,9 @@ namespace ImageReview.UI
         {
             try
             {
-                CorrectionLog cl = await MySqlDAL.GetForwardedDetail(TransID);
-                if (cl != null && cl.UserName != "")
+                var cl = await Task.Run(() => MySqlDAL.GetForwardedDetail(TransID));
+
+                if (cl != null && !string.IsNullOrEmpty(cl.UserName))
                 {
                     if (cl.ReasonID > 0)
                         cmbReason.InvokeControl(l => l.SelectedValue = cl.ReasonID);
@@ -944,13 +1088,18 @@ namespace ImageReview.UI
         {
             try
             {
-                txtANPRMessage.InvokeControl(l => l.Text = _pd.correction.anpr.message);
-                lblEntryDateTime.InvokeControl(l => l.Text = _pd.correction.event_datetime);
-                txtTransID.InvokeControl(l => l.Text = _pd.correction.transactionid);
+                Correction co = _pd.correction;
 
-                txtCode.InvokeControl(l => l.Text = _pd.correction.anpr.category);
-                txtPlateNo.InvokeControl(l => l.Text = _pd.correction.anpr.text);
-                cmbCity.InvokeControl(l => l.Text = _pd.correction.anpr.country);
+                txtANPRMessage.InvokeControl(l => l.Text = co.anpr.message);
+                lblEntryDateTime.InvokeControl(l => l.Text = co.event_datetime);
+                txtTransID.InvokeControl(l => l.Text = co.transactionid);
+
+                txtCode.InvokeControl(l => l.Text = co.anpr.category);
+                txtPlateNo.InvokeControl(l => l.Text = co.anpr.text);
+                cmbCity.InvokeControl(l => l.Text = co.anpr.country);
+
+                if (Utilis.UserType.Contains("admin"))
+                    txtLocDetail.InvokeControl(l => l.Text = string.Format("{0}, {1}-{2}", co.location, co.access_point_id, co.entrance_Name));
 
                 if (FrameImage != "")
                 {
@@ -972,59 +1121,59 @@ namespace ImageReview.UI
 
         #region Not Present Plates / exit plates
 
-        Thread thExitPlates;
-        private void TmExitPlates_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            try
-            {
-                if (thExitPlates != null && thExitPlates.IsAlive)
-                    thExitPlates.Abort();
+        //Thread thExitPlates;
+        //private void TmExitPlates_Elapsed(object sender, ElapsedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        if (thExitPlates != null && thExitPlates.IsAlive)
+        //            thExitPlates.Abort();
 
-                thExitPlates = new Thread(new ThreadStart(IgnoreAPAndExitPlates));
-                thExitPlates.Start();
-            }
-            catch (Exception ee)
-            {
-                LogFile.UpdateLogFile(string.Format("Error TmExitPlates_Elapsed : {0}", ee.Message));
-            }
-        }
+        //        thExitPlates = new Thread(new ThreadStart(IgnoreAPAndExitPlates));
+        //        thExitPlates.Start();
+        //    }
+        //    catch (Exception ee)
+        //    {
+        //        LogFile.UpdateLogFile(string.Format("Error TmExitPlates_Elapsed : {0}", ee.Message));
+        //    }
+        //}
 
-        int PreFalseTriggerCount = 0;
-        private async void IgnoreAPAndExitPlates()
-        {
-            CreateLogForExitPlates();
-            IgnoreAPPlates();
+        //   int PreFalseTriggerCount = 0;
+        //private async void IgnoreAPAndExitPlates()
+        //{
+        //    CreateLogForExitPlates();
+        //    IgnoreAPPlates();
 
-            if (Utilis.UserType == "admin")
-            {
-                int rec = await RefreshFalseTriggeringData();
-                if (PreFalseTriggerCount != rec && rec > 0)
-                    ShowNotification(rec);
-                PreFalseTriggerCount = rec;
-            }
-        }
+        //    //if (Utilis.UserType == "admin")
+        //    //{
+        //    //    int rec = await RefreshFalseTriggeringData();
+        //    //    if (PreFalseTriggerCount != rec && rec > 0)
+        //    //        ShowNotification(rec);
+        //    //    PreFalseTriggerCount = rec;
+        //    //}
+        //}
 
-        private async Task<int> RefreshFalseTriggeringData()
-        {
-            try
-            {
-                List<FalseTrigger> lstFT = await MySqlDAL.GetFalseTriggeringData();
-                RefreshFalseTriggeringCount(lstFT.Count);
-                return lstFT.Count;
-            }
-            catch (Exception ee)
-            {
-                LogFile.UpdateLogFile(string.Format("Error RefreshFalseTriggeringData : {0}", ee.Message));
-                return 0;
-            }
-        }
+        //private async Task<int> RefreshFalseTriggeringData()
+        //{
+        //    try
+        //    {
+        //        List<FalseTrigger> lstFT = await MySqlDAL.GetFalseTriggeringData();
+        //        RefreshFalseTriggeringCount(lstFT.Count);
+        //        return lstFT.Count;
+        //    }
+        //    catch (Exception ee)
+        //    {
+        //        LogFile.UpdateLogFile(string.Format("Error RefreshFalseTriggeringData : {0}", ee.Message));
+        //        return 0;
+        //    }
+        //}
 
         public void RefreshFalseTriggeringCount(int count)
         {
             try
             {
-                lblFalseTriger.InvokeControl(l => l.Text = count.ToString());
-                lblFalseTriger.InvokeControl(l => l.ForeColor = count > 0 ? Color.Red : Color.Black);
+                //lblFalseTriger.InvokeControl(l => l.Text = count.ToString());
+                //lblFalseTriger.InvokeControl(l => l.ForeColor = count > 0 ? Color.Red : Color.Black);
             }
             catch (Exception ee)
             {
@@ -1032,105 +1181,105 @@ namespace ImageReview.UI
             }
         }
 
-        private void lblFalseTriger_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                frmFalseTriggering frm = new frmFalseTriggering();
-                frm.Owner = this;
-                frm.ShowDialog();
-            }
-            catch (Exception ee)
-            {
-                LogFile.UpdateLogFile(string.Format("Error lblFalseTriger_Click : {0}", ee.Message));
-            }
-        }
+        //private void lblFalseTriger_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        frmFalseTriggering frm = new frmFalseTriggering();
+        //        frm.Owner = this;
+        //        frm.Show();
+        //    }
+        //    catch (Exception ee)
+        //    {
+        //        LogFile.UpdateLogFile(string.Format("Error lblFalseTriger_Click : {0}", ee.Message));
+        //    }
+        //}
 
-        private void ShowNotification(int Count)
-        {
-            try
-            {
-                NotifyIcon notifyIcon = new NotifyIcon
-                {
-                    Icon = SystemIcons.Warning,
-                    Visible = true
-                };
+        //private void ShowNotification(int Count)
+        //{
+        //    try
+        //    {
+        //        NotifyIcon notifyIcon = new NotifyIcon
+        //        {
+        //            Icon = SystemIcons.Warning,
+        //            Visible = true
+        //        };
 
-                notifyIcon.ShowBalloonTip((1000 * 10), "False Triggering Cases Update",
-                    string.Format("{0} false triggering cases are pending.", Count), ToolTipIcon.Warning);
-            }
-            catch (Exception ee)
-            {
-                LogFile.UpdateLogFile(string.Format("Error ShowNotification : {0}", ee.Message));
-            }
-        }
+        //        notifyIcon.ShowBalloonTip((1000 * 10), "False Triggering Cases Update",
+        //            string.Format("{0} false triggering cases are pending.", Count), ToolTipIcon.Warning);
+        //    }
+        //    catch (Exception ee)
+        //    {
+        //        LogFile.UpdateLogFile(string.Format("Error ShowNotification : {0}", ee.Message));
+        //    }
+        //}
 
-        private void IgnoreAPPlates()
-        {
-            try
-            {
-                //get only ignored AP
-                List<string> lstAP = new DirectoryInfo(Utilis.CorrectionFolderPath)
-                    .GetDirectories()
-                    .Select(y => y.Name)
-                    .Where(s => s.Split('_').Length >= 4
-                    && lstIgnoreAccessPoints.Contains(Convert.ToInt32(s.Split('_')[1])))
-                    .ToList();
+        //private void IgnoreAPPlates()
+        //{
+        //    try
+        //    {
+        //        //get only ignored AP
+        //        List<string> lstAP = new DirectoryInfo(Utilis.CorrectionFolderPath)
+        //            .GetDirectories()
+        //            .Select(y => y.Name)
+        //            .Where(s => s.Split('_').Length >= 4
+        //            && lstIgnoreAccessPoints.Contains(Convert.ToInt32(s.Split('_')[1])))
+        //            .ToList();
 
-                foreach (string str in lstAP)
-                {
-                    string folderPath = Path.Combine(Utilis.CorrectionFolderPath, str);
-                    FileInfo fJson = new DirectoryInfo(folderPath)
-                        .GetFiles("*.json", SearchOption.TopDirectoryOnly)
-                        .FirstOrDefault();
+        //        foreach (string str in lstAP)
+        //        {
+        //            string folderPath = Path.Combine(Utilis.CorrectionFolderPath, str);
+        //            FileInfo fJson = new DirectoryInfo(folderPath)
+        //                .GetFiles("*.json", SearchOption.TopDirectoryOnly)
+        //                .FirstOrDefault();
 
-                    string jsonTxt = fJson != null ? File.ReadAllText(fJson.FullName) : "";
-                    SelectedPlateDetail PlateD = JsonConvert.DeserializeObject<SelectedPlateDetail>(jsonTxt);
+        //            string jsonTxt = fJson != null ? File.ReadAllText(fJson.FullName) : "";
+        //            SelectedPlateDetail PlateD = JsonConvert.DeserializeObject<SelectedPlateDetail>(jsonTxt);
 
-                    //delete the folder and save log 
-                    DeletePlateFile(str, PlateD, Utilis.CorrectionFolderPath, ActionMaster.IgnoredAP);
-                }
-            }
-            catch (Exception ee)
-            {
-                LogFile.UpdateLogFile(string.Format("Error IgnoreAPPlates : {0}", ee.Message));
-            }
-        }
+        //            //delete the folder and save log 
+        //            DeletePlateFile(str, PlateD, Utilis.CorrectionFolderPath, ActionMaster.IgnoredAP);
+        //        }
+        //    }
+        //    catch (Exception ee)
+        //    {
+        //        LogFile.UpdateLogFile(string.Format("Error IgnoreAPPlates : {0}", ee.Message));
+        //    }
+        //}
 
-        private void CreateLogForExitPlates()
-        {
-            try
-            {
-                //get only exit plates, other than salik locations 
-                List<string> lstExitPlates = new DirectoryInfo(Utilis.CorrectionFolderPath)
-                    .GetDirectories()
-                    .Select(y => y.Name)
-                    .Where(s => s.Split('_').Length >= 4
-                    && !lstSalikLocations.Contains(Convert.ToInt32(s.Split('_')[2]))
-                    && s.Split('_')[3] == "1")
-                    .ToList();
+        //private void CreateLogForExitPlates()
+        //{
+        //    try
+        //    {
+        //        //get only exit plates, other than salik locations 
+        //        List<string> lstExitPlates = new DirectoryInfo(Utilis.CorrectionFolderPath)
+        //            .GetDirectories()
+        //            .Select(y => y.Name)
+        //            .Where(s => s.Split('_').Length >= 4
+        //            && !lstSalikLocations.Contains(Convert.ToInt32(s.Split('_')[2]))
+        //            && s.Split('_')[3] == "1")
+        //            .ToList();
 
-                foreach (string str in lstExitPlates)
-                {
-                    string folderPath = Path.Combine(Utilis.CorrectionFolderPath, str);
-                    FileInfo fJson = new DirectoryInfo(folderPath)
-                        .GetFiles("*.json", SearchOption.TopDirectoryOnly)
-                        .FirstOrDefault();
+        //        foreach (string str in lstExitPlates)
+        //        {
+        //            string folderPath = Path.Combine(Utilis.CorrectionFolderPath, str);
+        //            FileInfo fJson = new DirectoryInfo(folderPath)
+        //                .GetFiles("*.json", SearchOption.TopDirectoryOnly)
+        //                .FirstOrDefault();
 
-                    string jsonTxt = fJson != null ? File.ReadAllText(fJson.FullName) : "";
-                    SelectedPlateDetail PlateD = JsonConvert.DeserializeObject<SelectedPlateDetail>(jsonTxt);
+        //            string jsonTxt = fJson != null ? File.ReadAllText(fJson.FullName) : "";
+        //            SelectedPlateDetail PlateD = JsonConvert.DeserializeObject<SelectedPlateDetail>(jsonTxt);
 
-                    //delete the folder and save log 
-                    DeletePlateFile(str, PlateD, Utilis.CorrectionFolderPath, ActionMaster.ExitPlates);
-                    SaveCorrectionLog(ActionMaster.ExitPlates, PlateD, "", "", "", "", 0, str,
-                        Convert.ToInt32(_pd.correction.access_point_id));
-                }
-            }
-            catch (Exception ee)
-            {
-                LogFile.UpdateLogFile(string.Format("Error CreateLogForExitPlates : {0}", ee.Message));
-            }
-        }
+        //            //delete the folder and save log 
+        //            DeletePlateFile(str, PlateD, Utilis.CorrectionFolderPath, ActionMaster.ExitPlates);
+        //            SaveCorrectionLog(ActionMaster.ExitPlates, PlateD, "", "", "", "", 0, str,
+        //                Convert.ToInt32(PlateD.correction.access_point_id));
+        //        }
+        //    }
+        //    catch (Exception ee)
+        //    {
+        //        LogFile.UpdateLogFile(string.Format("Error CreateLogForExitPlates : {0}", ee.Message));
+        //    }
+        //}
 
         #endregion
 
@@ -1171,10 +1320,11 @@ namespace ImageReview.UI
                 btnSave.InvokeControl(l => l.Enabled = false);
                 btnForward.InvokeControl(l => l.Enabled = false);
 
-                if (Utilis.UserType == "admin")
+                gvRecentPlates.Columns.Clear();
+                gcRecentPlates.InvokeControl(l => l.DataSource = null);
+                if (Utilis.UserType.Contains("admin"))
                 {
-                    gvRecentPlates.Columns.Clear();
-                    gcRecentPlates.InvokeControl(l => l.DataSource = null);
+                    txtLocDetail.InvokeControl(l => l.Text = "");
                     lblForwardedUser.InvokeControl(l => l.Text = "");
                     chkChangeAP.InvokeControl(l => l.Checked = false);
                     cmbChangeAP.InvokeControl(l => l.Enabled = false);
@@ -1228,16 +1378,17 @@ namespace ImageReview.UI
                 if (_pd != null && _pd.correction != null && _pd.correction.transactionid != "")
                 {
                     //wrong direction warning
+                    string dir = _pd.correction.DirectionLocal.ToLower();
+
                     if (
                         Utilis.UserType == "user" &&
-                        ((_pd.correction.IsBackwardFocusLocal == 1 && _pd.correction.DirectionLocal.ToLower() == "forward")
-                        || (_pd.correction.IsBackwardFocusLocal != 1 && _pd.correction.DirectionLocal.ToLower() == "reverse")))
+                        ((_pd.correction.IsBackwardFocusLocal == 1 && (dir == "forward" || dir == "approaching"))
+                        || (_pd.correction.IsBackwardFocusLocal != 1 && (dir == "reverse" || dir == "moving away"))))
                     {
                         MessageBox.Show("Vehicle is moving in the wrong direction. Please forward this case to admin.",
                             "Wrong Direction Detected", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
-
 
                     string code = "", plateNo = "", plateCity = "", userRemarks = "";
                     int ReasonID = 0, cityIndex = -1, changeAPid = -1;
@@ -1299,20 +1450,13 @@ namespace ImageReview.UI
                     }
 
                     pnlWait.InvokeControl(l => l.Visible = true);
-                    //30-jan2025, waheed asked to remove this condition, and save all corrections to aws
-                    //in case of any correction, move data to the modification folder
-                    //if admin is doing something save that also
-                    //08Apr2025 Save all Data
-
-                    //Anpr an = _pd.correction.anpr;
-                    //if (Utilis.UserType == "admin" ||
-                    //    code.ToLower() != an.category.ToLower() ||
-                    //    plateNo.ToLower() != an.text.ToLower() ||
-                    //    plateCity.ToLower() != an.country.ToLower())
-                    // {
                     MoveFolderToModification(CurrentFolder, Utilis.CorrectionFolderPath);
-                    //  }
-                    SaveCorrectedData(code, plateNo, plateCity, userRemarks);
+
+                    // if check -in working on local system, thn avoid posting on aws
+                    if (lstLocalVerification.Contains(_pd.correction.location_id))
+                        SaveCorrectedDataToMasterParkonic(code, plateNo, plateCity);
+                    else
+                        SaveCorrectedData(code, plateNo, plateCity, userRemarks);
 
                     //save data to local server
                     PlateSavedActions("Plate Correction", code, plateNo, plateCity, userRemarks,
@@ -1328,28 +1472,33 @@ namespace ImageReview.UI
             pnlWait.InvokeControl(l => l.Visible = false);
         }
 
-        private void MoveFolderToModification(string folderName, string SrcPath)
+        private async void MoveFolderToModification(string folderName, string SrcPath)
         {
-            try
+            await Task.Run(() =>
             {
-                string targetPath = string.Format("{0}\\{1}", Utilis.ModificationFolderPath, folderName);
-                string srcPath = string.Format("{0}\\{1}", SrcPath, folderName);//
-
-                //source should exist, but target shoudn't exists
-                if (Directory.Exists(srcPath) && !Directory.Exists(targetPath))
+                try
                 {
-                    DirectoryInfo target = Directory.CreateDirectory(targetPath);
-                    foreach (FileInfo fi in (new DirectoryInfo(srcPath)).GetFiles())
+                    string targetPath = Path.Combine(Utilis.ModificationFolderPath, folderName);
+                    string srcPath = Path.Combine(SrcPath, folderName);
+                    DirectoryInfo source = new DirectoryInfo(srcPath);
+
+                    // Ensure source exists and target does not
+                    if (Directory.Exists(srcPath) && !Directory.Exists(targetPath))
                     {
-                        if (fi.Exists)
-                            fi.CopyTo(Path.Combine(target.FullName, fi.Name), false);
+                        DirectoryInfo target = Directory.CreateDirectory(targetPath);
+                        foreach (FileInfo fi in source.GetFiles())
+                        {
+                            string destFile = Path.Combine(target.FullName, fi.Name);
+                            fi.CopyTo(destFile, true);
+                        }
                     }
+                    source.Delete(true);
                 }
-            }
-            catch (Exception ee)
-            {
-                LogFile.UpdateLogFile(string.Format("MoveFolderToModification Error : {0}", ee.Message));
-            }
+                catch (Exception ee)
+                {
+                    LogFile.UpdateLogFile($"MoveFolderToModification Error: {ee.Message}");
+                }
+            });
         }
 
         private async void SaveCorrectedData(string code, string plateNo, string plateCity, string userRemarks)
@@ -1374,7 +1523,8 @@ namespace ImageReview.UI
                     else
                     {
                         LogFile.UpdateLogFile(string.Format("Error while saving data on the portal: {0}", res.message));
-                        MessageBox.Show(res.message, "Server Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        if (!res.message.ToLower().Contains("this vehicle has already exited"))
+                            MessageBox.Show(res.message, "Server Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -1388,6 +1538,50 @@ namespace ImageReview.UI
                 LogFile.UpdateLogFile(string.Format("Error SaveCorrectedData : {0}", ee.Message));
             }
         }
+
+        private async void SaveCorrectedDataToMasterParkonic(string code, string plateNo, string plateCity)
+        {
+            try
+            {
+                Correction cor = _pd.correction;
+                IRestResponse rsp = await APIs_DAL.SaveDataInMasterParkonic(new MasterParkonicData()
+                {
+                    access_point_id = cor.access_point_id_new,
+                    bill_amount = 0,
+                    emirates = plateCity,
+                    event_time = Utilis.ConvertTransactionIDToDateTime(cor.transactionid, cor.access_point_id).ToString("yyyy-MM-dd HH:mm:ss"),
+                    is_exit = cor.is_exit,
+                    location_id = cor.location_id,
+                    plate_code = code,
+                    plate_number = plateNo,
+                    transaction_id = Convert.ToInt64(cor.transactionid),
+                    trigger_type = cor.trigger_type.HasValue ? cor.trigger_type.Value : -1
+                });
+
+                if (rsp.IsSuccessful && rsp.StatusCode == System.Net.HttpStatusCode.OK)
+                {
+                    PlateCorrectResponce res = JsonConvert.DeserializeObject<PlateCorrectResponce>(rsp.Content);
+                    if (res != null && res.status)
+                    {
+                        LogFile.UpdateLogFile(string.Format("Data has been successfully saved in Master Parkonic"));
+                        return;
+                    }
+                    else
+                    {
+                        LogFile.UpdateLogFile(string.Format("Error while saving data in master parkonic : {0}", res.message));
+                    }
+                }
+                else
+                {
+                    LogFile.UpdateLogFile(string.Format("SaveCorrectedDataToMasterParkonic Error : {0}", rsp != null ? rsp.Content : ""));
+                }
+            }
+            catch (Exception ee)
+            {
+                LogFile.UpdateLogFile(string.Format("Error SaveCorrectedDataToMasterParkonic : {0}", ee.Message));
+            }
+        }
+
 
         private void PlateSavedActions(string type, string code, string plateNo,
             string plateCity, string userRemarks, int ReasonID, int AccessPointID)
@@ -1408,7 +1602,6 @@ namespace ImageReview.UI
                   plateCity,
                   type));
 
-                Directory.Delete(string.Format("{0}\\{1}", Utilis.CorrectionFolderPath, CurrentFolder), true);
                 ReSet();
             }
             catch (Exception ee)
@@ -1442,7 +1635,7 @@ namespace ImageReview.UI
                 //   if (Utilis.UserType == "admin")
                 MoveFolderToModification(CurrentFolder, Utilis.CorrectionFolderPath);
 
-                DeletePlateFile(CurrentFolder, _pd, Utilis.CorrectionFolderPath, ActionMaster.Ignored);
+                SavePlateFileLog(CurrentFolder, _pd, Utilis.CorrectionFolderPath, ActionMaster.Ignored);
                 SaveCorrectionLog(ActionMaster.Ignored, _pd, code, plateNo, plateCity, userRemarks,
                     ReasonID, CurrentFolder, Convert.ToInt32(_pd.correction.access_point_id));
                 ReSet();
@@ -1455,20 +1648,18 @@ namespace ImageReview.UI
             pnlWait.InvokeControl(l => l.Visible = false);
         }
 
-        private void DeletePlateFile(string FolderName, SelectedPlateDetail plateDetail, string srcPath, ActionMaster act)
+        private void SavePlateFileLog(string FolderName, SelectedPlateDetail plateDetail, string srcPath, ActionMaster act)
         {
             try
             {
-                Directory.Delete(string.Format("{0}\\{1}", srcPath, FolderName), true);
-
                 if (plateDetail != null && plateDetail.correction != null && plateDetail.correction.transactionid != "")
                 {
-                    LogFile.UpdateLogFile(string.Format("Warning Plate {5}, {6}-{7} Plate : {0}-{1} {2} Trans. ID : {3} Location : {4}",
+                    LogFile.UpdateLogFile(string.Format("Warning Plate {5}, LoginID={6} Plate : {0}-{1} {2} Trans. ID : {3} Location : {4}",
                        plateDetail.correction.anpr.category,
                        plateDetail.correction.anpr.text,
                        plateDetail.correction.anpr.country,
                        plateDetail.correction.transactionid,
-                       plateDetail.correction.location, act.ToString(), Utilis.UserName, Utilis.LoginID));
+                       plateDetail.correction.location, act.ToString(), Utilis.LoginID));
                 }
                 else
                 {
@@ -1674,7 +1865,7 @@ namespace ImageReview.UI
                 userRemarks = FormatData(userRemarks);
 
                 ForwardFolderToAdmin(CurrentFolder);
-                DeletePlateFile(CurrentFolder, _pd, Utilis.CorrectionFolderPath, ActionMaster.Forwarded);
+                SavePlateFileLog(CurrentFolder, _pd, Utilis.CorrectionFolderPath, ActionMaster.Forwarded);
                 SaveCorrectionLog(ActionMaster.Forwarded, _pd, code, plateNo, plateCity, userRemarks,
                     ReasonID, CurrentFolder, Convert.ToInt32(_pd.correction.access_point_id));
                 ReSet();
@@ -1687,28 +1878,33 @@ namespace ImageReview.UI
             pnlWait.InvokeControl(l => l.Visible = false);
         }
 
-        private void ForwardFolderToAdmin(string folderName)
+        private async void ForwardFolderToAdmin(string folderName)
         {
-            try
+            await Task.Run(() =>
             {
-                string targetPath = string.Format("{0}\\{1}", Utilis.ForwardFolderPath, folderName);
-                string srcPath = string.Format("{0}\\{1}", Utilis.CorrectionFolderPath, folderName);
-
-                //source should exist, but target shoudn't exists
-                if (Directory.Exists(srcPath) && !Directory.Exists(targetPath))
+                try
                 {
-                    DirectoryInfo target = Directory.CreateDirectory(targetPath);
-                    foreach (FileInfo fi in (new DirectoryInfo(srcPath)).GetFiles())
+                    string targetPath = string.Format("{0}\\{1}", Utilis.ForwardFolderPath, folderName);
+                    string srcPath = string.Format("{0}\\{1}", Utilis.CorrectionFolderPath, folderName);
+                    DirectoryInfo source = new DirectoryInfo(srcPath);
+
+                    //source should exist, but target shoudn't exists
+                    if (Directory.Exists(srcPath) && !Directory.Exists(targetPath))
                     {
-                        if (fi.Exists)
-                            fi.CopyTo(Path.Combine(target.FullName, fi.Name), false);
+                        DirectoryInfo target = Directory.CreateDirectory(targetPath);
+                        foreach (FileInfo fi in source.GetFiles())
+                        {
+                            if (fi.Exists)
+                                fi.CopyTo(Path.Combine(target.FullName, fi.Name), true);
+                        }
                     }
+                    source.Delete(true);
                 }
-            }
-            catch (Exception ee)
-            {
-                LogFile.UpdateLogFile(string.Format("ForwardFolderToAdmin Error : {0}", ee.Message));
-            }
+                catch (Exception ee)
+                {
+                    LogFile.UpdateLogFile(string.Format("ForwardFolderToAdmin Error : {0}", ee.Message));
+                }
+            });
         }
 
         #endregion
@@ -2013,7 +2209,31 @@ namespace ImageReview.UI
                 ConvertEngToAr(txtPlateNo);
         }
 
+        private void bbFalseTriggers_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            try
+            {
+                frmFalseTriggering frm = new frmFalseTriggering();
+                frm.Owner = this;
+                frm.Show();
+            }
+            catch (Exception ee)
+            {
+                LogFile.UpdateLogFile(string.Format("Error bbFalseTriggers_ItemClick : {0}", ee.Message));
+            }
+        }
 
+        private void bbSalikLocations_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmSalikLocations frm = new frmSalikLocations();
+            frm.ShowDialog();
+        }
+
+        private void bbReview_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frmReview frm = new frmReview();
+            frm.Show();
+        }
 
         private ToolTipController toolTipController;
 
@@ -2055,151 +2275,38 @@ namespace ImageReview.UI
 
     }
 
-
     public class RecentPlatesData : INotifyPropertyChanged
     {
-        private readonly Control _uiControl; // Reference to the UI control/form for thread safety
-        private Image _plateImage; // Backing field for the plateImage property (note the underscore and camelCase)
-
         public string PlateNo { get; set; }
         public string EventTime { get; set; }
         public string ImageURL { get; set; }
         public string TripID { get; set; }
 
-        // Corrected property definition
-        public Image PlateImage // Changed to PascalCase for consistency with C# conventions
+        private Image _plateImage;
+        public Image PlateImage
         {
             get { return _plateImage; }
             set
             {
                 _plateImage = value;
-                OnPropertyChanged(nameof(PlateImage)); // Match the property name exactly
+                OnPropertyChanged(nameof(PlateImage));
             }
+        }
+
+        public RecentPlatesData(string eventTime, string imageUrl, string code, string plateNo, string city, string tripID)
+        {
+            EventTime = eventTime;
+            PlateNo = $"{code}-{plateNo} {city}";
+            ImageURL = imageUrl;
+            TripID = tripID;
+
+            PlateImage = ResourceImageHelper.CreateImageFromResources("DevExpress.XtraEditors.Images.loading.gif", typeof(BackgroundImageLoader).Assembly);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public RecentPlatesData(string _eventTime, string _imageUrl, string _code, string _plateNo, string _city, string _tripID, Control uiControl)
-        {
-            if (uiControl == null)
-            {
-                throw new ArgumentNullException("uiControl");
-            }
-            _uiControl = uiControl;
-            //   _uiControl = uiControl ?? throw new ArgumentNullException(nameof(uiControl)); // Ensure a valid control is provided
-
-            try
-            {
-                EventTime = _eventTime;
-                PlateNo = string.Format("{0}-{1} {2}", _code, _plateNo, _city);
-                ImageURL = _imageUrl;
-                TripID = _tripID;
-
-                PlateImage = ResourceImageHelper.CreateImageFromResources("DevExpress.XtraEditors.Images.loading.gif", typeof(BackgroundImageLoader).Assembly);
-                LoadImageAsync();
-            }
-            catch (Exception ee)
-            {
-                LogFile.UpdateLogFile(string.Format("Error RecentPlatesData class : {0}", ee.Message));
-            }
-        }
-
-        private void LoadImageAsync()
-        {
-            BackgroundImageLoader bg = new BackgroundImageLoader();
-            bg.Load(ImageURL);
-            bg.Loaded += (s, e) =>
-            {
-                try
-                {
-                    Image result = bg.Result ?? ResourceImageHelper.CreateImageFromResources("DevExpress.XtraEditors.Images.Error.png", typeof(BackgroundImageLoader).Assembly);
-
-                    // Marshal to UI thread safely
-                    if (_uiControl.IsHandleCreated && !_uiControl.IsDisposed)
-                    {
-                        if (_uiControl.InvokeRequired)
-                        {
-                            _uiControl.Invoke(new Action(() =>
-                            {
-                                PlateImage = result; // Update via property to raise PropertyChanged
-                            }));
-                        }
-                        else
-                        {
-                            PlateImage = result;
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-                    LogFile.UpdateLogFile($"Error loading image: {ex.Message}");
-                }
-                finally
-                {
-                    bg.Dispose();
-                }
-            };
-        }
-
-        protected void OnPropertyChanged(string propertyName)
-        {
+        protected void OnPropertyChanged(string propertyName) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
-    //public class RecentPlatesData : INotifyPropertyChanged
-    //{
-    //    public string PlateNo { get; set; }
-    //    public string EventTime { get; set; }
-    //    public string ImageURL { get; set; }
-    //    public string TripID { get; set; }
-    //    public Image plateImage { get; set; }
-    //    public event PropertyChangedEventHandler PropertyChanged;
-
-    //    public RecentPlatesData(string _eventTime, string _imageUrl, string _code, string _plateNo, string _city, string _tripID)
-    //    {
-    //        try
-    //        {
-    //            EventTime = _eventTime;
-    //            PlateNo = string.Format("{0}-{1} {2}", _code, _plateNo, _city);
-    //            ImageURL = _imageUrl;
-    //            TripID = _tripID;
-
-    //            plateImage = ResourceImageHelper.CreateImageFromResources("DevExpress.XtraEditors.Images.loading.gif", typeof(BackgroundImageLoader).Assembly);
-    //            BackgroundImageLoader bg = new BackgroundImageLoader();
-
-    //            bg.Load(_imageUrl);
-    //            bg.Loaded += (s, e) =>
-    //            {
-    //                plateImage = bg.Result;
-    //                if (!(plateImage is Image))
-    //                    plateImage = ResourceImageHelper.CreateImageFromResources("DevExpress.XtraEditors.Images.Error.png", typeof(BackgroundImageLoader).Assembly);
-
-    //                Control control = Control.FromHandle(System.Diagnostics.Process.GetCurrentProcess().MainWindowHandle);
-
-    //                if (control != null && control.InvokeRequired)
-    //                {
-    //                    control.Invoke((MethodInvoker)delegate
-    //                    {
-    //                        plateImage = plateImage;
-    //                        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(plateImage)));
-    //                    });
-    //                }
-    //                else
-    //                {
-    //                    plateImage = plateImage;
-    //                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(plateImage)));
-    //                }
-
-    //                //  PropertyChanged(this, new PropertyChangedEventArgs("plateImage"));
-    //                bg.Dispose();
-    //            };
-    //        }
-    //        catch (Exception ee)
-    //        {
-    //            LogFile.UpdateLogFile(string.Format("Error RecentPlatesData class : {0}", ee.Message));
-    //        }
-    //    }
-    //}
 
     public static class ControlExtensions
     {

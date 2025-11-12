@@ -69,8 +69,8 @@ namespace ImageReview.UI
         {
             try
             {
-                foreach (string folder in Folders)
-                    Directory.Delete(string.Format("{0}\\{1}", Utilis.ModificationFolderPath, folder), true);
+                //foreach (string folder in Folders)
+                //    Directory.Delete(string.Format("{0}\\{1}", Utilis.ModificationFolderPath, folder), true);
                 await MySqlDAL.UpdateFalseTriggersToSeen(AccessPointID, EventTime);
 
                 if (this.Owner is frmFalseTriggering)

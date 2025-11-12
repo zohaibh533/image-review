@@ -32,6 +32,18 @@
             this.gcData = new DevExpress.XtraGrid.GridControl();
             this.gvData = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grpFilters = new System.Windows.Forms.GroupBox();
+            this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
+            this.chkNoOfTrans = new System.Windows.Forms.CheckBox();
+            this.txtNoOfTransactions = new System.Windows.Forms.TextBox();
+            this.labelControl11 = new DevExpress.XtraEditors.LabelControl();
+            this.lstAccessPointType = new System.Windows.Forms.ListBox();
+            this.labelControl10 = new DevExpress.XtraEditors.LabelControl();
+            this.lblAvgSpeed = new DevExpress.XtraEditors.LabelControl();
+            this.txtAvgSpeedInSec = new System.Windows.Forms.TextBox();
+            this.lblTotalAct = new DevExpress.XtraEditors.LabelControl();
+            this.txtTotalActCount = new System.Windows.Forms.TextBox();
+            this.lblModCount = new DevExpress.XtraEditors.LabelControl();
+            this.txtModCount = new System.Windows.Forms.TextBox();
             this.cmbEntryExit = new System.Windows.Forms.ComboBox();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
             this.cmbLocation = new System.Windows.Forms.ComboBox();
@@ -49,9 +61,7 @@
             this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.cmbUser = new System.Windows.Forms.ComboBox();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.label2 = new System.Windows.Forms.Label();
             this.dtTo = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
             this.dtFrom = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.gcData)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvData)).BeginInit();
@@ -62,12 +72,12 @@
             // 
             this.gcData.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.gcData.EmbeddedNavigator.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.gcData.Location = new System.Drawing.Point(0, 264);
+            this.gcData.Location = new System.Drawing.Point(0, 530);
             this.gcData.MainView = this.gvData;
             this.gcData.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gcData.Name = "gcData";
             this.gcData.Padding = new System.Windows.Forms.Padding(0, 0, 12, 0);
-            this.gcData.Size = new System.Drawing.Size(1750, 548);
+            this.gcData.Size = new System.Drawing.Size(1750, 282);
             this.gcData.TabIndex = 1;
             this.gcData.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvData});
@@ -111,6 +121,18 @@
             // 
             // grpFilters
             // 
+            this.grpFilters.Controls.Add(this.labelControl12);
+            this.grpFilters.Controls.Add(this.chkNoOfTrans);
+            this.grpFilters.Controls.Add(this.txtNoOfTransactions);
+            this.grpFilters.Controls.Add(this.labelControl11);
+            this.grpFilters.Controls.Add(this.lstAccessPointType);
+            this.grpFilters.Controls.Add(this.labelControl10);
+            this.grpFilters.Controls.Add(this.lblAvgSpeed);
+            this.grpFilters.Controls.Add(this.txtAvgSpeedInSec);
+            this.grpFilters.Controls.Add(this.lblTotalAct);
+            this.grpFilters.Controls.Add(this.txtTotalActCount);
+            this.grpFilters.Controls.Add(this.lblModCount);
+            this.grpFilters.Controls.Add(this.txtModCount);
             this.grpFilters.Controls.Add(this.cmbEntryExit);
             this.grpFilters.Controls.Add(this.labelControl3);
             this.grpFilters.Controls.Add(this.cmbLocation);
@@ -128,18 +150,138 @@
             this.grpFilters.Controls.Add(this.labelControl4);
             this.grpFilters.Controls.Add(this.cmbUser);
             this.grpFilters.Controls.Add(this.labelControl2);
-            this.grpFilters.Controls.Add(this.label2);
             this.grpFilters.Controls.Add(this.dtTo);
-            this.grpFilters.Controls.Add(this.label1);
             this.grpFilters.Controls.Add(this.dtFrom);
             this.grpFilters.Dock = System.Windows.Forms.DockStyle.Top;
             this.grpFilters.Font = new System.Drawing.Font("Tahoma", 12F);
             this.grpFilters.Location = new System.Drawing.Point(0, 0);
             this.grpFilters.Name = "grpFilters";
-            this.grpFilters.Size = new System.Drawing.Size(1750, 196);
+            this.grpFilters.Size = new System.Drawing.Size(1750, 281);
             this.grpFilters.TabIndex = 0;
             this.grpFilters.TabStop = false;
             this.grpFilters.Text = "Search Criteria";
+            // 
+            // labelControl12
+            // 
+            this.labelControl12.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl12.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
+            this.labelControl12.Location = new System.Drawing.Point(421, 42);
+            this.labelControl12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelControl12.Name = "labelControl12";
+            this.labelControl12.Size = new System.Drawing.Size(69, 28);
+            this.labelControl12.TabIndex = 152;
+            this.labelControl12.Text = "To Time";
+            // 
+            // chkNoOfTrans
+            // 
+            this.chkNoOfTrans.AutoSize = true;
+            this.chkNoOfTrans.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkNoOfTrans.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
+            this.chkNoOfTrans.Location = new System.Drawing.Point(421, 230);
+            this.chkNoOfTrans.Name = "chkNoOfTrans";
+            this.chkNoOfTrans.Size = new System.Drawing.Size(199, 32);
+            this.chkNoOfTrans.TabIndex = 15;
+            this.chkNoOfTrans.Text = "No. of Transactions";
+            this.chkNoOfTrans.UseVisualStyleBackColor = true;
+            this.chkNoOfTrans.CheckedChanged += new System.EventHandler(this.chkNoOfTrans_CheckedChanged);
+            // 
+            // txtNoOfTransactions
+            // 
+            this.txtNoOfTransactions.Enabled = false;
+            this.txtNoOfTransactions.Location = new System.Drawing.Point(626, 230);
+            this.txtNoOfTransactions.Name = "txtNoOfTransactions";
+            this.txtNoOfTransactions.Size = new System.Drawing.Size(155, 32);
+            this.txtNoOfTransactions.TabIndex = 16;
+            // 
+            // labelControl11
+            // 
+            this.labelControl11.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl11.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
+            this.labelControl11.Location = new System.Drawing.Point(32, 42);
+            this.labelControl11.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelControl11.Name = "labelControl11";
+            this.labelControl11.Size = new System.Drawing.Size(93, 28);
+            this.labelControl11.TabIndex = 148;
+            this.labelControl11.Text = "From Time";
+            // 
+            // lstAccessPointType
+            // 
+            this.lstAccessPointType.FormattingEnabled = true;
+            this.lstAccessPointType.ItemHeight = 24;
+            this.lstAccessPointType.Location = new System.Drawing.Point(915, 186);
+            this.lstAccessPointType.Name = "lstAccessPointType";
+            this.lstAccessPointType.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.lstAccessPointType.Size = new System.Drawing.Size(248, 76);
+            this.lstAccessPointType.TabIndex = 13;
+            // 
+            // labelControl10
+            // 
+            this.labelControl10.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl10.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
+            this.labelControl10.AutoSizeMode = DevExpress.XtraEditors.LabelAutoSizeMode.Vertical;
+            this.labelControl10.Location = new System.Drawing.Point(796, 199);
+            this.labelControl10.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelControl10.Name = "labelControl10";
+            this.labelControl10.Size = new System.Drawing.Size(106, 56);
+            this.labelControl10.TabIndex = 146;
+            this.labelControl10.Text = "Access Point Type";
+            // 
+            // lblAvgSpeed
+            // 
+            this.lblAvgSpeed.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAvgSpeed.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
+            this.lblAvgSpeed.Location = new System.Drawing.Point(32, 232);
+            this.lblAvgSpeed.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lblAvgSpeed.Name = "lblAvgSpeed";
+            this.lblAvgSpeed.Size = new System.Drawing.Size(155, 28);
+            this.lblAvgSpeed.TabIndex = 144;
+            this.lblAvgSpeed.Text = "Avg. Speed in Sec";
+            // 
+            // txtAvgSpeedInSec
+            // 
+            this.txtAvgSpeedInSec.Location = new System.Drawing.Point(226, 230);
+            this.txtAvgSpeedInSec.Name = "txtAvgSpeedInSec";
+            this.txtAvgSpeedInSec.Size = new System.Drawing.Size(168, 32);
+            this.txtAvgSpeedInSec.TabIndex = 14;
+            this.txtAvgSpeedInSec.Text = "7";
+            // 
+            // lblTotalAct
+            // 
+            this.lblTotalAct.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalAct.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
+            this.lblTotalAct.Location = new System.Drawing.Point(421, 188);
+            this.lblTotalAct.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lblTotalAct.Name = "lblTotalAct";
+            this.lblTotalAct.Size = new System.Drawing.Size(164, 28);
+            this.lblTotalAct.TabIndex = 142;
+            this.lblTotalAct.Text = "Total Action Count";
+            // 
+            // txtTotalActCount
+            // 
+            this.txtTotalActCount.Location = new System.Drawing.Point(605, 186);
+            this.txtTotalActCount.Name = "txtTotalActCount";
+            this.txtTotalActCount.Size = new System.Drawing.Size(176, 32);
+            this.txtTotalActCount.TabIndex = 12;
+            this.txtTotalActCount.Text = "35000";
+            // 
+            // lblModCount
+            // 
+            this.lblModCount.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblModCount.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
+            this.lblModCount.Location = new System.Drawing.Point(32, 188);
+            this.lblModCount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.lblModCount.Name = "lblModCount";
+            this.lblModCount.Size = new System.Drawing.Size(170, 28);
+            this.lblModCount.TabIndex = 140;
+            this.lblModCount.Text = "Modification Count";
+            // 
+            // txtModCount
+            // 
+            this.txtModCount.Location = new System.Drawing.Point(226, 186);
+            this.txtModCount.Name = "txtModCount";
+            this.txtModCount.Size = new System.Drawing.Size(168, 32);
+            this.txtModCount.TabIndex = 11;
+            this.txtModCount.Text = "10000";
             // 
             // cmbEntryExit
             // 
@@ -194,9 +336,11 @@
             // chkExcludeForward
             // 
             this.chkExcludeForward.AutoSize = true;
+            this.chkExcludeForward.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.chkExcludeForward.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
             this.chkExcludeForward.Location = new System.Drawing.Point(146, 147);
             this.chkExcludeForward.Name = "chkExcludeForward";
-            this.chkExcludeForward.Size = new System.Drawing.Size(269, 28);
+            this.chkExcludeForward.Size = new System.Drawing.Size(263, 32);
             this.chkExcludeForward.TabIndex = 8;
             this.chkExcludeForward.Text = "Exclude Forwarded Tickets";
             this.chkExcludeForward.UseVisualStyleBackColor = true;
@@ -213,7 +357,7 @@
             this.ppWait.Location = new System.Drawing.Point(1383, 57);
             this.ppWait.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ppWait.Name = "ppWait";
-            this.ppWait.Size = new System.Drawing.Size(178, 56);
+            this.ppWait.Size = new System.Drawing.Size(178, 141);
             this.ppWait.TabIndex = 132;
             this.ppWait.ToolTip = "Data is loading";
             this.ppWait.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
@@ -264,12 +408,6 @@
             this.cmbPrintReport.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbPrintReport.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbPrintReport.FormattingEnabled = true;
-            this.cmbPrintReport.Items.AddRange(new object[] {
-            "Verification Summary",
-            "User Wise Summary",
-            "Hourly Summary",
-            "User Performance",
-            "Location Wise Summary"});
             this.cmbPrintReport.Location = new System.Drawing.Point(915, 38);
             this.cmbPrintReport.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cmbPrintReport.Name = "cmbPrintReport";
@@ -360,17 +498,6 @@
             this.labelControl2.TabIndex = 12;
             this.labelControl2.Text = "User";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
-            this.label2.Location = new System.Drawing.Point(421, 42);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(79, 28);
-            this.label2.TabIndex = 9;
-            this.label2.Text = "To Time";
-            // 
             // dtTo
             // 
             this.dtTo.CustomFormat = "dd-MMM-yyyy HH:mm:ss";
@@ -381,17 +508,6 @@
             this.dtTo.Name = "dtTo";
             this.dtTo.Size = new System.Drawing.Size(248, 34);
             this.dtTo.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
-            this.label1.Location = new System.Drawing.Point(32, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(105, 28);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "From Time";
             // 
             // dtFrom
             // 
@@ -433,9 +549,7 @@
         private DevExpress.XtraGrid.GridControl gcData;
         private DevExpress.XtraGrid.Views.Grid.GridView gvData;
         private System.Windows.Forms.GroupBox grpFilters;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DateTimePicker dtTo;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dtFrom;
         private System.Windows.Forms.ComboBox cmbUser;
         private DevExpress.XtraEditors.LabelControl labelControl2;
@@ -454,5 +568,17 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private System.Windows.Forms.ComboBox cmbEntryExit;
         private DevExpress.XtraEditors.LabelControl labelControl3;
+        private DevExpress.XtraEditors.LabelControl lblAvgSpeed;
+        private System.Windows.Forms.TextBox txtAvgSpeedInSec;
+        private DevExpress.XtraEditors.LabelControl lblTotalAct;
+        private System.Windows.Forms.TextBox txtTotalActCount;
+        private DevExpress.XtraEditors.LabelControl lblModCount;
+        private System.Windows.Forms.TextBox txtModCount;
+        private DevExpress.XtraEditors.LabelControl labelControl10;
+        private DevExpress.XtraEditors.LabelControl labelControl11;
+        private System.Windows.Forms.ListBox lstAccessPointType;
+        private System.Windows.Forms.TextBox txtNoOfTransactions;
+        private DevExpress.XtraEditors.LabelControl labelControl12;
+        private System.Windows.Forms.CheckBox chkNoOfTrans;
     }
 }

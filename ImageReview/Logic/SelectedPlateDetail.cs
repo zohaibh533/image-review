@@ -66,6 +66,7 @@ namespace ImageReview.Logic
     {
         public string message { get; set; }
         public bool status { get; set; }
+        public long data { get; set; }
     }
 
     public class PlateActiveTripDetail

@@ -93,17 +93,5 @@ namespace ImageReview.Properties {
                 this["ModificationPath"] = value;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string ReviewPath {
-            get {
-                return ((string)(this["ReviewPath"]));
-            }
-            set {
-                this["ReviewPath"] = value;
-            }
-        }
     }
 }

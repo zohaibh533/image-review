@@ -37,7 +37,10 @@
             this.barMainMenu = new DevExpress.XtraBars.Bar();
             this.bbSystemUsers = new DevExpress.XtraBars.BarButtonItem();
             this.bbReports = new DevExpress.XtraBars.BarButtonItem();
+            this.bbReview = new DevExpress.XtraBars.BarButtonItem();
             this.bbChangePassword = new DevExpress.XtraBars.BarButtonItem();
+            this.bbSalikLocations = new DevExpress.XtraBars.BarButtonItem();
+            this.bbFalseTriggers = new DevExpress.XtraBars.BarButtonItem();
             this.bBtnArKeyboard = new DevExpress.XtraBars.BarButtonItem();
             this.btnHelp = new DevExpress.XtraBars.BarSubItem();
             this.bbBtnSave = new DevExpress.XtraBars.BarButtonItem();
@@ -77,6 +80,8 @@
             this.txtNoPlateRemarks = new System.Windows.Forms.TextBox();
             this.txtANPRMessage = new System.Windows.Forms.TextBox();
             this.pnlTrip = new System.Windows.Forms.Panel();
+            this.txtLocDetail = new System.Windows.Forms.TextBox();
+            this.lblLocDetail = new System.Windows.Forms.Label();
             this.lblForwardedUser = new System.Windows.Forms.Label();
             this.pnlChangeAP = new System.Windows.Forms.Panel();
             this.cmbChangeAP = new System.Windows.Forms.ComboBox();
@@ -100,12 +105,12 @@
             this.lblQueueCount = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.picZoom = new System.Windows.Forms.PictureBox();
-            this.lblFalseTrigerCap = new System.Windows.Forms.Label();
-            this.lblFalseTriger = new System.Windows.Forms.Label();
             this.pnlDirection = new System.Windows.Forms.Panel();
             this.lblDirection = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.picDirection = new System.Windows.Forms.PictureBox();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgSlider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPlateImage)).BeginInit();
@@ -150,9 +155,12 @@
             this.bbBtnPlayVideo,
             this.bbForward,
             this.bBtnArKeyboard,
-            this.bbArKeyboard});
+            this.bbArKeyboard,
+            this.bbFalseTriggers,
+            this.bbSalikLocations,
+            this.bbReview});
             this.barManager1.MainMenu = this.barMainMenu;
-            this.barManager1.MaxItemId = 27;
+            this.barManager1.MaxItemId = 30;
             // 
             // barMainMenu
             // 
@@ -166,11 +174,14 @@
             this.barMainMenu.DockCol = 0;
             this.barMainMenu.DockRow = 0;
             this.barMainMenu.DockStyle = DevExpress.XtraBars.BarDockStyle.Top;
-            this.barMainMenu.FloatLocation = new System.Drawing.Point(99, 153);
+            this.barMainMenu.FloatLocation = new System.Drawing.Point(876, 183);
             this.barMainMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbSystemUsers),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbReports),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbReview, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbChangePassword),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbSalikLocations),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbFalseTriggers, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bBtnArKeyboard, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.btnHelp, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbExit, true)});
@@ -198,6 +209,15 @@
             this.bbReports.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bbReports.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbReports_ItemClick);
             // 
+            // bbReview
+            // 
+            this.bbReview.Caption = "Review";
+            this.bbReview.Glyph = ((System.Drawing.Image)(resources.GetObject("bbReview.Glyph")));
+            this.bbReview.Id = 29;
+            this.bbReview.Name = "bbReview";
+            this.bbReview.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.bbReview.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbReview_ItemClick);
+            // 
             // bbChangePassword
             // 
             this.bbChangePassword.Caption = "Change Password";
@@ -206,6 +226,24 @@
             this.bbChangePassword.Name = "bbChangePassword";
             this.bbChangePassword.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
             this.bbChangePassword.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbChangePassword_ItemClick);
+            // 
+            // bbSalikLocations
+            // 
+            this.bbSalikLocations.Caption = "Salik Locations";
+            this.bbSalikLocations.Glyph = ((System.Drawing.Image)(resources.GetObject("bbSalikLocations.Glyph")));
+            this.bbSalikLocations.Id = 28;
+            this.bbSalikLocations.Name = "bbSalikLocations";
+            this.bbSalikLocations.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.bbSalikLocations.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.bbSalikLocations.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbSalikLocations_ItemClick);
+            // 
+            // bbFalseTriggers
+            // 
+            this.bbFalseTriggers.Caption = "FALSE TRIGGERS";
+            this.bbFalseTriggers.Glyph = ((System.Drawing.Image)(resources.GetObject("bbFalseTriggers.Glyph")));
+            this.bbFalseTriggers.Id = 27;
+            this.bbFalseTriggers.Name = "bbFalseTriggers";
+            this.bbFalseTriggers.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbFalseTriggers_ItemClick);
             // 
             // bBtnArKeyboard
             // 
@@ -391,7 +429,7 @@
             this.imgSlider.CurrentImageIndex = -1;
             this.imgSlider.Cursor = System.Windows.Forms.Cursors.Hand;
             this.imgSlider.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.imgSlider.LayoutMode = DevExpress.Utils.Drawing.ImageLayoutMode.ZoomInside;
+            this.imgSlider.LayoutMode = DevExpress.Utils.Drawing.ImageLayoutMode.Squeeze;
             this.imgSlider.Location = new System.Drawing.Point(0, 616);
             this.imgSlider.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.imgSlider.Name = "imgSlider";
@@ -519,7 +557,7 @@
             this.picPlateImage.Location = new System.Drawing.Point(161, 136);
             this.picPlateImage.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.picPlateImage.Name = "picPlateImage";
-            this.picPlateImage.Size = new System.Drawing.Size(501, 105);
+            this.picPlateImage.Size = new System.Drawing.Size(285, 105);
             this.picPlateImage.TabIndex = 84;
             this.picPlateImage.TabStop = false;
             // 
@@ -626,7 +664,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
-            this.label15.Location = new System.Drawing.Point(413, 115);
+            this.label15.Location = new System.Drawing.Point(452, 132);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(100, 28);
             this.label15.TabIndex = 87;
@@ -636,12 +674,12 @@
             // 
             this.txtNoPlateRemarks.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.txtNoPlateRemarks.ForeColor = System.Drawing.Color.Black;
-            this.txtNoPlateRemarks.Location = new System.Drawing.Point(413, 150);
+            this.txtNoPlateRemarks.Location = new System.Drawing.Point(453, 164);
             this.txtNoPlateRemarks.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtNoPlateRemarks.Multiline = true;
             this.txtNoPlateRemarks.Name = "txtNoPlateRemarks";
-            this.txtNoPlateRemarks.Size = new System.Drawing.Size(218, 91);
-            this.txtNoPlateRemarks.TabIndex = 1;
+            this.txtNoPlateRemarks.Size = new System.Drawing.Size(218, 77);
+            this.txtNoPlateRemarks.TabIndex = 5;
             // 
             // txtANPRMessage
             // 
@@ -661,6 +699,8 @@
             // 
             // pnlTrip
             // 
+            this.pnlTrip.Controls.Add(this.txtLocDetail);
+            this.pnlTrip.Controls.Add(this.lblLocDetail);
             this.pnlTrip.Controls.Add(this.lblForwardedUser);
             this.pnlTrip.Controls.Add(this.pnlChangeAP);
             this.pnlTrip.Controls.Add(this.label2);
@@ -671,13 +711,38 @@
             this.pnlTrip.Controls.Add(this.txtANPRMessage);
             this.pnlTrip.Controls.Add(this.lblEntryDateTime);
             this.pnlTrip.Controls.Add(this.label5);
-            this.pnlTrip.Controls.Add(this.txtNoPlateRemarks);
-            this.pnlTrip.Controls.Add(this.label15);
             this.pnlTrip.Controls.Add(this.label9);
             this.pnlTrip.Location = new System.Drawing.Point(12, 57);
             this.pnlTrip.Name = "pnlTrip";
             this.pnlTrip.Size = new System.Drawing.Size(643, 245);
             this.pnlTrip.TabIndex = 1;
+            // 
+            // txtLocDetail
+            // 
+            this.txtLocDetail.BackColor = System.Drawing.Color.White;
+            this.txtLocDetail.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtLocDetail.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.txtLocDetail.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.txtLocDetail.ForeColor = System.Drawing.Color.Black;
+            this.txtLocDetail.Location = new System.Drawing.Point(418, 150);
+            this.txtLocDetail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtLocDetail.Multiline = true;
+            this.txtLocDetail.Name = "txtLocDetail";
+            this.txtLocDetail.ReadOnly = true;
+            this.txtLocDetail.Size = new System.Drawing.Size(222, 87);
+            this.txtLocDetail.TabIndex = 108;
+            this.txtLocDetail.TabStop = false;
+            // 
+            // lblLocDetail
+            // 
+            this.lblLocDetail.AutoSize = true;
+            this.lblLocDetail.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLocDetail.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(102)))), ((int)(((byte)(102)))));
+            this.lblLocDetail.Location = new System.Drawing.Point(413, 115);
+            this.lblLocDetail.Name = "lblLocDetail";
+            this.lblLocDetail.Size = new System.Drawing.Size(147, 28);
+            this.lblLocDetail.TabIndex = 107;
+            this.lblLocDetail.Text = "Location Detail";
             // 
             // lblForwardedUser
             // 
@@ -772,6 +837,8 @@
             this.pnlPlateDetail.Controls.Add(this.label12);
             this.pnlPlateDetail.Controls.Add(this.txtPlateNo);
             this.pnlPlateDetail.Controls.Add(this.label17);
+            this.pnlPlateDetail.Controls.Add(this.txtNoPlateRemarks);
+            this.pnlPlateDetail.Controls.Add(this.label15);
             this.pnlPlateDetail.Controls.Add(this.picPlateImage);
             this.pnlPlateDetail.Controls.Add(this.label4);
             this.pnlPlateDetail.Location = new System.Drawing.Point(661, 57);
@@ -785,7 +852,7 @@
             this.chkManualType.Location = new System.Drawing.Point(143, 54);
             this.chkManualType.Name = "chkManualType";
             this.chkManualType.Size = new System.Drawing.Size(128, 21);
-            this.chkManualType.TabIndex = 94;
+            this.chkManualType.TabIndex = 6;
             this.chkManualType.Text = "Type City Name";
             this.chkManualType.UseVisualStyleBackColor = true;
             // 
@@ -1066,30 +1133,6 @@
             this.picZoom.TabIndex = 90;
             this.picZoom.TabStop = false;
             // 
-            // lblFalseTrigerCap
-            // 
-            this.lblFalseTrigerCap.AutoSize = true;
-            this.lblFalseTrigerCap.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFalseTrigerCap.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(130)))), ((int)(((byte)(213)))));
-            this.lblFalseTrigerCap.Location = new System.Drawing.Point(17, 362);
-            this.lblFalseTrigerCap.Name = "lblFalseTrigerCap";
-            this.lblFalseTrigerCap.Size = new System.Drawing.Size(216, 32);
-            this.lblFalseTrigerCap.TabIndex = 95;
-            this.lblFalseTrigerCap.Text = "FALSE TRIGGERS :";
-            // 
-            // lblFalseTriger
-            // 
-            this.lblFalseTriger.AutoSize = true;
-            this.lblFalseTriger.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblFalseTriger.Font = new System.Drawing.Font("Calibri", 22F, System.Drawing.FontStyle.Bold);
-            this.lblFalseTriger.ForeColor = System.Drawing.Color.Black;
-            this.lblFalseTriger.Location = new System.Drawing.Point(241, 356);
-            this.lblFalseTriger.Name = "lblFalseTriger";
-            this.lblFalseTriger.Size = new System.Drawing.Size(58, 45);
-            this.lblFalseTriger.TabIndex = 96;
-            this.lblFalseTriger.Text = "00";
-            this.lblFalseTriger.Click += new System.EventHandler(this.lblFalseTriger_Click);
-            // 
             // pnlDirection
             // 
             this.pnlDirection.Controls.Add(this.lblDirection);
@@ -1134,6 +1177,22 @@
             this.picDirection.TabIndex = 0;
             this.picDirection.TabStop = false;
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "Exit";
+            this.barButtonItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.Glyph")));
+            this.barButtonItem1.Id = 1;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
+            // barButtonItem2
+            // 
+            this.barButtonItem2.Caption = "Exit";
+            this.barButtonItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.Glyph")));
+            this.barButtonItem2.Id = 1;
+            this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            // 
             // frmDashboard
             // 
             this.Appearance.BackColor = System.Drawing.Color.White;
@@ -1142,8 +1201,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1800, 778);
             this.Controls.Add(this.pnlDirection);
-            this.Controls.Add(this.lblFalseTriger);
-            this.Controls.Add(this.lblFalseTrigerCap);
             this.Controls.Add(this.picZoom);
             this.Controls.Add(this.pnlMIsc);
             this.Controls.Add(this.pnlButtons);
@@ -1254,8 +1311,6 @@
         private System.Windows.Forms.Label lblForwardedUser;
         private System.Windows.Forms.PictureBox picZoom;
         private System.Windows.Forms.CheckBox chkChangeAP;
-        private System.Windows.Forms.Label lblFalseTriger;
-        private System.Windows.Forms.Label lblFalseTrigerCap;
         private DevExpress.XtraBars.BarButtonItem bBtnArKeyboard;
         private DevExpress.XtraBars.BarButtonItem bbArKeyboard;
         private DevExpress.XtraEditors.PictureEdit picCodeConv;
@@ -1267,5 +1322,12 @@
         private System.Windows.Forms.Panel pnlChangeAP;
         private System.Windows.Forms.ComboBox cmbChangeAP;
         private System.Windows.Forms.CheckBox chkManualType;
+        private System.Windows.Forms.TextBox txtLocDetail;
+        private System.Windows.Forms.Label lblLocDetail;
+        private DevExpress.XtraBars.BarButtonItem bbFalseTriggers;
+        private DevExpress.XtraBars.BarButtonItem bbSalikLocations;
+        private DevExpress.XtraBars.BarButtonItem bbReview;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem2;
     }
 }

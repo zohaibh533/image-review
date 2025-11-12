@@ -25,8 +25,5 @@
     <Setting Name="ModificationPath" Type="System.String" Scope="User">
       <Value Profile="(Default)">X:\</Value>
     </Setting>
-    <Setting Name="ReviewPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
-    </Setting>
   </Settings>
 </SettingsFile>

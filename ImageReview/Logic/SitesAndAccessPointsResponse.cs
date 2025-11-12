@@ -13,11 +13,15 @@ namespace ImageReview.Logic
     public class AccessPoint
     {
         public int id { get; set; }
+        public string name { get; set; }
+        public int is_exit { get; set; }
+        public string type { get; set; }
+
+
+        public string AccessPointIDName { get; set; }
         public int locationID { get; set; }
         public string locationName { get; set; }
-        public string name { get; set; }
-        public string AccessPointIDName { get; set; }
-        public int is_exit { get; set; }
+        public int Is_Loc_Active { get; set; }
     }
 
     public class SitesAndAccessPointsResponse

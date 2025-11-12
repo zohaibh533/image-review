@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,6 +10,12 @@ namespace ImageReview.Logic
     public class LocationGroups
     {
         public int ID { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class ReportType
+    {
+        public string Code { get; set; }
         public string Name { get; set; }
     }
 
@@ -71,8 +78,66 @@ namespace ImageReview.Logic
 
         public string FolderName { get; set; }
         public string LocationName { get; set; }
+        public int LocationID { get; set; }
         public string AccessPointName { get; set; }
         public int NoOfTrigger { get; set; }
+        public string ids { get; set; }
     }
 
+    public class MasterParkonicData
+    {
+        public string event_time { get; set; }
+        public long transaction_id { get; set; }
+        public int location_id { get; set; }
+        public int access_point_id { get; set; }
+        public int is_exit { get; set; }
+        public double bill_amount { get; set; }
+        public string plate_code { get; set; }
+        public string plate_number { get; set; }
+        public string emirates { get; set; }
+        public int trigger_type { get; set; }
+    }
+
+    public class SortableBindingList<T> : BindingList<T>
+    {
+        private bool _isSorted;
+        private ListSortDirection _sortDirection;
+        private PropertyDescriptor _sortProperty;
+
+        public SortableBindingList() : base() { }
+
+        public SortableBindingList(IList<T> list) : base(list) { }
+
+        protected override bool SupportsSortingCore => true;
+        protected override bool IsSortedCore => _isSorted;
+        protected override PropertyDescriptor SortPropertyCore => _sortProperty;
+        protected override ListSortDirection SortDirectionCore => _sortDirection;
+
+        protected override void ApplySortCore(PropertyDescriptor prop, ListSortDirection direction)
+        {
+            var items = (List<T>)Items;
+            var propInfo = typeof(T).GetProperty(prop.Name);
+            if (propInfo != null)
+            {
+                items.Sort((x, y) =>
+                {
+                    var xValue = propInfo.GetValue(x);
+                    var yValue = propInfo.GetValue(y);
+                    return direction == ListSortDirection.Ascending
+                        ? Comparer<object>.Default.Compare(xValue, yValue)
+                        : Comparer<object>.Default.Compare(yValue, xValue);
+                });
+
+                _isSorted = true;
+                _sortDirection = direction;
+                _sortProperty = prop;
+                OnListChanged(new ListChangedEventArgs(ListChangedType.Reset, -1));
+            }
+        }
+
+        protected override void RemoveSortCore()
+        {
+            _isSorted = false;
+        }
+    }
 }

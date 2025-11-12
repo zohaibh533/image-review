@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using System.Drawing;
 using System.Diagnostics;
 using System.Xml;
+using System.Reflection;
 
 namespace ImageReview.UI
 {
@@ -36,6 +37,7 @@ namespace ImageReview.UI
                 Utilis.dbServer = ConfigurationManager.AppSettings["dbServer"];
                 Utilis.dbUser = ConfigurationManager.AppSettings["dbUser"];
                 Utilis.dbPwd = ConfigurationManager.AppSettings["dbPwd"];
+                //Utilis.MasterParkonicServer = ConfigurationManager.AppSettings["MasterParkonicServer"];
 
                 pnlWait.Location = new Point(((this.Width / 2) - (pnlWait.Width / 2)),
                ((this.Height / 2) - (pnlWait.Height / 2)));
@@ -87,12 +89,20 @@ namespace ImageReview.UI
                         Utilis.CorrectionFolderPath = Properties.Settings.Default.CorrectionPath;
                         Utilis.ForwardFolderPath = Properties.Settings.Default.AdminReviewPath;
                         Utilis.ModificationFolderPath = Properties.Settings.Default.ModificationPath;
-                        Utilis.ReviewPath = Properties.Settings.Default.ReviewPath;
-
                         SaveCredentialSettings();
-                        this.Hide();
-                        frmDashboard frm = new frmDashboard();
-                        frm.Show();
+
+                        bool IsUpdated = CheckAppVersion();
+                        if (IsUpdated)
+                        {
+                            this.Hide();
+                            frmDashboard frm = new frmDashboard();
+                            frm.Text = $"Image Review Application v: {Utilis.AppVersion}";
+                            frm.Show();
+                        }
+                        else
+                        {
+                            Application.Exit();
+                        }
                     }
                     else
                     {
@@ -106,6 +116,25 @@ namespace ImageReview.UI
                 MessageBox.Show(string.Format("Error : {0}", ee.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             pnlWait.Visible = ppWait.Visible = false;
+        }
+
+        private bool CheckAppVersion()
+        {
+            try
+            {
+                FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location);
+                if (fileVersionInfo.FileVersion != Utilis.AppVersion)
+                {
+                    MessageBox.Show(string.Format("Your application is outdated.\nPlease update it to get the improved experience."), "Application is Outdated", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(string.Format("Error : {0}", ee.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
 
         private bool ValidateForm()
@@ -159,7 +188,6 @@ namespace ImageReview.UI
                 frm.txtDataFolderPath.Text = Properties.Settings.Default.CorrectionPath;
                 frm.txtAdminReviewPath.Text = Properties.Settings.Default.AdminReviewPath;
                 frm.txtModificationPath.Text = Properties.Settings.Default.ModificationPath;
-                frm.txtReviewPath.Text = Properties.Settings.Default.ReviewPath;
 
                 DialogResult res = frm.ShowDialog();
                 if (res == DialogResult.OK)
@@ -167,7 +195,6 @@ namespace ImageReview.UI
                     Properties.Settings.Default.CorrectionPath = frm.txtDataFolderPath.Text.Trim();
                     Properties.Settings.Default.AdminReviewPath = frm.txtAdminReviewPath.Text.Trim();
                     Properties.Settings.Default.ModificationPath = frm.txtModificationPath.Text.Trim();
-                    Properties.Settings.Default.ReviewPath = frm.txtReviewPath.Text.Trim();
                     Properties.Settings.Default.Save();
                 }
             }

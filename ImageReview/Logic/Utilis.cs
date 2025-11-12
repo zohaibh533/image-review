@@ -18,11 +18,11 @@ namespace ImageReview.Logic
         public static string ForwardFolderPath { get; set; }
         public static string ModificationFolderPath { get; set; }
         public static int LoginID { get; set; }
-        public static string ReviewPath { get; set; }
 
         public static string dbPwd { get; set; }
         public static string dbServer { get; set; }
         public static string dbUser { get; set; }
+        public static string AppVersion { get; set; }
 
         //SHA256
         private static byte[] GetHash(string inputString)
@@ -77,9 +77,6 @@ namespace ImageReview.Logic
             {'٤', "4"}, {'٥', "5"}, {'٦', "6"}, {'٧', "7"},
             {'٨', "8"}, {'٩', "9"}
         };
-
-
-
         // {'ت', "t"}, {'ث', "'t"}, {'ج', "j"},
         //{'خ', "h"}, {'ذ', "d"}, {'ز', "z"},
         //{'ش', "s"}, {'ض', "d"},  {'ظ', "'z"},

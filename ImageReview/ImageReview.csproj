@@ -169,11 +169,23 @@
     <Compile Include="UI\frmPlayVideo.Designer.cs">
       <DependentUpon>frmPlayVideo.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\frmReview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmReview.Designer.cs">
+      <DependentUpon>frmReview.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmReports.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\frmReports.Designer.cs">
       <DependentUpon>frmReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\frmSalikLocations.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmSalikLocations.Designer.cs">
+      <DependentUpon>frmSalikLocations.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\frmSettings.cs">
       <SubType>Form</SubType>
@@ -223,6 +235,12 @@
     <Compile Include="UI\Reports\rptUserWiseSummaryReport.Designer.cs">
       <DependentUpon>rptUserWiseSummaryReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Reports\rptUserEvaluationReport.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Reports\rptUserEvaluationReport.Designer.cs">
+      <DependentUpon>rptUserEvaluationReport.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -258,8 +276,14 @@
     <EmbeddedResource Include="UI\frmPlayVideo.resx">
       <DependentUpon>frmPlayVideo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmReview.resx">
+      <DependentUpon>frmReview.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\frmReports.resx">
       <DependentUpon>frmReports.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmSalikLocations.resx">
+      <DependentUpon>frmSalikLocations.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\frmSettings.resx">
       <DependentUpon>frmSettings.cs</DependentUpon>
@@ -284,6 +308,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Reports\rptUserWiseSummaryReport.resx">
       <DependentUpon>rptUserWiseSummaryReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Reports\rptUserEvaluationReport.resx">
+      <DependentUpon>rptUserEvaluationReport.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -35,8 +35,6 @@
             this.txtAdminReviewPath = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtModificationPath = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtReviewPath = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // txtDataFolderPath
@@ -73,7 +71,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(59, 96);
+            this.label2.Location = new System.Drawing.Point(59, 103);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(181, 25);
             this.label2.TabIndex = 4;
@@ -83,16 +81,16 @@
             // 
             this.txtAdminReviewPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAdminReviewPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtAdminReviewPath.Location = new System.Drawing.Point(259, 91);
+            this.txtAdminReviewPath.Location = new System.Drawing.Point(259, 98);
             this.txtAdminReviewPath.Name = "txtAdminReviewPath";
             this.txtAdminReviewPath.Size = new System.Drawing.Size(204, 34);
-            this.txtAdminReviewPath.TabIndex = 1;
+            this.txtAdminReviewPath.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(59, 144);
+            this.label3.Location = new System.Drawing.Point(59, 153);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(161, 25);
             this.label3.TabIndex = 6;
@@ -102,29 +100,10 @@
             // 
             this.txtModificationPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtModificationPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtModificationPath.Location = new System.Drawing.Point(259, 139);
+            this.txtModificationPath.Location = new System.Drawing.Point(259, 148);
             this.txtModificationPath.Name = "txtModificationPath";
             this.txtModificationPath.Size = new System.Drawing.Size(204, 34);
-            this.txtModificationPath.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(59, 194);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(120, 25);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Review Path";
-            // 
-            // txtReviewPath
-            // 
-            this.txtReviewPath.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtReviewPath.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.txtReviewPath.Location = new System.Drawing.Point(259, 189);
-            this.txtReviewPath.Name = "txtReviewPath";
-            this.txtReviewPath.Size = new System.Drawing.Size(204, 34);
-            this.txtReviewPath.TabIndex = 3;
+            this.txtModificationPath.TabIndex = 3;
             // 
             // frmSettings
             // 
@@ -132,8 +111,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(522, 353);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtReviewPath);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtModificationPath);
             this.Controls.Add(this.label2);
@@ -161,7 +138,5 @@
         public System.Windows.Forms.TextBox txtDataFolderPath;
         public System.Windows.Forms.TextBox txtAdminReviewPath;
         public System.Windows.Forms.TextBox txtModificationPath;
-        private System.Windows.Forms.Label label4;
-        public System.Windows.Forms.TextBox txtReviewPath;
     }
 }

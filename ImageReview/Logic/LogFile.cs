@@ -9,7 +9,7 @@ namespace ImageReview.Logic
         public static void UpdateLogFile(string Msg)
         {
             XmlConfigurator.Configure();
-            log.Info(Msg);
+            log.Info(string.Format($"{Utilis.UserName.ToUpper()} - {Msg}"));
         }
     }
 }

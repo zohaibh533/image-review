@@ -31,21 +31,28 @@ namespace ImageReview.UI
             {
                 gcData.Height = this.Height - grpFilters.Height - 45;
                 dtTo.Value = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 23, 59, 59);
-                dtFrom.Value = DateTime.Now.AddDays(-1);
+                DateTime YesDay = DateTime.Now.AddDays(-1);
+                dtFrom.Value = new DateTime(YesDay.Year, YesDay.Month, YesDay.Day, 0, 0, 0);
                 ppWait.Size = new Size(178, 49);
+
+                FillReports();
 
                 cmbActionType.SelectedIndex = 0;
                 cmbPrintReport.SelectedIndex = 0;
                 cmbEntryExit.SelectedIndex = 0;
 
+                FillAccessPointTypes();
                 FillLocations();
                 FillUsers();
-                //if (Utilis.UserType != "admin")
-                //{
-
-                //}
-
                 CorrectMissingLocationsInfo();
+
+                //if (Utilis.UserName.ToLower() == "waheed" ||
+                //    Utilis.UserName.ToLower() == "zohaib" ||
+                //    Utilis.UserName.ToLower() == "saqib")
+                //{
+                //    lblAvgSpeed.Visible = lblModCount.Visible = lblTotalAct.Visible = true;
+                //    chkNoOfTrans.Visible = txtNoOfTransactions.Visible = txtTotalActCount.Visible = txtModCount.Visible = txtAvgSpeedInSec.Visible = true;
+                //}
             }
             catch (Exception ee)
             {
@@ -97,6 +104,52 @@ namespace ImageReview.UI
             }
         }
 
+        private void FillAccessPointTypes()
+        {
+            try
+            {
+                List<string> lstTypes = frmDashboard.lstAccessPointsData.Select(ap => ap.type).Distinct().ToList();
+
+                //  lstTypes.Insert(0, "All Types");
+                lstAccessPointType.DataSource = lstTypes;
+                lstAccessPointType.SelectedIndex = -1;
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(string.Format("Error : {0}", ee.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void FillReports()
+        {
+            try
+            {
+                List<ReportType> lst = new List<ReportType>();
+
+                if (Utilis.UserType == "admin")
+                {
+                    lst.Add(new ReportType() { Code = "VS", Name = "Verification Summary" });
+                    lst.Add(new ReportType() { Code = "UWS", Name = "User Wise Summary" });
+                    lst.Add(new ReportType() { Code = "HS", Name = "Hourly Summary" });
+                    lst.Add(new ReportType() { Code = "UP", Name = "User Performance" });
+                    lst.Add(new ReportType() { Code = "LWS", Name = "Location Wise Summary" });
+                    lst.Add(new ReportType() { Code = "UER", Name = "User Evaluation Report" });
+                }
+                else if (Utilis.UserType == "sub_admin")
+                {
+                    lst.Add(new ReportType() { Code = "LWS", Name = "Location Wise Summary" });
+                }
+
+                cmbPrintReport.DisplayMember = "Name";
+                cmbPrintReport.ValueMember = "Code";
+                cmbPrintReport.DataSource = lst;
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(string.Format("Error : {0}", ee.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private async void FillUsers()
         {
             try
@@ -108,12 +161,12 @@ namespace ImageReview.UI
                 cmbUser.ValueMember = "ID";
                 cmbUser.DataSource = lst;
 
-                if (Utilis.UserType == "admin")
-                    cmbUser.SelectedIndex = 0;
-                else
-                    cmbUser.SelectedValue = Utilis.UserID;
+                //if (Utilis.UserType == "admin")
+                //    cmbUser.SelectedIndex = 0;
+                //else
+                //    cmbUser.SelectedValue = Utilis.UserID;
 
-                btnSearch_Click(this, new EventArgs());
+                //btnSearch_Click(this, new EventArgs());
             }
             catch (Exception ee)
             {
@@ -208,25 +261,31 @@ l.access_point_id
         {
             try
             {
-                if (cmbPrintReport.SelectedIndex == 0) // Correction Summary Report
+                string reportCode = cmbPrintReport.SelectedIndex > -1 ? cmbPrintReport.SelectedValue.ToString() : "";
+
+                if (reportCode == "VS") // Correction Summary Report
                 {
                     LoadCorrectionSummaryReport();
                 }
-                else if (cmbPrintReport.SelectedIndex == 1) // User Wise Summary
+                else if (reportCode == "UWS") // User Wise Summary
                 {
                     LoadUserWiseSummaryReport();
                 }
-                else if (cmbPrintReport.SelectedIndex == 2) // Hourly Summary
+                else if (reportCode == "HS") // Hourly Summary
                 {
                     LoadHourlySummaryReport();
                 }
-                else if (cmbPrintReport.SelectedIndex == 3) // User performance
+                else if (reportCode == "UP") // User performance
                 {
                     LoadUserPerformanceReport();
                 }
-                else if (cmbPrintReport.SelectedIndex == 4) // Location Summary
+                else if (reportCode == "LWS") // Location Summary
                 {
                     LoadLocationWiseSummaryReport();
+                }
+                else if (reportCode == "UER") // User Evaluation Report
+                {
+                    LoadUserEvaluationReport();
                 }
             }
             catch (Exception ee)
@@ -234,6 +293,80 @@ l.access_point_id
                 LogFile.UpdateLogFile(string.Format("Error btnPrint_Click : {0}", ee.Message));
                 MessageBox.Show("Error : " + ee.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public async void LoadUserEvaluationReport()
+        {
+            try
+            {
+                ppWait.Visible = true;
+                rptUserEvaluationReport report = new rptUserEvaluationReport();
+
+                //Report Parameters
+                report.Parameters["pmSelectionTimeFrom"].Value = dtFrom.Value.ToString("yyyy-MM-dd HH:mm:ss");
+                report.Parameters["pmSelectionTimeTo"].Value = dtTo.Value.ToString("yyyy-MM-dd HH:mm:ss");
+
+                int ModeCount = 0;
+                int.TryParse(txtModCount.Text, out ModeCount);
+                report.Parameters["pmModCount"].Value = ModeCount;
+
+                int TotalAct = 0;
+                int.TryParse(txtTotalActCount.Text, out TotalAct);
+                report.Parameters["pmTotalActionCount"].Value = TotalAct;
+
+                int AvgSpeed = 0;
+                int.TryParse(txtAvgSpeedInSec.Text, out AvgSpeed);
+                report.Parameters["pmAvgSpeed"].Value = AvgSpeed;
+
+                //Report Datasource
+                DataTable dt = await MySqlDAL.ExecuteDataTable(UserEvaluationQry(ModeCount, TotalAct, AvgSpeed));
+                report.DataSource = dt;
+                report.DataMember = dt.TableName;
+
+                ReportPrintTool tool = new ReportPrintTool(report);
+                this.TopMost = false;
+                tool.ShowRibbonPreviewDialog();
+            }
+            catch (Exception ee)
+            {
+                MessageBox.Show(string.Format("Error : {0}", ee.Message), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            ppWait.Visible = false;
+        }
+
+        private string UserEvaluationQry(int ModeCount, int TotalAct, int AvgSpeed)
+        {
+            string qry = string.Format(@"SELECT IFNULL(u.Username,'')Username,l.User_ID as UserID,
+                sum(case when l.Action_Type=1 and CONCAT(l.Corrected_Code,l.Corrected_PlateNo,l.Corrected_City) 
+                = CONCAT(l.Captured_Code,l.Captured_PlateNo,l.Captured_city) then 1 else 0 end) as VerificationWithoutMod,
+
+                sum(case when l.Action_Type=1 and CONCAT(l.Corrected_Code,l.Corrected_PlateNo,l.Corrected_City) 
+                <> CONCAT(l.Captured_Code,l.Captured_PlateNo,l.Captured_city) then 1 else 0 end) as VerificationWithMod,
+
+                sum(case when l.Action_Type=2 then 1 else 0 end) as Ignored,
+                sum(case when l.Action_Type=3 then 1 else 0 end) as Forwarded,
+                count(l.id) AS total,avg(TIMESTAMPDIFF(SECOND, l.PlateRead_Time, l.Created_At)) AS TimeDiffSec
+
+                FROM tbl_correction_log l
+                LEFT OUTER JOIN tbl_users u ON u.ID=l.User_ID
+                LEFT OUTER JOIN tbl_actions_master a ON a.ID=l.Action_Type
+                
+                where l.Created_At BETWEEN '{0}' AND '{1}' and l.Action_Type<>4
+                group by u.Username,l.User_ID  
+				HAVING 1=1 ",
+               dtFrom.Value.ToString("yyyy-MM-dd HH:mm:ss"),
+               dtTo.Value.ToString("yyyy-MM-dd HH:mm:ss"));
+
+            if (ModeCount > 0)
+                qry = string.Format("{0} and VerificationWithMod>={1} ", qry, ModeCount);
+
+            if (TotalAct > 0)
+                qry = string.Format("{0} and total>={1} ", qry, TotalAct);
+
+            if (AvgSpeed > 0)
+                qry = string.Format("{0} and TimeDiffSec<={1} ", qry, AvgSpeed);
+
+            return string.Format("{0} order by total desc;", qry);
         }
 
         public async void LoadUserPerformanceReport()
@@ -454,14 +587,71 @@ WITH CorrectionStats AS (
                 //Report Datasource
                 DataTable dt = await MySqlDAL.ExecuteDataTable(LocationWiseSummaryQry());
 
-                Location loc;
-                // update location name and access point
-                foreach (DataRow dr in dt.Rows)
+                //add the missing access points
+                var lstdtAP = dt.AsEnumerable().Select(row => row.Field<int>("Access_Point_ID")).ToList();
+                foreach (AccessPoint acc in frmDashboard.lstAccessPointsData.Where(a => a.Is_Loc_Active == 1).ToList())
                 {
-                    loc = frmDashboard.lstLocations.Where(l => l.id == Convert.ToInt32(dr["LocationID"])).FirstOrDefault();
+                    if (!lstdtAP.Contains(acc.id))
+                    {
+                        DataRow dr = dt.NewRow();
+                        dr["LocationName"] = "";
+                        dr["TriggerSource"] = "ANPR";
+                        dr["LocationID"] = acc.locationID;
+                        dr["apName"] = "";
+                        dr["Access_Point_ID"] = acc.id;
+                        dr["Correction"] = "0";
+                        dr["Ignored"] = "0";
+                        dr["Forwarded"] = "0";
+                        dr["TimeDiffSec"] = "0";
 
-                    if (loc != null)
-                        dr["LocationName"] = loc.name;
+                        dt.Rows.Add(dr);
+                    }
+                }
+
+                List<int> lstKeepData = new List<int>();
+                //no of trans filter, ap wise group
+                if (chkNoOfTrans.Checked)
+                {
+                    int noOfTrans = -1;
+                    int.TryParse(txtNoOfTransactions.Text.Trim(), out noOfTrans);
+
+                    lstKeepData = dt.AsEnumerable()
+                     .GroupBy(row => Convert.ToInt32(row["Access_Point_ID"]))
+                     .Select(g => new
+                     {
+                         AccessPointID = g.Key,
+                         Total = g.Sum(row =>
+                             Convert.ToInt32(row["Ignored"]) +
+                             Convert.ToInt32(row["Forwarded"]) +
+                             Convert.ToInt32(row["Correction"]))
+                     })
+                     .Where(x => noOfTrans < x.Total)
+                     .Select(x => x.AccessPointID)
+                     .ToList();
+                }
+
+                List<string> lstApTypes = lstAccessPointType.SelectedItems.Cast<string>().ToList();
+                AccessPoint ap;
+                // update location name and access point and delete the unwanted rows
+                for (int i = dt.Rows.Count - 1; i >= 0; i--)
+                {
+                    DataRow dr = dt.Rows[i];
+                    ap = frmDashboard.lstAccessPointsData
+                      .FirstOrDefault(l => l.id == Convert.ToInt32(dr["Access_Point_ID"]));
+
+                    if (chkNoOfTrans.Checked && lstKeepData.Contains(Convert.ToInt32(dr["Access_Point_ID"])))
+                    {
+                        dt.Rows.RemoveAt(i);
+                    }
+                    else if (ap != null && (lstApTypes.Count == 0 || lstApTypes.Contains(ap.type)))
+                    {
+                        dr["LocationName"] = ap.locationName;
+                        dr["apName"] = ap.AccessPointIDName;
+                    }
+                    else
+                    {
+                        dt.Rows.RemoveAt(i); // Safe way to delete
+                    }
                 }
 
                 report.DataSource = dt;
@@ -480,22 +670,22 @@ WITH CorrectionStats AS (
 
         private string LocationWiseSummaryQry()
         {
-            string qry = string.Format(@"SELECT '' as LocationName,l.Location_id as LocationID,
-sum(case when l.Action_Type=1 then 1 else 0 end) as Correction,
-sum(case when l.Action_Type=2 then 1 else 0 end) as Ignored,
-sum(case when l.Action_Type=3 then 1 else 0 end) as Forwarded,
-count(l.id) AS total,avg(TIMESTAMPDIFF(SECOND, l.PlateRead_Time, l.Created_At)) AS TimeDiffSec
+            string qry = string.Format(@"SELECT '' as LocationName,l.Location_id as LocationID,'' AS apName,l.Access_Point_ID,
+(case when l.Action_Type=1 then 1 else 0 end) as Correction,
+(case when l.Action_Type=2 then 1 else 0 end) as Ignored,
+(case when l.Action_Type=3 then 1 else 0 end) as Forwarded,
+(TIMESTAMPDIFF(SECOND, l.PlateRead_Time, l.Created_At)) AS TimeDiffSec,
+(case when l.trigger_type=1 then 'ANPR-Virtual' when l.trigger_type=2 then 'LPR' ELSE 'ANPR' END) TriggerSource
 
                 FROM tbl_correction_log l
                 LEFT OUTER JOIN tbl_actions_master a ON a.ID=l.Action_Type
                 
-                where l.Created_At between '{0}' and '{1}' and l.Action_Type<>4 ",
+                where l.Created_At BETWEEN '{0}' AND '{1}' and l.Action_Type<>4",
                dtFrom.Value.ToString("yyyy-MM-dd HH:mm:ss"), dtTo.Value.ToString("yyyy-MM-dd HH:mm:ss"));
 
-            qry = string.Format("{0} {1} group by l.Location_ID  order BY total desc", qry, GetQueryFilters());
+            qry = string.Format("{0} {1}", qry, GetQueryFilters());
             return qry;
         }
-
 
         public async void LoadUserWiseSummaryReport()
         {
@@ -633,26 +823,14 @@ count(l.id) AS total,avg(TIMESTAMPDIFF(SECOND, l.PlateRead_Time, l.Created_At)) 
                         //{
                         string folderName = view.GetRowCellValue(rowHandle, "FolderName").ToString();
                         string path = Path.Combine(Utilis.ModificationFolderPath, folderName);
+                        string pathAdmin = Path.Combine(Utilis.ForwardFolderPath, folderName);
                         if (Directory.Exists(path))
                         {
-                            fPic = (new DirectoryInfo(path))
-                                .GetFiles()
-                                .ToList()
-                                .Where(x => x.Extension.ToLower().Contains("jpg"))
-                                .ToList();
-
-                            if (fPic != null && fPic.Count > 0)
-                            {
-                                if (fPic.Count > 20)
-                                    fPic = fPic.GetRange(0, 19);
-
-                                frmImageSlider frm = new frmImageSlider();
-                                frm.Show(fPic);
-                            }
-                            else
-                            {
-                                MessageBox.Show(string.Format("There is no image file present in the folder."), "No Image Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                            }
+                            ViewImage(path);
+                        }
+                        else if (Directory.Exists(pathAdmin))
+                        {
+                            ViewImage(pathAdmin);
                         }
                         else
                         {
@@ -671,6 +849,40 @@ count(l.id) AS total,avg(TIMESTAMPDIFF(SECOND, l.PlateRead_Time, l.Created_At)) 
             {
                 LogFile.UpdateLogFile(string.Format("Error gvData_DoubleClick : {0}", ee.Message));
             }
+        }
+
+        private void ViewImage(string path)
+        {
+            try
+            {
+                fPic = (new DirectoryInfo(path))
+                                .GetFiles()
+                                .ToList()
+                                .Where(x => x.Extension.ToLower().Contains("jpg"))
+                                .ToList();
+
+                if (fPic != null && fPic.Count > 0)
+                {
+                    if (fPic.Count > 20)
+                        fPic = fPic.GetRange(0, 19);
+
+                    frmImageSlider frm = new frmImageSlider();
+                    frm.Show(fPic);
+                }
+                else
+                {
+                    MessageBox.Show(string.Format("There is no image file present in the folder."), "No Image Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ee)
+            {
+                LogFile.UpdateLogFile(string.Format("Error ViewImage : {0}", ee.Message));
+            }
+        }
+
+        private void chkNoOfTrans_CheckedChanged(object sender, EventArgs e)
+        {
+            txtNoOfTransactions.Enabled = chkNoOfTrans.Checked;
         }
     }
 }
