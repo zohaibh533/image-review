@@ -30,9 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDashboard));
-            DevExpress.Utils.SuperToolTip superToolTip1 = new DevExpress.Utils.SuperToolTip();
-            DevExpress.Utils.ToolTipTitleItem toolTipTitleItem1 = new DevExpress.Utils.ToolTipTitleItem();
-            DevExpress.Utils.ToolTipItem toolTipItem1 = new DevExpress.Utils.ToolTipItem();
             this.barManager1 = new DevExpress.XtraBars.BarManager(this.components);
             this.barMainMenu = new DevExpress.XtraBars.Bar();
             this.bbSystemUsers = new DevExpress.XtraBars.BarButtonItem();
@@ -75,7 +72,6 @@
             this.cmbCity = new System.Windows.Forms.ComboBox();
             this.btnSave = new DevExpress.XtraEditors.SimpleButton();
             this.btnIgnore = new DevExpress.XtraEditors.SimpleButton();
-            this.btnVideo = new DevExpress.XtraEditors.SimpleButton();
             this.label15 = new System.Windows.Forms.Label();
             this.txtNoPlateRemarks = new System.Windows.Forms.TextBox();
             this.txtANPRMessage = new System.Windows.Forms.TextBox();
@@ -95,8 +91,8 @@
             this.picCodeConv = new DevExpress.XtraEditors.PictureEdit();
             this.pnlButtons = new System.Windows.Forms.Panel();
             this.btnActiveTrip = new DevExpress.XtraEditors.SimpleButton();
-            this.pnlWait = new System.Windows.Forms.Panel();
             this.btnForward = new DevExpress.XtraEditors.SimpleButton();
+            this.pnlWait = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.lblTimer = new System.Windows.Forms.Label();
             this.pnlMIsc = new System.Windows.Forms.Panel();
@@ -610,7 +606,7 @@
             this.btnSave.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnSave.Location = new System.Drawing.Point(168, 4);
+            this.btnSave.Location = new System.Drawing.Point(8, 5);
             this.btnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(248, 92);
@@ -621,43 +617,20 @@
             // 
             this.btnIgnore.Appearance.BackColor = System.Drawing.Color.Transparent;
             this.btnIgnore.Appearance.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIgnore.Appearance.ForeColor = System.Drawing.Color.Red;
             this.btnIgnore.Appearance.Options.UseBackColor = true;
             this.btnIgnore.Appearance.Options.UseFont = true;
+            this.btnIgnore.Appearance.Options.UseForeColor = true;
             this.btnIgnore.BackgroundImage = global::ImageReview.Properties.Resources.picIgnore;
             this.btnIgnore.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnIgnore.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.btnIgnore.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnIgnore.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnIgnore.Location = new System.Drawing.Point(769, 5);
+            this.btnIgnore.Location = new System.Drawing.Point(601, 13);
             this.btnIgnore.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnIgnore.Name = "btnIgnore";
-            this.btnIgnore.Size = new System.Drawing.Size(241, 92);
+            this.btnIgnore.Size = new System.Drawing.Size(241, 76);
             this.btnIgnore.TabIndex = 4;
             this.btnIgnore.Click += new System.EventHandler(this.btnIgnore_Click);
-            // 
-            // btnVideo
-            // 
-            this.btnVideo.Appearance.BackColor = System.Drawing.Color.Transparent;
-            this.btnVideo.Appearance.Font = new System.Drawing.Font("Segoe UI Semibold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVideo.Appearance.Options.UseBackColor = true;
-            this.btnVideo.Appearance.Options.UseFont = true;
-            this.btnVideo.BackgroundImage = global::ImageReview.Properties.Resources.picPlayVideo;
-            this.btnVideo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnVideo.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.btnVideo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnVideo.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnVideo.Location = new System.Drawing.Point(8, 4);
-            this.btnVideo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnVideo.Name = "btnVideo";
-            this.btnVideo.Size = new System.Drawing.Size(106, 92);
-            toolTipTitleItem1.Text = "Video Player\r\n";
-            toolTipItem1.LeftIndent = 6;
-            toolTipItem1.Text = "Click here to watch the video";
-            superToolTip1.Items.Add(toolTipTitleItem1);
-            superToolTip1.Items.Add(toolTipItem1);
-            this.btnVideo.SuperTip = superToolTip1;
-            this.btnVideo.TabIndex = 0;
-            this.btnVideo.Click += new System.EventHandler(this.btnVideo_Click);
             // 
             // label15
             // 
@@ -889,14 +862,12 @@
             // pnlButtons
             // 
             this.pnlButtons.Controls.Add(this.btnActiveTrip);
-            this.pnlButtons.Controls.Add(this.pnlWait);
             this.pnlButtons.Controls.Add(this.btnForward);
-            this.pnlButtons.Controls.Add(this.btnVideo);
             this.pnlButtons.Controls.Add(this.btnSave);
             this.pnlButtons.Controls.Add(this.btnIgnore);
             this.pnlButtons.Location = new System.Drawing.Point(399, 357);
             this.pnlButtons.Name = "pnlButtons";
-            this.pnlButtons.Size = new System.Drawing.Size(1018, 101);
+            this.pnlButtons.Size = new System.Drawing.Size(858, 101);
             this.pnlButtons.TabIndex = 2;
             // 
             // btnActiveTrip
@@ -910,21 +881,13 @@
             this.btnActiveTrip.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnActiveTrip.Image = ((System.Drawing.Image)(resources.GetObject("btnActiveTrip.Image")));
             this.btnActiveTrip.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleLeft;
-            this.btnActiveTrip.Location = new System.Drawing.Point(476, 20);
+            this.btnActiveTrip.Location = new System.Drawing.Point(312, 20);
             this.btnActiveTrip.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnActiveTrip.Name = "btnActiveTrip";
             this.btnActiveTrip.Size = new System.Drawing.Size(233, 61);
             this.btnActiveTrip.TabIndex = 3;
             this.btnActiveTrip.Text = "Check Active Trip";
             this.btnActiveTrip.Click += new System.EventHandler(this.chkActiveTrip_Click);
-            // 
-            // pnlWait
-            // 
-            this.pnlWait.Controls.Add(this.ppMainWait);
-            this.pnlWait.Location = new System.Drawing.Point(418, 12);
-            this.pnlWait.Name = "pnlWait";
-            this.pnlWait.Size = new System.Drawing.Size(182, 76);
-            this.pnlWait.TabIndex = 85;
             // 
             // btnForward
             // 
@@ -937,12 +900,20 @@
             this.btnForward.ButtonStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
             this.btnForward.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnForward.ImageLocation = DevExpress.XtraEditors.ImageLocation.MiddleCenter;
-            this.btnForward.Location = new System.Drawing.Point(476, 4);
+            this.btnForward.Location = new System.Drawing.Point(312, 4);
             this.btnForward.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnForward.Name = "btnForward";
             this.btnForward.Size = new System.Drawing.Size(233, 92);
             this.btnForward.TabIndex = 2;
             this.btnForward.Click += new System.EventHandler(this.btnForward_Click);
+            // 
+            // pnlWait
+            // 
+            this.pnlWait.Controls.Add(this.ppMainWait);
+            this.pnlWait.Location = new System.Drawing.Point(100, 491);
+            this.pnlWait.Name = "pnlWait";
+            this.pnlWait.Size = new System.Drawing.Size(182, 76);
+            this.pnlWait.TabIndex = 85;
             // 
             // label8
             // 
@@ -1201,6 +1172,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1800, 778);
             this.Controls.Add(this.pnlDirection);
+            this.Controls.Add(this.pnlWait);
             this.Controls.Add(this.picZoom);
             this.Controls.Add(this.pnlMIsc);
             this.Controls.Add(this.pnlButtons);
@@ -1269,7 +1241,6 @@
         private DevExpress.XtraBars.BarButtonItem nnNextImage;
         private DevExpress.XtraBars.BarButtonItem bbPreviousImage;
         private DevExpress.XtraEditors.Controls.ImageSlider imgSlider;
-        private DevExpress.XtraEditors.SimpleButton btnVideo;
         private System.Windows.Forms.TextBox txtANPRMessage;
         private DevExpress.XtraEditors.SimpleButton btnIgnore;
         private DevExpress.XtraEditors.SimpleButton btnSave;

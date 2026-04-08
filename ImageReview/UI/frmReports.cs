@@ -45,14 +45,6 @@ namespace ImageReview.UI
                 FillLocations();
                 FillUsers();
                 CorrectMissingLocationsInfo();
-
-                //if (Utilis.UserName.ToLower() == "waheed" ||
-                //    Utilis.UserName.ToLower() == "zohaib" ||
-                //    Utilis.UserName.ToLower() == "saqib")
-                //{
-                //    lblAvgSpeed.Visible = lblModCount.Visible = lblTotalAct.Visible = true;
-                //    chkNoOfTrans.Visible = txtNoOfTransactions.Visible = txtTotalActCount.Visible = txtModCount.Visible = txtAvgSpeedInSec.Visible = true;
-                //}
             }
             catch (Exception ee)
             {
@@ -135,7 +127,7 @@ namespace ImageReview.UI
                     lst.Add(new ReportType() { Code = "LWS", Name = "Location Wise Summary" });
                     lst.Add(new ReportType() { Code = "UER", Name = "User Evaluation Report" });
                 }
-                else if (Utilis.UserType == "sub_admin")
+                else if (Utilis.UserType == "sub_admin" || Utilis.UserType == "review_admin")
                 {
                     lst.Add(new ReportType() { Code = "LWS", Name = "Location Wise Summary" });
                 }
@@ -562,6 +554,9 @@ WITH CorrectionStats AS (
             if (cmbLocation.SelectedIndex > 0)
                 qry = string.Format("{0} and l.location_id ={1} ", qry, cmbLocation.SelectedValue.ToString());
 
+            if (cmbAccessPoints.SelectedIndex > 0)
+                qry = string.Format("{0} and l.Access_Point_ID ={1} ", qry, cmbAccessPoints.SelectedValue.ToString());
+
             if (txtPlateNo.Text.Trim() != "")
                 qry = string.Format(@"{0} and (CONCAT(l.Captured_Code,' ',l.Captured_PlateNo,' ',l.Captured_city) like '%{1}%'
                     or CONCAT(l.Corrected_Code,' ',l.Corrected_PlateNo,' ',l.Corrected_City) like '%{1}%' 
@@ -883,6 +878,40 @@ count(l.id) AS total,avg(TIMESTAMPDIFF(SECOND, l.PlateRead_Time, l.Created_At)) 
         private void chkNoOfTrans_CheckedChanged(object sender, EventArgs e)
         {
             txtNoOfTransactions.Enabled = chkNoOfTrans.Checked;
+        }
+
+        private void cmbLocation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (cmbLocation.SelectedIndex > 0)
+                {
+                    List<AccessPoint> lst = frmDashboard.lstAccessPointsData
+                        .Where(i => i.locationID == Convert.ToInt32(cmbLocation.SelectedValue))
+                        .OrderBy(g => g.AccessPointIDName).ToList();
+
+                    lst.Insert(0, new AccessPoint { id = 0, AccessPointIDName = "All Access Points" });
+                    cmbAccessPoints.DisplayMember = "AccessPointIDName";
+                    cmbAccessPoints.ValueMember = "id";
+                    cmbAccessPoints.DataSource = lst;
+                    cmbAccessPoints.SelectedIndex = 0;
+                }
+                else
+                {
+                    List<AccessPoint> lst = frmDashboard.lstAccessPointsData
+                       .OrderBy(g => g.AccessPointIDName).ToList();
+
+                    lst.Insert(0, new AccessPoint { id = 0, AccessPointIDName = "All Access Points" });
+                    cmbAccessPoints.DisplayMember = "AccessPointIDName";
+                    cmbAccessPoints.ValueMember = "id";
+                    cmbAccessPoints.DataSource = lst;
+                    cmbAccessPoints.SelectedIndex = 0;
+                }
+            }
+            catch (Exception ee)
+            {
+                LogFile.UpdateLogFile(string.Format("Error cmbLocation_SelectedIndexChanged : {0}", ee.Message));
+            }
         }
     }
 }

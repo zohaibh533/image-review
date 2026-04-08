@@ -629,6 +629,7 @@ D:\Git-Projects\AI Center\Image Review\ImageReview\obj\Debug\ImageReview.Reports
 D:\Git-Projects\AI Center\Image Review\ImageReview\obj\Debug\ImageReview.csproj.GenerateResource.Cache
 D:\Git-Projects\AI Center\Image Review\ImageReview\obj\Debug\ImageReview.exe.licenses
 D:\Git-Projects\AI Center\Image Review\ImageReview\obj\Debug\ImageReview.UI.frmSalikLocations.resources
+D:\Git-Projects\AI Center\Image Review\ImageReview\obj\Debug\ImageReview.UI.frmReview.resources
 D:\Git-Projects\AI Center\Image Review\ImageReview\bin\Debug\Microsoft.Win32.Primitives.dll
 D:\Git-Projects\AI Center\Image Review\ImageReview\bin\Debug\netstandard.dll
 D:\Git-Projects\AI Center\Image Review\ImageReview\bin\Debug\System.AppContext.dll
@@ -725,8 +726,7 @@ D:\Git-Projects\AI Center\Image Review\ImageReview\bin\Debug\System.Xml.XmlDocum
 D:\Git-Projects\AI Center\Image Review\ImageReview\bin\Debug\System.Xml.XmlSerializer.dll
 D:\Git-Projects\AI Center\Image Review\ImageReview\bin\Debug\System.Xml.XPath.dll
 D:\Git-Projects\AI Center\Image Review\ImageReview\bin\Debug\System.Xml.XPath.XDocument.dll
-D:\Git-Projects\AI Center\Image Review\ImageReview\obj\Debug\ImageReview.csprojAssemblyReference.cache
 D:\Git-Projects\AI Center\Image Review\ImageReview\obj\Debug\ImageReview.exe.config
 D:\Git-Projects\AI Center\Image Review\ImageReview\obj\Debug\ImageReview.csproj.CoreCompileInputs.cache
 D:\Git-Projects\AI Center\Image Review\ImageReview\obj\Debug\ImageReview.csproj.CopyComplete
-D:\Git-Projects\AI Center\Image Review\ImageReview\obj\Debug\ImageReview.UI.frmReview.resources
+D:\Git-Projects\AI Center\Image Review\ImageReview\obj\Debug\ImageReview.csprojAssemblyReference.cache

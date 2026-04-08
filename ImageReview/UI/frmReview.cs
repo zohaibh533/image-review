@@ -143,7 +143,8 @@ namespace ImageReview.UI
                 // update location name and access point
                 foreach (DataRow dr in dt.Rows)
                 {
-                    if (frmDashboard.dicApLocation.TryGetValue(Convert.ToInt32(dr["access_point_id"]), out AccessPoint ap))
+                    AccessPoint ap;
+                    if (frmDashboard.dicApLocation.TryGetValue(Convert.ToInt32(dr["access_point_id"]), out ap))
                     {
                         dr["Location_Name"] = ap.locationName;
                         dr["apname"] = ap.AccessPointIDName;
@@ -251,7 +252,7 @@ namespace ImageReview.UI
             }
             catch (Exception ee)
             {
-              //  LogFile.UpdateLogFile(string.Format("Error LoadImageAsync : {0}", ee.Message));
+                //  LogFile.UpdateLogFile(string.Format("Error LoadImageAsync : {0}", ee.Message));
             }
         }
 

@@ -477,22 +477,6 @@ namespace ImageReview.Logic
 
         public static async Task<int> AddCorrectionLog(CorrectionLog log)
         {
-            //string Qry = string.Format(@"insert into tbl_correction_log(User_ID,User_Remarks,Action_Type,Login_ID,
-            //    Location_ID,Access_Point_ID,IsExit,Transaction_ID,Event_DateTime,
-            //    Captured_Code,Captured_PlateNo,Captured_City,Corrected_Code,Corrected_PlateNo,Corrected_City,ANPR_Message,
-            //    FolderName,PlateRead_Time,Created_At,Reason_ID,trigger_type,is_backward,direction)
-            //    values({0},'{1}',{2},{3},{4},{6},{8},'{9}','{10}','{11}','{12}','{13}','{14}','{15}','{16}','{17}',
-            //    '{18}','{19}','{20}',{21},{22},{23},'{24}');
-
-            //    UPDATE tbl_active_folder SET IsIdle =1,Folder_Name='' where Login_ID={3};",
-
-            //log.UserID, log.UserRemarks, log.ActionType, log.LoginID, log.LocationID, "",
-            //log.AccessPointID, "", log.IsExit, log.TransactionID, log.EventDateTime, log.CapturedCode,
-            //log.CapturedPlateNo, log.CapturedCity, log.CorrectedCode, log.CorrectedPlateNo, log.CorrectedCity, log.ANPRMsg,
-            //log.FolderName, log.PlateReadTime, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), log.ReasonID,
-
-            //log.TriggerType, log.IsBackWard, log.Direction);
-
             using (var mySqlConnection = new MySqlConnection(ConnString))
             using (MySqlCommand cmd = new MySqlCommand()
             {
@@ -593,7 +577,6 @@ namespace ImageReview.Logic
                 return ft;
             }
         }
-
 
         public static async Task<List<FalseTrigger>> GetFalseTriggeringData()
         {

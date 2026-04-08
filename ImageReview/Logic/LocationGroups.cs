@@ -33,8 +33,10 @@ namespace ImageReview.Logic
 
     public class CorrectionLog
     {
+        
         public int ID { get; set; }
         public int UserID { get; set; }
+        public string UserType { get; set; }
         public string UserRemarks { get; set; }
         public int ActionType { get; set; }
         public int LoginID { get; set; }
@@ -66,9 +68,7 @@ namespace ImageReview.Logic
     {
         Correction = 1,
         Ignored = 2,
-        Forwarded = 3,
-        ExitPlates = 4,
-        IgnoredAP = 5
+        Forwarded = 3
     }
 
     public class FalseTrigger

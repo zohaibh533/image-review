@@ -32,6 +32,8 @@
             this.gcData = new DevExpress.XtraGrid.GridControl();
             this.gvData = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.grpFilters = new System.Windows.Forms.GroupBox();
+            this.cmbAccessPoints = new System.Windows.Forms.ComboBox();
+            this.labelControl6 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl12 = new DevExpress.XtraEditors.LabelControl();
             this.chkNoOfTrans = new System.Windows.Forms.CheckBox();
             this.txtNoOfTransactions = new System.Windows.Forms.TextBox();
@@ -84,6 +86,10 @@
             // 
             // gvData
             // 
+            this.gvData.Appearance.ColumnFilterButton.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gvData.Appearance.ColumnFilterButton.Options.UseFont = true;
+            this.gvData.Appearance.ColumnFilterButtonActive.Font = new System.Drawing.Font("Calibri", 12F);
+            this.gvData.Appearance.ColumnFilterButtonActive.Options.UseFont = true;
             this.gvData.Appearance.EvenRow.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.gvData.Appearance.EvenRow.Options.UseFont = true;
             this.gvData.Appearance.FilterCloseButton.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -121,6 +127,8 @@
             // 
             // grpFilters
             // 
+            this.grpFilters.Controls.Add(this.cmbAccessPoints);
+            this.grpFilters.Controls.Add(this.labelControl6);
             this.grpFilters.Controls.Add(this.labelControl12);
             this.grpFilters.Controls.Add(this.chkNoOfTrans);
             this.grpFilters.Controls.Add(this.txtNoOfTransactions);
@@ -156,16 +164,38 @@
             this.grpFilters.Font = new System.Drawing.Font("Tahoma", 12F);
             this.grpFilters.Location = new System.Drawing.Point(0, 0);
             this.grpFilters.Name = "grpFilters";
-            this.grpFilters.Size = new System.Drawing.Size(1750, 281);
+            this.grpFilters.Size = new System.Drawing.Size(1750, 322);
             this.grpFilters.TabIndex = 0;
             this.grpFilters.TabStop = false;
             this.grpFilters.Text = "Search Criteria";
+            // 
+            // cmbAccessPoints
+            // 
+            this.cmbAccessPoints.AccessibleName = "";
+            this.cmbAccessPoints.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbAccessPoints.FormattingEnabled = true;
+            this.cmbAccessPoints.Location = new System.Drawing.Point(533, 187);
+            this.cmbAccessPoints.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbAccessPoints.Name = "cmbAccessPoints";
+            this.cmbAccessPoints.Size = new System.Drawing.Size(248, 36);
+            this.cmbAccessPoints.TabIndex = 12;
+            // 
+            // labelControl6
+            // 
+            this.labelControl6.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelControl6.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
+            this.labelControl6.Location = new System.Drawing.Point(408, 191);
+            this.labelControl6.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.labelControl6.Name = "labelControl6";
+            this.labelControl6.Size = new System.Drawing.Size(116, 28);
+            this.labelControl6.TabIndex = 154;
+            this.labelControl6.Text = "Access Points";
             // 
             // labelControl12
             // 
             this.labelControl12.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl12.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
-            this.labelControl12.Location = new System.Drawing.Point(421, 42);
+            this.labelControl12.Location = new System.Drawing.Point(408, 42);
             this.labelControl12.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl12.Name = "labelControl12";
             this.labelControl12.Size = new System.Drawing.Size(69, 28);
@@ -177,7 +207,7 @@
             this.chkNoOfTrans.AutoSize = true;
             this.chkNoOfTrans.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.chkNoOfTrans.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
-            this.chkNoOfTrans.Location = new System.Drawing.Point(421, 230);
+            this.chkNoOfTrans.Location = new System.Drawing.Point(408, 273);
             this.chkNoOfTrans.Name = "chkNoOfTrans";
             this.chkNoOfTrans.Size = new System.Drawing.Size(199, 32);
             this.chkNoOfTrans.TabIndex = 15;
@@ -188,7 +218,7 @@
             // txtNoOfTransactions
             // 
             this.txtNoOfTransactions.Enabled = false;
-            this.txtNoOfTransactions.Location = new System.Drawing.Point(626, 230);
+            this.txtNoOfTransactions.Location = new System.Drawing.Point(626, 273);
             this.txtNoOfTransactions.Name = "txtNoOfTransactions";
             this.txtNoOfTransactions.Size = new System.Drawing.Size(155, 32);
             this.txtNoOfTransactions.TabIndex = 16;
@@ -249,7 +279,7 @@
             // 
             this.lblTotalAct.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotalAct.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
-            this.lblTotalAct.Location = new System.Drawing.Point(421, 188);
+            this.lblTotalAct.Location = new System.Drawing.Point(408, 232);
             this.lblTotalAct.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lblTotalAct.Name = "lblTotalAct";
             this.lblTotalAct.Size = new System.Drawing.Size(164, 28);
@@ -258,17 +288,17 @@
             // 
             // txtTotalActCount
             // 
-            this.txtTotalActCount.Location = new System.Drawing.Point(605, 186);
+            this.txtTotalActCount.Location = new System.Drawing.Point(605, 230);
             this.txtTotalActCount.Name = "txtTotalActCount";
             this.txtTotalActCount.Size = new System.Drawing.Size(176, 32);
-            this.txtTotalActCount.TabIndex = 12;
+            this.txtTotalActCount.TabIndex = 15;
             this.txtTotalActCount.Text = "35000";
             // 
             // lblModCount
             // 
             this.lblModCount.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblModCount.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
-            this.lblModCount.Location = new System.Drawing.Point(32, 188);
+            this.lblModCount.Location = new System.Drawing.Point(32, 191);
             this.lblModCount.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.lblModCount.Name = "lblModCount";
             this.lblModCount.Size = new System.Drawing.Size(170, 28);
@@ -277,7 +307,7 @@
             // 
             // txtModCount
             // 
-            this.txtModCount.Location = new System.Drawing.Point(226, 186);
+            this.txtModCount.Location = new System.Drawing.Point(226, 189);
             this.txtModCount.Name = "txtModCount";
             this.txtModCount.Size = new System.Drawing.Size(168, 32);
             this.txtModCount.TabIndex = 11;
@@ -286,7 +316,6 @@
             // cmbEntryExit
             // 
             this.cmbEntryExit.AccessibleName = "";
-            this.cmbEntryExit.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbEntryExit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbEntryExit.FormattingEnabled = true;
             this.cmbEntryExit.Items.AddRange(new object[] {
@@ -313,7 +342,6 @@
             // cmbLocation
             // 
             this.cmbLocation.AccessibleName = "";
-            this.cmbLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbLocation.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLocation.FormattingEnabled = true;
             this.cmbLocation.Location = new System.Drawing.Point(533, 143);
@@ -321,12 +349,13 @@
             this.cmbLocation.Name = "cmbLocation";
             this.cmbLocation.Size = new System.Drawing.Size(248, 36);
             this.cmbLocation.TabIndex = 9;
+            this.cmbLocation.SelectedIndexChanged += new System.EventHandler(this.cmbLocation_SelectedIndexChanged);
             // 
             // labelControl1
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl1.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
-            this.labelControl1.Location = new System.Drawing.Point(421, 147);
+            this.labelControl1.Location = new System.Drawing.Point(408, 147);
             this.labelControl1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(75, 28);
@@ -340,9 +369,9 @@
             this.chkExcludeForward.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
             this.chkExcludeForward.Location = new System.Drawing.Point(146, 147);
             this.chkExcludeForward.Name = "chkExcludeForward";
-            this.chkExcludeForward.Size = new System.Drawing.Size(263, 32);
+            this.chkExcludeForward.Size = new System.Drawing.Size(199, 32);
             this.chkExcludeForward.TabIndex = 8;
-            this.chkExcludeForward.Text = "Exclude Forwarded Tickets";
+            this.chkExcludeForward.Text = "Exclude Forwarded";
             this.chkExcludeForward.UseVisualStyleBackColor = true;
             // 
             // ppWait
@@ -357,7 +386,7 @@
             this.ppWait.Location = new System.Drawing.Point(1383, 57);
             this.ppWait.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.ppWait.Name = "ppWait";
-            this.ppWait.Size = new System.Drawing.Size(178, 141);
+            this.ppWait.Size = new System.Drawing.Size(178, 70);
             this.ppWait.TabIndex = 132;
             this.ppWait.ToolTip = "Data is loading";
             this.ppWait.ToolTipIconType = DevExpress.Utils.ToolTipIconType.Information;
@@ -447,7 +476,6 @@
             // cmbActionType
             // 
             this.cmbActionType.AccessibleName = "";
-            this.cmbActionType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbActionType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbActionType.FormattingEnabled = true;
             this.cmbActionType.Items.AddRange(new object[] {
@@ -468,7 +496,7 @@
             // 
             this.labelControl4.Appearance.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelControl4.Appearance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(50)))), ((int)(((byte)(75)))));
-            this.labelControl4.Location = new System.Drawing.Point(421, 97);
+            this.labelControl4.Location = new System.Drawing.Point(408, 97);
             this.labelControl4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.labelControl4.Name = "labelControl4";
             this.labelControl4.Size = new System.Drawing.Size(104, 28);
@@ -478,7 +506,6 @@
             // cmbUser
             // 
             this.cmbUser.AccessibleName = "";
-            this.cmbUser.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbUser.FormattingEnabled = true;
             this.cmbUser.Location = new System.Drawing.Point(146, 93);
@@ -580,5 +607,7 @@
         private System.Windows.Forms.TextBox txtNoOfTransactions;
         private DevExpress.XtraEditors.LabelControl labelControl12;
         private System.Windows.Forms.CheckBox chkNoOfTrans;
+        private System.Windows.Forms.ComboBox cmbAccessPoints;
+        private DevExpress.XtraEditors.LabelControl labelControl6;
     }
 }

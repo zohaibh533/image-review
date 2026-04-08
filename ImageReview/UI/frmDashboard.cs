@@ -90,7 +90,7 @@ namespace ImageReview.UI
 
                 AccessControl();
 
-                btnVideo.InvokeControl(l => l.Enabled = false);
+                //    btnVideo.InvokeControl(l => l.Enabled = false);
                 btnIgnore.InvokeControl(l => l.Enabled = false);
                 btnSave.InvokeControl(l => l.Enabled = false);
                 btnForward.InvokeControl(l => l.Enabled = false);
@@ -143,12 +143,12 @@ namespace ImageReview.UI
                     }
                     else if (Utilis.UserType == "review_admin") // only review
                     {
-                        bbFalseTriggers.Visibility = bbReview.Visibility = BarItemVisibility.Always;
+                        bbReports.Visibility = bbFalseTriggers.Visibility = bbReview.Visibility = BarItemVisibility.Always;
 
-                        bbSalikLocations.Visibility = bbReports.Visibility =
+                        bbSalikLocations.Visibility =
                            bbSystemUsers.Visibility = BarItemVisibility.Never;
                     }
-                    else if (Utilis.UserType == "sub_admin") // Sub Saqib
+                    else if (Utilis.UserType == "sub_admin") // Saqib
                     {
                         bbFalseTriggers.Visibility = bbSalikLocations.Visibility = bbReports.Visibility =
                                bbSystemUsers.Visibility = BarItemVisibility.Always;
@@ -718,6 +718,7 @@ namespace ImageReview.UI
             }
         }
 
+        string ExCurrentFolder = "";
         List<string> lstErrorFolders = new List<string>();
         DirectoryInfo DirInfo;
         List<FileInfo> fPic;
@@ -734,34 +735,36 @@ namespace ImageReview.UI
                     _IsDataLoaded = false;
 
                     //check priority for the user
-                    LoginIDAndUserCount lu = await MySqlDAL.GetPriorityLoginID();
-                    LogFile.UpdateLogFile(string.Format("Priority : {0}, User Count : {1}, Queue : {2}",
-                        lu.LoginID, lu.UsersCount, QueueCount));
+                    //LoginIDAndUserCount lu = await MySqlDAL.GetPriorityLoginID();
+                    //LogFile.UpdateLogFile(string.Format("Priority : {0}, User Count : {1}, Queue : {2}",
+                    //    lu.LoginID, lu.UsersCount, QueueCount));
 
                     //skip the priority if more plates are in pending then active users
-                    if (QueueCount < lu.UsersCount && lu.LoginID != Utilis.LoginID)
-                    {
-                        if (lu.LoginID == 0)// if no user is avaiable and current user is asking for data, 
-                        {
-                            int rec = await MySqlDAL.MakeUserIdle();
-                            if (rec == 0) // session timed-out
-                            {
-                                SessionTimedOut();
-                                return;
-                            }
-                        }
+                    //if (QueueCount < lu.UsersCount && lu.LoginID != Utilis.LoginID)
+                    //{
+                    //    if (lu.LoginID == 0)// if no user is avaiable and current user is asking for data, 
+                    //    {
+                    //        int rec = await MySqlDAL.MakeUserIdle();
+                    //        if (rec == 0) // session timed-out
+                    //        {
+                    //            SessionTimedOut();
+                    //            return;
+                    //        }
+                    //    }
 
-                        LogFile.UpdateLogFile(string.Format("Priority is for the loginID : {0}, current user loginID: {1}",
-                            lu.LoginID, Utilis.LoginID));
-                        tmIdle.Enabled = true;
-                        _IsDataLoaded = true;
-                        return;
-                    }
+                    //    LogFile.UpdateLogFile(string.Format("Priority is for the loginID : {0}, current user loginID: {1}",
+                    //        lu.LoginID, Utilis.LoginID));
+                    //    tmIdle.Enabled = true;
+                    //    _IsDataLoaded = true;
+                    //    return;
+                    //}
 
                     pnlWait.InvokeControl(l => l.Visible = true);
                     //first get the locked folders
                     List<string> lstLocked = await MySqlDAL.GetCurrentFolders();
-                    CurrentFolder = GetPendingPlate(lstLocked, lu.UsersCount);
+                    lstLocked.Add(ExCurrentFolder);
+                    CurrentFolder = GetPendingPlate(lstLocked, 1);// lu.UsersCount);
+                    ExCurrentFolder = CurrentFolder;
 
                     if (!string.IsNullOrEmpty(CurrentFolder))
                     {
@@ -794,7 +797,7 @@ namespace ImageReview.UI
                             imgFrame = fPic.Where(x => x.Name.ToLower().Contains("frame")).FirstOrDefault();
                             SetPlateData(imgFrame != null ? imgFrame.FullName : "");
 
-                            btnVideo.InvokeControl(l => l.Enabled = true);
+                            //  btnVideo.InvokeControl(l => l.Enabled = true);
                             btnIgnore.InvokeControl(l => l.Enabled = true);
                             btnSave.InvokeControl(l => l.Enabled = true);
                             btnForward.InvokeControl(l => l.Enabled = true);
@@ -863,11 +866,12 @@ namespace ImageReview.UI
         {
             try
             {
+                _pd.correction.TriggerTypeLocal = _pd.correction.trigger_type.HasValue ? _pd.correction.trigger_type.Value : -1;
+
                 if (_pd.correction.trigger_type.HasValue
                    && lstSalikLocations.Contains(_pd.correction.location_id)
                    && !lstIgnoreDirection.Contains(Convert.ToInt32(_pd.correction.access_point_id)))
                 {
-                    _pd.correction.TriggerTypeLocal = _pd.correction.trigger_type.Value;
                     string direction = string.IsNullOrEmpty(_pd.correction.direction) ? "" : _pd.correction.direction;
                     pnlDirection.InvokeControl(l => l.Visible = true);
                     int IsBackWard = -1;
@@ -899,7 +903,7 @@ namespace ImageReview.UI
                 {
                     _pd.correction.IsBackwardFocusLocal = -1;
                     _pd.correction.DirectionLocal = "";
-                    _pd.correction.TriggerTypeLocal = -1;
+                    //  _pd.correction.TriggerTypeLocal = -1;
                     pnlDirection.InvokeControl(l => l.Visible = false);
                 }
             }
@@ -1314,8 +1318,8 @@ namespace ImageReview.UI
                 borderClr = Color.Black;
                 pnlDirection.InvokeControl(l => l.Visible = false);
                 tmWarning.Enabled = false;
-
-                btnVideo.InvokeControl(l => l.Enabled = false);
+                //
+                // btnVideo.InvokeControl(l => l.Enabled = false);
                 btnIgnore.InvokeControl(l => l.Enabled = false);
                 btnSave.InvokeControl(l => l.Enabled = false);
                 btnForward.InvokeControl(l => l.Enabled = false);
@@ -1453,12 +1457,12 @@ namespace ImageReview.UI
                     MoveFolderToModification(CurrentFolder, Utilis.CorrectionFolderPath);
 
                     // if check -in working on local system, thn avoid posting on aws
-                    if (lstLocalVerification.Contains(_pd.correction.location_id))
-                        SaveCorrectedDataToMasterParkonic(code, plateNo, plateCity);
-                    else
-                        SaveCorrectedData(code, plateNo, plateCity, userRemarks);
+                    //if (lstLocalVerification.Contains(_pd.correction.location_id))
+                    //    SaveCorrectedDataToMasterParkonic(code, plateNo, plateCity);
+                    //else
+                    SaveCorrectedData(code, plateNo, plateCity, userRemarks);
 
-                    //save data to local server
+                    //save log data to server & create local log 
                     PlateSavedActions("Plate Correction", code, plateNo, plateCity, userRemarks,
                         ReasonID, _pd.correction.access_point_id_new);
                 }
@@ -1632,10 +1636,9 @@ namespace ImageReview.UI
                 plateCity = FormatData(plateCity);
                 userRemarks = FormatData(userRemarks);
 
-                //   if (Utilis.UserType == "admin")
                 MoveFolderToModification(CurrentFolder, Utilis.CorrectionFolderPath);
 
-                SavePlateFileLog(CurrentFolder, _pd, Utilis.CorrectionFolderPath, ActionMaster.Ignored);
+                SavePlateFileLocalLog(CurrentFolder, _pd, Utilis.CorrectionFolderPath, ActionMaster.Ignored);
                 SaveCorrectionLog(ActionMaster.Ignored, _pd, code, plateNo, plateCity, userRemarks,
                     ReasonID, CurrentFolder, Convert.ToInt32(_pd.correction.access_point_id));
                 ReSet();
@@ -1648,7 +1651,7 @@ namespace ImageReview.UI
             pnlWait.InvokeControl(l => l.Visible = false);
         }
 
-        private void SavePlateFileLog(string FolderName, SelectedPlateDetail plateDetail, string srcPath, ActionMaster act)
+        private void SavePlateFileLocalLog(string FolderName, SelectedPlateDetail plateDetail, string srcPath, ActionMaster act)
         {
             try
             {
@@ -1784,6 +1787,7 @@ namespace ImageReview.UI
                     await MySqlDAL.AddCorrectionLog(new CorrectionLog()
                     {
                         ActionType = ActID,
+                        UserType = Utilis.UserType.ToLower() == "user" ? "user" : "admin",
                         TransactionID = co.transactionid,
                         AccessPointID = AccessPointID,
                         AccessPointName = co.entrance_Name,
@@ -1865,7 +1869,7 @@ namespace ImageReview.UI
                 userRemarks = FormatData(userRemarks);
 
                 ForwardFolderToAdmin(CurrentFolder);
-                SavePlateFileLog(CurrentFolder, _pd, Utilis.CorrectionFolderPath, ActionMaster.Forwarded);
+                SavePlateFileLocalLog(CurrentFolder, _pd, Utilis.CorrectionFolderPath, ActionMaster.Forwarded);
                 SaveCorrectionLog(ActionMaster.Forwarded, _pd, code, plateNo, plateCity, userRemarks,
                     ReasonID, CurrentFolder, Convert.ToInt32(_pd.correction.access_point_id));
                 ReSet();
